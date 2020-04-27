@@ -215,6 +215,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ee84d7fc46e97f64d9e748a3d473ae74, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0dfcdd4536c5154aba39f9fd1d43182, type: 3}
+--- !u!1 &143890309 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 308601671476663732, guid: a0dfcdd4536c5154aba39f9fd1d43182,
+    type: 3}
+  m_PrefabInstance: {fileID: 143890308}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &602607529 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2149860617007440063, guid: 76f7796c2fe85e34da4a315e3c04e668,
@@ -236,6 +242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1036316631}
+  - component: {fileID: 1036316632}
   m_Layer: 0
   m_Name: StartDungeon
   m_TagString: Untagged
@@ -251,12 +258,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036316630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.557473, y: 19.986908, z: -52.247272}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1036316632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036316630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e475755fe5326a4287099988c4b6d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstDungeon: {fileID: 0}
+  playerObject: {fileID: 143890309}
 --- !u!1 &1824735336
 GameObject:
   m_ObjectHideFlags: 0

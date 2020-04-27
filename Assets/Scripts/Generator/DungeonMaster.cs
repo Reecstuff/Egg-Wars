@@ -45,7 +45,6 @@ public class DungeonMaster : MonoBehaviour
     public void SetNewDungeons(DungeonGenerator currentDungeon)
     {
         // Generate Multiple Dungeon based on current
-
         for (int i = 0; i < currentDungeon.directions.Count; i++)
         {
             PlaceNewDungeon(ref currentDungeon, currentDungeon.directions[i]);
@@ -64,6 +63,10 @@ public class DungeonMaster : MonoBehaviour
         
         // Dont activate Dungeon
         newDungeon.SetActive(false);
+
+        // Set Position
+
+        newDungeon.transform.position = currentDungeon.gameObject.transform.position + AddOffset(currentDirection);
 
         currentLevelDungeons.Add(newDungeon.GetComponent<DungeonGenerator>());
 
@@ -112,6 +115,25 @@ public class DungeonMaster : MonoBehaviour
         }
 
         return opposite;
+    }
+
+    Vector3 AddOffset(Direction offsetDirection)
+    {
+        switch (offsetDirection)
+        {
+            case Direction.nothing:
+                return Vector3.forward * dungeonOffset;
+            case Direction.left:
+                return -Vector3.right * dungeonOffset;
+            case Direction.right:
+                return Vector3.right * dungeonOffset;
+            case Direction.up:
+                return Vector3.forward * dungeonOffset;
+            case Direction.down:
+                return -Vector3.forward * dungeonOffset;
+            default:
+                return Vector3.forward * dungeonOffset;
+        }
     }
 
 
