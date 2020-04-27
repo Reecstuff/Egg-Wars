@@ -8,15 +8,11 @@ public class Door : MonoBehaviour
     public Door NextDoor;
 
     [HideInInspector]
-    public Vector3 NextDungeonPosition;
-
-    [HideInInspector]
     public DungeonGenerator dungeon;
 
     public Direction DoorInLevelDirection;
 
-    [SerializeField]
-    Vector3 PlayerSpawnPosition;
+    public Vector3 PlayerSpawnPosition;
 
     bool doorVisited;
     
@@ -43,18 +39,20 @@ public class Door : MonoBehaviour
                 if(DungeonMaster.Instance.BossRoomTime)
                 {
                     other.gameObject.transform.position = DungeonMaster.Instance.GetBossRoom();
+                    DungeonMaster.Instance.BossRoomTime = false;
                 }
                 else
                 {
+                    ActivateNextDungeon();
                     other.gameObject.transform.position = MovePosition();
                     // Generate Dungeons in next Dungeon
                     CallDungeonGeneration();
                 }
+                doorVisited = true;
             }
             else
             {
                 other.gameObject.transform.position = MovePosition();
-
             }
         }
     }
@@ -62,13 +60,18 @@ public class Door : MonoBehaviour
 
     Vector3 MovePosition()
     {
-        return PlayerSpawnPosition;
+        return NextDoor.PlayerSpawnPosition;
     }
 
     // Generate other Dungeons in next Dungeon
     void CallDungeonGeneration()
     {
-        DungeonMaster.Instance.SetNewDungeons(DoorInLevelDirection, dungeon);
+        DungeonMaster.Instance.SetNewDungeons(NextDoor.dungeon);
+    }
+
+    void ActivateNextDungeon()
+    {
+        NextDoor.dungeon.gameObject.SetActive(true);
     }
 
     void CalculatePlayerPostion()

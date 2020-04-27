@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class DungeonGenerator : MonoBehaviour
 {
-    [SerializeField]
-    List<Door> doors;
+    public List<Door> doors;
 
     [HideInInspector]
     public List<Direction> directions;
