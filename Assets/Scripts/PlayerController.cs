@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
 {
     public LayerMask movementMask;
 
+    public string equippedWeapon;
+    public int granates;
+
     Camera cam;
     PlayerMotor motor;
 
@@ -36,6 +39,22 @@ public class PlayerController : MonoBehaviour
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "collectable" && Input.GetKeyDown(KeyCode.F))
+        {
+            equippedWeapon = other.gameObject.name;
+
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "Granate")
+        {
+            granates++;
+
+            Destroy(other.gameObject);
         }
     }
 }
