@@ -1,13 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
 public class Door : MonoBehaviour
 {
-    public Door nextDoor;
-    bool doorVisited;
+    [HideInInspector]
+    public Door NextDoor;
 
+    [HideInInspector]
+    public Vector3 NextDungeonPosition;
+
+    [HideInInspector]
+    public DungeonGenerator dungeon;
+
+    public Direction DoorInLevelDirection;
+
+    [SerializeField]
+    Transform PlayerSpawnPosition;
+
+    bool doorVisited;
+    
     private void Start()
     {
         GetComponent<BoxCollider>().isTrigger = true;
@@ -23,18 +35,34 @@ public class Door : MonoBehaviour
             // Check if generate Dungeon
             if(!doorVisited)
             {
-                // Generate Dungeons in next Dungeon
+                if(DungeonMaster.Instance.BossRoomTime)
+                {
+                    other.gameObject.transform.position = DungeonMaster.Instance.GetBossRoom();
+                }
+                else
+                {
+                    other.gameObject.transform.position = MovePosition();
+                    // Generate Dungeons in next Dungeon
+                    CallDungeonGeneration();
+                }
             }
             else
             {
+                other.gameObject.transform.position = MovePosition();
 
             }
         }
     }
 
 
-    void MovePosition()
+    Vector3 MovePosition()
     {
+        return PlayerSpawnPosition.position;
+    }
 
+    // Generate other Dungeons in next Dungeon
+    void CallDungeonGeneration()
+    {
+        DungeonMaster.Instance.SetNewDungeons(DoorInLevelDirection, dungeon);
     }
 }
