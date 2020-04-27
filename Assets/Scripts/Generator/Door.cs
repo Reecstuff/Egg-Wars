@@ -16,7 +16,7 @@ public class Door : MonoBehaviour
     public Direction DoorInLevelDirection;
 
     [SerializeField]
-    Transform PlayerSpawnPosition;
+    Vector3 PlayerSpawnPosition;
 
     bool doorVisited;
     
@@ -24,6 +24,11 @@ public class Door : MonoBehaviour
     {
         GetComponent<BoxCollider>().isTrigger = true;
         doorVisited = false;
+
+        if (PlayerSpawnPosition == Vector3.zero)
+        {
+            CalculatePlayerPostion();
+        }
     }
 
 
@@ -57,12 +62,36 @@ public class Door : MonoBehaviour
 
     Vector3 MovePosition()
     {
-        return PlayerSpawnPosition.position;
+        return PlayerSpawnPosition;
     }
 
     // Generate other Dungeons in next Dungeon
     void CallDungeonGeneration()
     {
         DungeonMaster.Instance.SetNewDungeons(DoorInLevelDirection, dungeon);
+    }
+
+    void CalculatePlayerPostion()
+    {
+        switch (DoorInLevelDirection)
+        {
+            case Direction.nothing:
+                PlayerSpawnPosition = transform.position;
+                break;
+            case Direction.left:
+                PlayerSpawnPosition = transform.position - Vector3.right;
+                break;
+            case Direction.right:
+                PlayerSpawnPosition = transform.position + Vector3.right;
+                break;
+            case Direction.up:
+                PlayerSpawnPosition = transform.position + Vector3.forward;
+                break;
+            case Direction.down:
+                PlayerSpawnPosition = transform.position - Vector3.forward;
+                break;
+            default:
+                break;
+        }
     }
 }

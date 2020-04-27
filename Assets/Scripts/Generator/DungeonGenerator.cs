@@ -29,13 +29,13 @@ public class DungeonGenerator : MonoBehaviour
 
     void SpawnEnemies()
     {
-
+        // Spawn Enemies with Navmeshagents
     }
 
     private void OnValidate()
     {
         // Set the Direction for this Dungeon
-        if(doors.Count != 0)
+        if(doors != null && doors.Count != 0)
         {
             directions.Clear();
             directions = doors.ConvertAll(d => d.DoorInLevelDirection);
