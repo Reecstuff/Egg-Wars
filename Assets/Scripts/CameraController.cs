@@ -4,33 +4,34 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    //public Transform target;
+    public Transform target;
 
-    //public Vector3 offset;
-    //public float zoomSpeed = 4f;
-    //public float minZoom = 5f;
-    //public float maxZoom = 15f;
+    public Vector3 offset;
 
-    //public float pitch = 2f;
+    public float pitch = 2f;
 
-    //public float yawSpeed = 100f;
+    private float currentZoom = 10f;
+    private float currentYaw = 0;
 
-    //private float currentZoom = 10f;
-    //private float currentYaw = 0;
+    void Update()
+    {
+        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-    //private void Update()
-    //{
-    //    currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
-    //    currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
+        if (Input.GetKey(KeyCode.Mouse2))
+        {
+            //currentYaw -= Input.GetAxis("Horizontal") * yawSpeed * Time.deltaTime;
 
-    //    currentYaw -= Input.GetAxis("Horizontal") * yawSpeed * Time.deltaTime;
-    //}
+            Quaternion camTurnAngle = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * Time.deltaTime * 1000, Vector3.up);
 
-    //private void LateUpdate()
-    //{
-    //    transform.position = transform.position - offset * currentZoom;
-    //    transform.LookAt(target.position + Vector3.up * pitch);
+            offset = camTurnAngle * offset;
+        }
+    }
 
-    //    transform.RotateAround(target.position, Vector3.up, currentYaw);
-    //}
+    void LateUpdate()
+    {
+        transform.position = target.position - offset * currentZoom;
+        transform.LookAt(target.position + Vector3.up * pitch);
+
+        transform.RotateAround(target.position, Vector3.up, currentYaw);
+    }
 }
