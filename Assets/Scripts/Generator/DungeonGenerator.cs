@@ -1,10 +1,13 @@
-﻿using UnityEngine;
-using UnityEngine.AI;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class DungeonGenerator : MonoBehaviour
 {
     [SerializeField]
-    GameObject[] doors;
+    List<Door> doors;
+
+    [HideInInspector]
+    public List<Direction> directions;
 
     void OnEnable()
     {
@@ -15,7 +18,8 @@ public class DungeonGenerator : MonoBehaviour
 
     void BuildEnvironment()
     {
-
+        // Spawn Obstacles
+        // Spawn Traps
     }
 
     void BuildNavMesh()
@@ -26,5 +30,15 @@ public class DungeonGenerator : MonoBehaviour
     void SpawnEnemies()
     {
 
+    }
+
+    private void OnValidate()
+    {
+        // Set the Direction for this Dungeon
+        if(doors.Count != 0)
+        {
+            directions.Clear();
+            directions = doors.ConvertAll(d => d.DoorInLevelDirection);
+        }
     }
 }
