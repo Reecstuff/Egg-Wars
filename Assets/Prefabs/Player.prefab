@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d7efb6cccb4294f97f04a2600c6c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 9079839455816992976}
   moveSpeed: 12
   equippedWeapon: 
   granates: 0
-  bullet: {fileID: 0}
+  bullet: {fileID: 5529024245268689379, guid: d0b1d223e2586ca4c9ed76893f5025ad, type: 3}
 --- !u!143 &4520032514040045691
 CharacterController:
   m_ObjectHideFlags: 0
