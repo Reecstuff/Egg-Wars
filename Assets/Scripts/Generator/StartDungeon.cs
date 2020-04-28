@@ -5,7 +5,7 @@ public class StartDungeon : MonoBehaviour
 {
 
     [SerializeField]
-    GameObject firstDungeon;
+    DungeonGenerator firstDungeon;
 
     [SerializeField]
     GameObject playerObject;
@@ -18,18 +18,22 @@ public class StartDungeon : MonoBehaviour
     {
         DungeonMaster.Instance.dungeonStarter = this;
         DungeonMaster.Instance.navi = navi;
+
         DungeonOn();
     }
 
 
     public void DungeonOn()
     {
-        GameObject newStartDungeon = Instantiate(firstDungeon);
+        GameObject newStartDungeon = Instantiate(firstDungeon.gameObject);
         newStartDungeon.transform.position = Vector3.zero * 1.5f;
         playerObject.transform.position = Vector3.up;
 
-        newStartDungeon.GetComponent<DungeonGenerator>().StartDungeon();
+        firstDungeon = newStartDungeon.GetComponent<DungeonGenerator>();
 
-        DungeonMaster.Instance.SetNewDungeons(newStartDungeon.GetComponent<DungeonGenerator>(), Direction.nothing);
+        firstDungeon.StartDungeon();
+
+        DungeonMaster.Instance.currentLevelDungeons.Add(firstDungeon);
+        DungeonMaster.Instance.SetNewDungeons(firstDungeon, Direction.nothing);
     }
 }

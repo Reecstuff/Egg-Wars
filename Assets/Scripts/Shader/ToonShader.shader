@@ -4,19 +4,20 @@
 	{
 		_Color("Color", Color) = (1,1,1,1)
 		_MainTex("Main Texture", 2D) = "white" {}
-	// Ambient light is applied uniformly to all surfaces on the object.
-	[HDR]
-	_AmbientColor("Ambient Color", Color) = (0.4,0.4,0.4,1)
-	[HDR]
-	_SpecularColor("Specular Color", Color) = (0.9,0.9,0.9,1)
+		_MetallicTex("Metallic Map", 2D) = "white" {}
+		// Ambient light is applied uniformly to all surfaces on the object.
+		[HDR]
+		_AmbientColor("Ambient Color", Color) = (0.4,0.4,0.4,1)
+		[HDR]
+		_SpecularColor("Specular Color", Color) = (0.9,0.9,0.9,1)
 		// Controls the size of the specular reflection.
 		_Glossiness("Glossiness", Float) = 32
 		[HDR]
 		_RimColor("Rim Color", Color) = (1,1,1,1)
 		_RimAmount("Rim Amount", Range(0, 1)) = 0.716
-			// Control how smoothly the rim blends when approaching unlit
-			// parts of the surface.
-			_RimThreshold("Rim Threshold", Range(0, 1)) = 0.1
+		// Control how smoothly the rim blends when approaching unlit
+		// parts of the surface.
+		_RimThreshold("Rim Threshold", Range(0, 1)) = 0.1
 	}
 		SubShader
 		{
@@ -62,7 +63,9 @@
 			};
 
 			sampler2D _MainTex;
+			sampler2D _MetallicTex;
 			float4 _MainTex_ST;
+			float4 _MetallicTex_ST;
 
 			v2f vert(appdata v)
 			{
@@ -71,6 +74,7 @@
 				o.worldNormal = UnityObjectToWorldNormal(v.normal);
 				o.viewDir = WorldSpaceViewDir(v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+
 				// Defined in Autolight.cginc. Assigns the above shadow coordinate
 				// by transforming the vertex from world space to shadow-map space.
 				TRANSFER_SHADOW(o)
@@ -129,6 +133,9 @@
 				float4 rim = rimIntensity * _RimColor;
 
 				float4 sample = tex2D(_MainTex, i.uv);
+
+				// TODO METALLIC MAP
+				float4 metalSample = tex2D(_MetallicTex, i.uv);
 
 				return (light + _AmbientColor + specular + rim) * _Color * sample;
 			}

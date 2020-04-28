@@ -59,31 +59,48 @@ public class DungeonMaster : MonoBehaviour
     void PlaceNewDungeon(ref DungeonGenerator currentDungeon, Direction currentDirection)
     {
         Direction oppositeOfCurrent = GetOppositeDirection(currentDirection);
-        // Get Dungeons with dockable Doors
-        DungeonGenerator[] dungeonsInDirection = dungeons.Where(d => d.directions.Any(x => x == oppositeOfCurrent)).ToArray();
 
-        // Instantiate Dungeon
-        GameObject newDungeon = Instantiate(dungeonsInDirection[GetRandomIndex(dungeonsInDirection.Length)].gameObject);
+        Vector3 nextDungeonPosition = currentDungeon.gameObject.transform.position + AddOffset(currentDirection);
 
-        // Set Position
-        newDungeon.transform.position = currentDungeon.gameObject.transform.position + AddOffset(currentDirection);
+        DungeonGenerator nextDungeon = null;
 
-        currentLevelDungeons.Add(newDungeon.GetComponent<DungeonGenerator>());
+        //Check if Dungeon already exits
+        if (nextDungeon = GetDungeonOnPoint(nextDungeonPosition, currentDungeon))
+        {
+            // Set Up Door in Direction to this Dungeon
+            SetUpDoor(ref currentDungeon, nextDungeon, currentDirection);
+        }
+        else
+        {
+            // Get Dungeons with dockable Doors
+            DungeonGenerator[] dungeonsInDirection = dungeons.Where(d => d.directions.Any(x => x == oppositeOfCurrent)).ToArray();
 
-        // Set Up Door in Direction to the Dungeon
-        SetUpDoor(ref currentDungeon, currentLevelDungeons.Last(), currentDirection);
+            // Instantiate Dungeon
+            GameObject newDungeon = Instantiate(dungeonsInDirection[GetRandomIndex(dungeonsInDirection.Length)].gameObject);
+
+            // Set Position
+            newDungeon.transform.position = nextDungeonPosition;
+
+            // Add Dungeon to List
+            currentLevelDungeons.Add(newDungeon.GetComponent<DungeonGenerator>());
+
+            // Set Up Door in Direction to the Dungeon
+            SetUpDoor(ref currentDungeon, currentLevelDungeons.Last(), currentDirection);
+        }
     }
 
     void SetUpDoor(ref DungeonGenerator currentDungeon, DungeonGenerator nextDungeon, Direction currentDirection)
     {
+        // Find Door in current Dungeon
         Door currentDoor = currentDungeon.doors.Find(d => d.DoorInLevelDirection == currentDirection);
         currentDoor.dungeon = currentDungeon;
 
+        // Find Door in next Dungeon
         Door oppositeDoor = GetOppositeDoor(currentDirection, nextDungeon);
         currentDoor.NextDoor = oppositeDoor;
         oppositeDoor.dungeon = nextDungeon;
+        oppositeDoor.NextDoor = currentDoor;
         oppositeDoor.CalculatePlayerPostion();
-
     }
 
     Door GetOppositeDoor(Direction doorDirection, DungeonGenerator nextDungeon)
@@ -139,6 +156,15 @@ public class DungeonMaster : MonoBehaviour
             default:
                 return Vector3.forward * dungeonOffset;
         }
+    }
+
+    /// <summary>
+    /// Check through list if Dungeon exits on this Point
+    /// </summary>
+    /// <returns></returns>
+    DungeonGenerator GetDungeonOnPoint(Vector3 dungeonPosition, DungeonGenerator currentDungeon)
+    {
+        return currentLevelDungeons.Find(cd => Vector3.Distance(cd.gameObject.transform.position, dungeonPosition) <= 50.0 && cd != currentDungeon);
     }
 
 

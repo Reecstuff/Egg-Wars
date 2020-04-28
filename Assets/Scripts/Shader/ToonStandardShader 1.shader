@@ -51,12 +51,11 @@ Shader "Custom/ToonStandardTest" {
         _SpecularColor("Specular Color", Color) = (0.9,0.9,0.9,1)
         // Controls the size of the specular reflection.
         _Glossiness("Glossiness", Float) = 32
-        [HDR]
-        _RimColor("Rim Color", Color) = (1,1,1,1)
-        _RimAmount("Rim Amount", Range(0, 1)) = 0.716
-        // Control how smoothly the rim blends when approaching unlit
-        // parts of the surface.
-        _RimThreshold("Rim Threshold", Range(0, 1)) = 0.1
+
+    
+        _OutlineColor("Outline Color", Color) = (0,0,0,1)
+        _Outline("Outline width", Range(.002, 0.03)) = .005
+
     }
 
         CGINCLUDE
@@ -90,15 +89,19 @@ Shader "Custom/ToonStandardTest" {
 
             struct v2f {
                 float4 pos : SV_POSITION;
+                UNITY_FOG_COORDS(0)
 				float3 worldNormal : NORMAL;
 				float2 uv : TEXCOORD0;
 				float3 viewDir : TEXCOORD1;
+                fixed4 color : COLOR;
 				// Macro found in Autolight.cginc. Declares a vector4
 				// into the TEXCOORD2 semantic with varying precision 
 				// depending on platform target.
 				//SHADOW_COORDS(2)
             };
 
+            uniform float _Outline;
+            uniform float4 _OutlineColor;
 
 
             v2f vert(appdata v) {
@@ -108,6 +111,14 @@ Shader "Custom/ToonStandardTest" {
 
                 o.worldNormal = UnityObjectToWorldNormal(v.normal);
                 o.viewDir = WorldSpaceViewDir(v.vertex);
+
+                float3 norm = normalize(mul((float3x3)UNITY_MATRIX_IT_MV, v.normal));
+                float2 offset = TransformViewToProjection(norm.xy);
+
+                o.pos.xy += offset * o.pos.z * _Outline;
+                o.color = _OutlineColor;
+                UNITY_TRANSFER_FOG(o,o.pos);
+
 
                 //TRANSFER_SHADOW(o)
 
@@ -122,12 +133,17 @@ Shader "Custom/ToonStandardTest" {
                     "LightMode" = "ForwardBase"
                     "PassFlags" = "OnlyDirectional"
                 }
-
+                Cull Front
+                ZWrite On
+                ColorMask RGB
+                Blend SrcAlpha OneMinusSrcAlpha
 
                 CGPROGRAM
                 #pragma vertex vert
                 #pragma fragment frag
                 #pragma multi_compile_fwdbase
+                #pragma multi_compile_fog
+
 
 
                 #include "HLSLSupport.cginc"
@@ -167,9 +183,9 @@ Shader "Custom/ToonStandardTest" {
                     rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
                     float4 rim = rimIntensity * _RimColor;
                     //float4 sample = tex2D(_MainTex, i.uv);
+                    UNITY_APPLY_FOG(i.fogCoord, i.color);
 
-
-                    return (light + _AmbientColor + specular + rim) * _Color;
+                    return (light + _AmbientColor + specular + rim) * _Color * i.color;
                     //return (light + _AmbientColor + specular + rim) * _Color * sample;
                 }
                 ENDCG

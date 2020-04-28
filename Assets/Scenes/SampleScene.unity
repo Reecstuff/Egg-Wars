@@ -271,6 +271,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 308601671476663735, guid: a0dfcdd4536c5154aba39f9fd1d43182,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 5529024245268689379, guid: d0b1d223e2586ca4c9ed76893f5025ad,
+        type: 3}
+    - target: {fileID: 308601671476663735, guid: a0dfcdd4536c5154aba39f9fd1d43182,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 2011441852}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0dfcdd4536c5154aba39f9fd1d43182, type: 3}
 --- !u!1 &705507993
@@ -519,3 +530,9 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &2011441852 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 9079839455816992976, guid: a0dfcdd4536c5154aba39f9fd1d43182,
+    type: 3}
+  m_PrefabInstance: {fileID: 663906325}
+  m_PrefabAsset: {fileID: 0}

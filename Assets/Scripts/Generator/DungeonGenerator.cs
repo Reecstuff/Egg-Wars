@@ -1,16 +1,23 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DungeonGenerator : MonoBehaviour
 {
     public List<Door> doors;
 
-    [HideInInspector]
     public List<Direction> directions;
 
     private void Start()
     {
-        SetDirections();
+        if (doors.Count == 0)
+        {
+            SearchDoors();
+        }
+        if (directions.Count == 0)
+        {
+            SetDirections();
+        }
     }
 
     public void StartDungeon()
@@ -36,12 +43,32 @@ public class DungeonGenerator : MonoBehaviour
         // Spawn Enemies with Navmeshagents
     }
 
+    void SearchDoors()
+    {
+        doors = new List<Door>();
+        if(doors.Count == 0)
+            doors = GetComponentsInChildren<Door>().ToList();
+    }
+
     private void SetDirections()
     {
+        directions = new List<Direction>();
         // Set the Direction for this Dungeon
         if (doors != null && doors.Count != 0)
         {
             directions = doors.ConvertAll(d => d.DoorInLevelDirection);
+        }
+    }
+
+    private void OnValidate()
+    {
+        if(doors == null || doors.Count == 0)
+        {
+            SearchDoors();
+        }
+        if(directions == null || directions.Count == 0)
+        {
+            SetDirections();
         }
     }
 }
