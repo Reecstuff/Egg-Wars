@@ -8,10 +8,11 @@ public class DungeonMaster : MonoBehaviour
     public static DungeonMaster Instance;
     public NavMeshSurface navi;
     public bool BossRoomTime;
+    [HideInInspector]
     public StartDungeon dungeonStarter;
 
     [SerializeField]
-    int dungeonOffset;
+    int dungeonOffset = 100;
 
     [SerializeField]
     List<DungeonGenerator> dungeons;
@@ -42,12 +43,15 @@ public class DungeonMaster : MonoBehaviour
         }
     }
 
-    public void SetNewDungeons(DungeonGenerator currentDungeon)
+    public void SetNewDungeons(DungeonGenerator currentDungeon, Direction originDirection)
     {
+        Direction opposite = GetOppositeDirection(originDirection);
+
         // Generate Multiple Dungeon based on current
         for (int i = 0; i < currentDungeon.directions.Count; i++)
         {
-            PlaceNewDungeon(ref currentDungeon, currentDungeon.directions[i]);
+            if(opposite != currentDungeon.directions[i])
+                PlaceNewDungeon(ref currentDungeon, currentDungeon.directions[i]);
         }
       
     }
@@ -60,12 +64,8 @@ public class DungeonMaster : MonoBehaviour
 
         // Instantiate Dungeon
         GameObject newDungeon = Instantiate(dungeonsInDirection[GetRandomIndex(dungeonsInDirection.Length)].gameObject);
-        
-        // Dont activate Dungeon
-        newDungeon.SetActive(false);
 
         // Set Position
-
         newDungeon.transform.position = currentDungeon.gameObject.transform.position + AddOffset(currentDirection);
 
         currentLevelDungeons.Add(newDungeon.GetComponent<DungeonGenerator>());
@@ -78,7 +78,12 @@ public class DungeonMaster : MonoBehaviour
     {
         Door currentDoor = currentDungeon.doors.Find(d => d.DoorInLevelDirection == currentDirection);
         currentDoor.dungeon = currentDungeon;
-        currentDoor.NextDoor = GetOppositeDoor(currentDirection, nextDungeon);
+
+        Door oppositeDoor = GetOppositeDoor(currentDirection, nextDungeon);
+        currentDoor.NextDoor = oppositeDoor;
+        oppositeDoor.dungeon = nextDungeon;
+        oppositeDoor.CalculatePlayerPostion();
+
     }
 
     Door GetOppositeDoor(Direction doorDirection, DungeonGenerator nextDungeon)
@@ -95,7 +100,7 @@ public class DungeonMaster : MonoBehaviour
         switch (findOpposite)
         {
             case Direction.nothing:
-                opposite = Direction.down;
+                opposite = Direction.nothing;
                 break;
             case Direction.left:
                 opposite = Direction.right;

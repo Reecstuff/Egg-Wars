@@ -1,5 +1,6 @@
 ﻿using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(BoxCollider))]
 public class Door : MonoBehaviour
@@ -33,18 +34,24 @@ public class Door : MonoBehaviour
         // Check for player
         if(other.gameObject.GetComponent<PlayerController>())
         {
+            GameObject player = other.gameObject;
+
             // Check if generate Dungeon
             if(!doorVisited)
             {
                 if(DungeonMaster.Instance.BossRoomTime)
                 {
-                    other.gameObject.transform.position = DungeonMaster.Instance.GetBossRoom();
+                    player.GetComponent<NavMeshAgent>().enabled = false;
+                    player.transform.position = DungeonMaster.Instance.GetBossRoom();
+                    player.GetComponent<NavMeshAgent>().enabled = true;
                     DungeonMaster.Instance.BossRoomTime = false;
                 }
                 else
                 {
                     ActivateNextDungeon();
-                    other.gameObject.transform.position = MovePosition();
+                    player.GetComponent<NavMeshAgent>().enabled = false;
+                    player.transform.position = MovePosition();
+                    player.GetComponent<NavMeshAgent>().enabled = true;
                     // Generate Dungeons in next Dungeon
                     CallDungeonGeneration();
                 }
@@ -52,7 +59,10 @@ public class Door : MonoBehaviour
             }
             else
             {
-                other.gameObject.transform.position = MovePosition();
+                player.GetComponent<NavMeshAgent>().enabled = false;
+                player.transform.position = MovePosition();
+                player.GetComponent<NavMeshAgent>().enabled = true;
+
             }
         }
     }
@@ -66,15 +76,16 @@ public class Door : MonoBehaviour
     // Generate other Dungeons in next Dungeon
     void CallDungeonGeneration()
     {
-        DungeonMaster.Instance.SetNewDungeons(NextDoor.dungeon);
+        DungeonMaster.Instance.SetNewDungeons(NextDoor.dungeon, DoorInLevelDirection);
     }
 
     void ActivateNextDungeon()
     {
-        NextDoor.dungeon.gameObject.SetActive(true);
+        NextDoor.dungeon.StartDungeon();
+        NextDoor.doorVisited = true;
     }
 
-    void CalculatePlayerPostion()
+    public void CalculatePlayerPostion()
     {
         switch (DoorInLevelDirection)
         {

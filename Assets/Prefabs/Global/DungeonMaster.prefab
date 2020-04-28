@@ -43,3 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d2d88a9baa8944f9b0a86765f660fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navi: {fileID: 0}
+  BossRoomTime: 0
+  dungeonStarter: {fileID: 0}
+  dungeonOffset: 100
+  dungeons:
+  - {fileID: 8640524362395637408, guid: 853d9e31bc3fa274a99370d63fee23ad, type: 3}
+  - {fileID: 1243032848107386758, guid: ac024c1c94205144ab2457a84fddf611, type: 3}
+  - {fileID: 4095772092156002131, guid: 4e7f5295889b9c548b785dd4e6b33db0, type: 3}
+  currentLevelDungeons: []

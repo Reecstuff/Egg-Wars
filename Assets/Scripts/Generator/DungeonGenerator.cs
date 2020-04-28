@@ -8,7 +8,12 @@ public class DungeonGenerator : MonoBehaviour
     [HideInInspector]
     public List<Direction> directions;
 
-    void OnEnable()
+    private void Start()
+    {
+        SetDirections();
+    }
+
+    public void StartDungeon()
     {
         BuildEnvironment();
         BuildNavMesh();
@@ -23,7 +28,7 @@ public class DungeonGenerator : MonoBehaviour
 
     void BuildNavMesh()
     {
-        DungeonMaster.Instance?.navi.BuildNavMesh();
+        DungeonMaster.Instance.navi.BuildNavMesh();
     }
 
     void SpawnEnemies()
@@ -31,12 +36,11 @@ public class DungeonGenerator : MonoBehaviour
         // Spawn Enemies with Navmeshagents
     }
 
-    private void OnValidate()
+    private void SetDirections()
     {
         // Set the Direction for this Dungeon
-        if(doors != null && doors.Count != 0)
+        if (doors != null && doors.Count != 0)
         {
-            directions.Clear();
             directions = doors.ConvertAll(d => d.DoorInLevelDirection);
         }
     }
