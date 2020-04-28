@@ -33,21 +33,30 @@ Shader "Custom/ToonStandardTest" {
 
         [Enum(UV0,0,UV1,1)] _UVSec("UV Set for secondary textures", Float) = 0
 
-            // UI-only data
-            [HideInInspector] _EmissionScaleUI("Scale", Float) = 0.0
-            [HideInInspector] _EmissionColorUI("Color", Color) = (1,1,1)
+        // UI-only data
+        [HideInInspector] _EmissionScaleUI("Scale", Float) = 0.0
+        [HideInInspector] _EmissionColorUI("Color", Color) = (1,1,1)
 
-            // Blending state
-            [HideInInspector] _Mode("__mode", Float) = 0.0
-            [HideInInspector] _SrcBlend("__src", Float) = 1.0
-            [HideInInspector] _DstBlend("__dst", Float) = 0.0
-            [HideInInspector] _ZWrite("__zw", Float) = 1.0
+        // Blending state
+        [HideInInspector] _Mode("__mode", Float) = 0.0
+        [HideInInspector] _SrcBlend("__src", Float) = 1.0
+        [HideInInspector] _DstBlend("__dst", Float) = 0.0
+        [HideInInspector] _ZWrite("__zw", Float) = 1.0
 
-            // -------------------------
-            // Added Outline properties
-            _OutlineColor("Outline Color", Color) = (0,0,0,1)
-            _Outline("Outline width", Range(.002, 0.03)) = .005
-            // -------------------------
+        // -------------------------
+        // Ambient light is applied uniformly to all surfaces on the object.
+        [HDR]
+        _AmbientColor("Ambient Color", Color) = (0.4,0.4,0.4,1)
+        [HDR]
+        _SpecularColor("Specular Color", Color) = (0.9,0.9,0.9,1)
+        // Controls the size of the specular reflection.
+        _Glossiness("Glossiness", Float) = 32
+        [HDR]
+        _RimColor("Rim Color", Color) = (1,1,1,1)
+        _RimAmount("Rim Amount", Range(0, 1)) = 0.716
+        // Control how smoothly the rim blends when approaching unlit
+        // parts of the surface.
+        _RimThreshold("Rim Threshold", Range(0, 1)) = 0.1
     }
 
         CGINCLUDE
@@ -58,7 +67,12 @@ Shader "Custom/ToonStandardTest" {
 
             SubShader
         {
-            Tags { "RenderType" = "Opaque" "PerformanceChecks" = "False" }
+            Tags 
+            { 
+                "RenderType" = "Opaque" 
+                "PerformanceChecks" = "False"
+
+            }
             LOD 300
 
             // ----------------------
@@ -66,6 +80,7 @@ Shader "Custom/ToonStandardTest" {
 
             CGINCLUDE
             #include "UnityCG.cginc"
+            
 
             struct appdata {
                 float4 vertex : POSITION;
@@ -75,46 +90,87 @@ Shader "Custom/ToonStandardTest" {
 
             struct v2f {
                 float4 pos : SV_POSITION;
-                float3 worldNormal : NORMAL;
-                float2 uv : TEXCOORD0;
-                UNITY_FOG_COORDS(0)
-                fixed4 color : COLOR;
+				float3 worldNormal : NORMAL;
+				float2 uv : TEXCOORD0;
+				float3 viewDir : TEXCOORD1;
+				// Macro found in Autolight.cginc. Declares a vector4
+				// into the TEXCOORD2 semantic with varying precision 
+				// depending on platform target.
+				//SHADOW_COORDS(2)
             };
 
-            uniform float _Outline;
-            uniform float4 _OutlineColor;
+
 
             v2f vert(appdata v) {
                 // just make a copy of incoming vertex data but scaled according to normal direction
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
 
-                float3 norm = normalize(mul((float3x3)UNITY_MATRIX_IT_MV, v.normal));
-                float2 offset = TransformViewToProjection(norm.xy);
+                o.worldNormal = UnityObjectToWorldNormal(v.normal);
+                o.viewDir = WorldSpaceViewDir(v.vertex);
 
-                o.pos.xy += offset * o.pos.z * _Outline;
-                o.color = _OutlineColor;
-                UNITY_TRANSFER_FOG(o,o.pos);
+                //TRANSFER_SHADOW(o)
+
                 return o;
             }
             ENDCG
 
             Pass {
                 Name "OUTLINE"
-                Tags { "LightMode" = "Always" }
-                Cull Front
-                ZWrite On
-                ColorMask RGB
-                Blend SrcAlpha OneMinusSrcAlpha
+                Tags 
+                { 
+                    "LightMode" = "ForwardBase"
+                    "PassFlags" = "OnlyDirectional"
+                }
+
 
                 CGPROGRAM
                 #pragma vertex vert
                 #pragma fragment frag
-                #pragma multi_compile_fog
+                #pragma multi_compile_fwdbase
+
+
+                #include "HLSLSupport.cginc"
+                #include "UnityShadowLibrary.cginc"
+                #include "Lighting.cginc"
+                #include "AutoLight.cginc"
+
+                float4 _Color;
+                float4 _AmbientColor;
+                float4 _SpecularColor;
+                float _Glossiness;
+                
+                float4 _RimColor;
+                float _RimAmount;
+                float _RimThreshold;
+
                 fixed4 frag(v2f i) : SV_Target
                 {
-                    UNITY_APPLY_FOG(i.fogCoord, i.color);
-                    return i.color;
+                    float3 normal = normalize(i.worldNormal);
+                    float3 viewDir = normalize(i.viewDir);
+
+                    float NdotL = dot(_WorldSpaceLightPos0, normal);
+                    //float shadow = SHADOW_ATTENUATION(i);
+                    //float lightIntensity = smoothstep(0, 0.01, Ndotl * shadow);
+                    float lightIntensity = smoothstep(0, 0.01, NdotL * 2);
+                    float4 light = lightIntensity * _LightColor0;
+
+                    float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
+                    float NdotH = dot(normal, halfVector);
+
+                    float specularIntensity = pow(NdotH * lightIntensity, _Glossiness * _Glossiness);
+                    float specularIntensitySmooth = smoothstep(0.005, 0.01, specularIntensity);
+                    float4 specular = specularIntensitySmooth * _SpecularColor;
+
+                    float rimDot = 1 - dot(viewDir, normal);
+                    float rimIntensity = rimDot * pow(NdotL, _RimThreshold);
+                    rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
+                    float4 rim = rimIntensity * _RimColor;
+                    //float4 sample = tex2D(_MainTex, i.uv);
+
+
+                    return (light + _AmbientColor + specular + rim) * _Color;
+                    //return (light + _AmbientColor + specular + rim) * _Color * sample;
                 }
                 ENDCG
             }
@@ -274,6 +330,7 @@ Shader "Custom/ToonStandardTest" {
                         #include "UnityStandardMeta.cginc"
                         ENDCG
                     }
+                    UsePass "Legacy Shaders/VertexLit/SHADOWCASTER"
         }
 
             SubShader
