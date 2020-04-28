@@ -9,11 +9,14 @@ public class PlayerController : MonoBehaviour
 
     Vector3 moveInput;
     Vector3 moveVelocity;
+    Transform firePoint;
 
     public float moveSpeed = 12f;
 
     public string equippedWeapon;
     public int granates;
+
+    public GameObject bullet;
 
     private void Start()
     {
@@ -33,6 +36,13 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            firePoint = transform;
+
+            Shoot();
         }
     }
 
@@ -55,5 +65,13 @@ public class PlayerController : MonoBehaviour
 
             Destroy(other.gameObject);
         }
+    }
+
+    void Shoot()
+    {
+        GameObject projectile = Instantiate(bullet, transform.position, transform.rotation);
+        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        rb.AddForce(firePoint.forward * 20, ForceMode.Impulse);
+        
     }
 }
