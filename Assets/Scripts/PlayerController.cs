@@ -2,44 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour
 {
-    public LayerMask movementMask;
+    Rigidbody rb;
+    public Camera cam;
+
+    Vector3 moveInput;
+    Vector3 moveVelocity;
+
+    public float moveSpeed = 12f;
 
     public string equippedWeapon;
     public int granates;
 
-    Camera cam;
-    PlayerMotor motor;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        cam = Camera.main;
-        motor = GetComponent<PlayerMotor>();
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+        moveInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        moveVelocity = moveInput * moveSpeed;
 
-            if (Physics.Raycast(ray, out hit, 100, movementMask))
-            {
-                //Move our player to what we hit
-                motor.MoveToPoint(hit.point);
-            }
-        }
+        Ray cameraRay = cam.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayLength;
 
-        if (Input.GetMouseButtonDown(1))
+        if (groundPlane.Raycast(cameraRay, out rayLength))
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity = moveVelocity;
     }
 
     private void OnTriggerStay(Collider other)
