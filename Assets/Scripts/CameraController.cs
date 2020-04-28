@@ -19,8 +19,6 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse2))
         {
-            //currentYaw -= Input.GetAxis("Horizontal") * yawSpeed * Time.deltaTime;
-
             Quaternion camTurnAngle = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * Time.deltaTime * 1000, Vector3.up);
 
             offset = camTurnAngle * offset;
