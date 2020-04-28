@@ -16,13 +16,6 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        if (Input.GetKey(KeyCode.Mouse2))
-        {
-            Quaternion camTurnAngle = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * Time.deltaTime * 1000, Vector3.up);
-
-            offset = camTurnAngle * offset;
-        }
     }
 
     void LateUpdate()
