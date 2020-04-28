@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     Vector3 moveVelocity;
     Transform firePoint;
 
-    public float moveSpeed = 12f;
+    public float moveSpeed = 20f;
 
     public string equippedWeapon;
     public int granates;
