@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 1245236302008244784}
   - component: {fileID: 6956827182158689381}
   - component: {fileID: 764975896630884942}
+  - component: {fileID: 4848064070589585072}
   m_Layer: 0
   m_Name: Wand1
   m_TagString: Untagged
@@ -342,7 +343,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: aa374b624593d3c4a8b5f48e391c3464, type: 3}
+  - {fileID: 2100000, guid: 2f0e96bc81976cf4aa806394bd3ec97e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -363,6 +364,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4848064070589585072
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3926541062287295770}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5220590045393546675, guid: aa374b624593d3c4a8b5f48e391c3464, type: 3}
 --- !u!1 &4274621548593058557
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,7 +845,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7390795696849717908}
-  - component: {fileID: 2588396923445518844}
+  - component: {fileID: 6074312043405687546}
   m_Layer: 0
   m_Name: Raum5
   m_TagString: Untagged
@@ -858,7 +873,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2588396923445518844
+--- !u!114 &6074312043405687546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -875,7 +890,7 @@ MonoBehaviour:
   - {fileID: 2588396923445518727}
   - {fileID: 2588396923445518725}
   - {fileID: 2588396923445518723}
-  directions: 04000000030000000300000003000000
+  directions: 04000000010000000300000002000000
 --- !u!1 &6326207501848806451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,6 +1044,7 @@ GameObject:
   - component: {fileID: 1935325613829386574}
   - component: {fileID: 5353132372407407636}
   - component: {fileID: 2558120833178354974}
+  - component: {fileID: 166040864126314000}
   m_Layer: 0
   m_Name: AlphaGround10
   m_TagString: Untagged
@@ -1076,7 +1092,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: aa374b624593d3c4a8b5f48e391c3464, type: 3}
+  - {fileID: 2100000, guid: d945620d13a6cc841bf067e81adf23e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1097,3 +1113,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &166040864126314000
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8813482787237738017}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 32.003777, y: 9.72955e-15, z: 60.56535}
+  m_Center: {x: -0.0000019073486, y: -3.173015e-16, z: 0.0000019073486}

@@ -808,6 +808,7 @@ GameObject:
   - component: {fileID: 8579932132868412935}
   - component: {fileID: 4348862490441074286}
   - component: {fileID: 6094130640474868134}
+  - component: {fileID: 2882822092953005591}
   m_Layer: 0
   m_Name: Wand
   m_TagString: Untagged
@@ -855,7 +856,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: fe5204988c6a2724da04fec43733bcb3, type: 3}
+  - {fileID: 2100000, guid: 2f0e96bc81976cf4aa806394bd3ec97e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -876,6 +877,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2882822092953005591
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8235782685868652994}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8369894381874301590, guid: fe5204988c6a2724da04fec43733bcb3, type: 3}
 --- !u!1 &8346189332423574279
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,6 +981,7 @@ GameObject:
   - component: {fileID: 8803152629025067715}
   - component: {fileID: 5654706560218110577}
   - component: {fileID: 7287622144745632825}
+  - component: {fileID: 8134317575744119929}
   m_Layer: 0
   m_Name: AlphaPlane42
   m_TagString: Untagged
@@ -1013,7 +1029,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: fe5204988c6a2724da04fec43733bcb3, type: 3}
+  - {fileID: 2100000, guid: f322ec86288e84f43b8fee4be11c8d7a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1034,6 +1050,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8134317575744119929
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8505532495348220647}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 45.121727, y: 6.310887e-32, z: 45.121727}
+  m_Center: {x: 0.0000009536743, y: 0, z: -0.0000009536743}
 --- !u!1 &8912503923792180361
 GameObject:
   m_ObjectHideFlags: 0

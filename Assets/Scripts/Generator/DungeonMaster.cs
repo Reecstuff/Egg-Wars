@@ -30,6 +30,7 @@ public class DungeonMaster : MonoBehaviour
     private void Start()
     {
         BossRoomTime = false;
+        currentLevelDungeons = new List<DungeonGenerator>();
     }
 
     void MakeSingelton()

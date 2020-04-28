@@ -48,9 +48,9 @@ MonoBehaviour:
   dungeonStarter: {fileID: 0}
   dungeonOffset: 100
   dungeons:
-  - {fileID: 5157143507510496278, guid: 53c832ed373edae4585129afee9b1f75, type: 3}
-  - {fileID: 1433978835515198425, guid: ac024c1c94205144ab2457a84fddf611, type: 3}
-  - {fileID: 505910337367729983, guid: 853d9e31bc3fa274a99370d63fee23ad, type: 3}
-  - {fileID: 8963694442881456738, guid: 8f4f62558c7618744b10e953e3747c49, type: 3}
-  - {fileID: 5659217781031124427, guid: a20134bb6a59abe49a79b00a6552a239, type: 3}
+  - {fileID: 7104993032198819115, guid: ac024c1c94205144ab2457a84fddf611, type: 3}
+  - {fileID: 6618335001263330819, guid: 853d9e31bc3fa274a99370d63fee23ad, type: 3}
+  - {fileID: 1830724327833003253, guid: 8f4f62558c7618744b10e953e3747c49, type: 3}
+  - {fileID: 6074312043405687546, guid: a20134bb6a59abe49a79b00a6552a239, type: 3}
+  - {fileID: 6412339666115295167, guid: 4e7f5295889b9c548b785dd4e6b33db0, type: 3}
   currentLevelDungeons: []

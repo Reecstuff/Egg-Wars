@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 2706231059173042193}
   - component: {fileID: 7982137185689499768}
   - component: {fileID: 436514473879254960}
+  - component: {fileID: 3980061124999077057}
   m_Layer: 0
   m_Name: Wand
   m_TagString: Untagged
@@ -358,7 +359,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: b47a6d1572cfb5e4f80e612fdae84f94, type: 3}
+  - {fileID: 2100000, guid: 2f0e96bc81976cf4aa806394bd3ec97e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -379,6 +380,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3980061124999077057
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2366391645075982292}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8369894381874301590, guid: b47a6d1572cfb5e4f80e612fdae84f94, type: 3}
 --- !u!1 &2400386596130307345
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,6 +626,7 @@ GameObject:
   - component: {fileID: 7978709605412407887}
   - component: {fileID: 8731310917189640954}
   - component: {fileID: 4453022440437749034}
+  - component: {fileID: 416682426275039863}
   m_Layer: 0
   m_Name: AlphaGround9
   m_TagString: Untagged
@@ -658,7 +674,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: b47a6d1572cfb5e4f80e612fdae84f94, type: 3}
+  - {fileID: 2100000, guid: 8a973d3e60e3ee64a805c83032e6ddd6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -679,6 +695,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &416682426275039863
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312427021181215764}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 21.118898, y: 0, z: 60.99076}
+  m_Center: {x: 0.000002861023, y: 0, z: -0.06642532}
 --- !u!1 &7580115717521009387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,7 +1080,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5700426981340668549}
-  - component: {fileID: 747959198738106797}
+  - component: {fileID: 1830724327833003253}
   m_Layer: 0
   m_Name: Raum4
   m_TagString: Untagged
@@ -1079,7 +1108,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &747959198738106797
+--- !u!114 &1830724327833003253
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1096,4 +1125,4 @@ MonoBehaviour:
   - {fileID: 747959198738106774}
   - {fileID: 747959198738106772}
   - {fileID: 747959198738106770}
-  directions: 04000000030000000300000002000000
+  directions: 04000000010000000300000002000000

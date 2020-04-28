@@ -1,11 +1,9 @@
-﻿using UnityEditor.Experimental.GraphView;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(BoxCollider))]
 public class Door : MonoBehaviour
 {
-    [HideInInspector]
     public Door NextDoor;
 
     [HideInInspector]
