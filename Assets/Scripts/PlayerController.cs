@@ -9,14 +9,13 @@ public class PlayerController : MonoBehaviour
 
     Vector3 moveInput;
     Vector3 moveVelocity;
-    Transform firePoint;
 
     public float moveSpeed = 20f;
 
-    public string equippedWeapon;
+    public GameObject[] weapons = new GameObject[2];
+    public GameObject equippedWeapon;
+    public Transform weaponSlot;
     public int granates;
-
-    public GameObject bullet;
 
     private void Start()
     {
@@ -37,13 +36,6 @@ public class PlayerController : MonoBehaviour
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
-
-        if (Input.GetMouseButton(0))
-        {
-            firePoint = transform;
-
-            Shoot();
-        }
     }
 
     private void FixedUpdate()
@@ -53,25 +45,29 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "collectable" && Input.GetKeyDown(KeyCode.F))
+        if (other.gameObject.tag == "collectable" && Input.GetKey(KeyCode.F))
         {
-            equippedWeapon = other.gameObject.name;
+            Destroy(equippedWeapon);
+
+            if (other.gameObject.name == "EggPistol")
+            {
+                equippedWeapon = Instantiate(weapons[0], weaponSlot.position, weaponSlot.rotation) as GameObject;
+            }
+            if (other.gameObject.name == "EggRifle")
+            {
+                equippedWeapon = Instantiate(weapons[1], weaponSlot.position, weaponSlot.rotation) as GameObject;
+            }
+
+            equippedWeapon.transform.parent = GameObject.Find("Player").transform;
 
             Destroy(other.gameObject);
         }
+
         if (other.gameObject.tag == "Granate")
         {
             granates++;
 
             Destroy(other.gameObject);
         }
-    }
-
-    void Shoot()
-    {
-        GameObject projectile = Instantiate(bullet, transform.position, transform.rotation);
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        rb.AddForce(firePoint.forward * 20, ForceMode.Impulse);
-        
     }
 }
