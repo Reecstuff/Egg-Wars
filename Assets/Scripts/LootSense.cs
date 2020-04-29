@@ -17,6 +17,17 @@ public class LootSense : MonoBehaviour
         inSenseLoot = new List<Collectable>();
     }
 
+    private void Update()
+    {
+        if(closestLoot)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                closestLoot.UpdateData(DungeonMaster.Instance.player.EquipWeapon(closestLoot.itemText));
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.GetComponent<Collectable>())
@@ -33,11 +44,6 @@ public class LootSense : MonoBehaviour
 
             if(!closestLoot.isActivated)
                 closestLoot.ActivateCollectable(true);
-
-            if (Input.GetKey(KeyCode.F))
-            {
-                DungeonMaster.Instance.player.EquipWeapon(other.gameObject);
-            }
         }
     }
 

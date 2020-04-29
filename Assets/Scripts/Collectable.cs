@@ -53,11 +53,33 @@ public class Collectable : MonoBehaviour
         transform.DOMoveY(wantToBeYValue, AnimationTime);
         
         FillitemText.gameObject.SetActive(setActiv);
+
+        // Set Text by Item
+        // Item can change
         DescriptionText.Instance.ActivateText(setActiv, itemText.Description);
+        FillitemText.SetItemText(itemText);
+
         if (setActiv)
         {
             FillitemText.ShowText(setActiv);
         }
+    }
+
+    public void UpdateData(Weapon newWeapon)
+    {
+        if (!newWeapon)
+            return;
+
+        itemText = newWeapon.item;
+        DescriptionText.Instance.ActivateText(true, itemText.Description);
+        FillitemText.SetItemText(itemText);
+
+        GameObject Modell = rotateAround.gameObject;
+        GameObject newModell = newWeapon.gameObject;
+
+        Modell.GetComponent<MeshFilter>().sharedMesh = newModell.GetComponent<MeshFilter>().sharedMesh;
+
+        Modell.GetComponent<Renderer>().sharedMaterial = newModell.GetComponent<Renderer>().sharedMaterial;
     }
 
     private void OnValidate()

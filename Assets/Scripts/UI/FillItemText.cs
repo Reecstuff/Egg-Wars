@@ -14,7 +14,7 @@ public class FillItemText : MonoBehaviour
 
     private void Start()
     {
-        SetItemText();
+        SetItemText(itemText);
         if (faceCamera == null)
             faceCamera = GetComponent<ThisFaceCamera>();
     }
@@ -49,8 +49,9 @@ public class FillItemText : MonoBehaviour
         }
     }
 
-    public void SetItemText()
+    public void SetItemText(ItemText item)
     {
+        itemText = item;
         titelText.text = itemText.Titel;
     }
 
