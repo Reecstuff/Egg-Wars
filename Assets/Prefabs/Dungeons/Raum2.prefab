@@ -885,6 +885,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469423662e13aef4eb9f6a9ca2440d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dungeonObstacles:
+  - SpawnPercentage: 46
+    prefab: {fileID: 0}
+  - SpawnPercentage: 16
+    prefab: {fileID: 0}
+  - SpawnPercentage: 38
+    prefab: {fileID: 0}
+  - SpawnPercentage: 0
+    prefab: {fileID: 0}
+  spawnPositions: []
   doors:
   - {fileID: 41833868495142721}
   - {fileID: 41833868495142723}
