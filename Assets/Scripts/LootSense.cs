@@ -33,6 +33,13 @@ public class LootSense : MonoBehaviour
 
             if(!closestLoot.isActivated)
                 closestLoot.ActivateCollectable(true);
+
+            if (Input.GetKey(KeyCode.F))
+            {
+                PlayerController player = GameObject.Find("Player").GetComponent<PlayerController>();
+
+                player.EquipWeapon(other.gameObject);
+            }
         }
     }
 
@@ -44,6 +51,5 @@ public class LootSense : MonoBehaviour
             current.ActivateCollectable(false);
             inSenseLoot.Remove(current);
         }
-
     }
 }

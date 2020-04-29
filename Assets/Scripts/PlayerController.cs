@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public GameObject[] weapons = new GameObject[2];
     public GameObject equippedWeapon;
     public Transform weaponSlot;
-    public int granates;
 
     private void Start()
     {
@@ -43,31 +42,21 @@ public class PlayerController : MonoBehaviour
         rb.velocity = moveVelocity;
     }
 
-    private void OnTriggerStay(Collider other)
+    public void EquipWeapon(GameObject weapon)
     {
-        if (other.gameObject.tag == "collectable" && Input.GetKey(KeyCode.F))
+        Destroy(equippedWeapon);
+
+        if (weapon.gameObject.name == "EggPistol")
         {
-            Destroy(equippedWeapon);
-
-            if (other.gameObject.name == "EggPistol")
-            {
-                equippedWeapon = Instantiate(weapons[0], weaponSlot.position, weaponSlot.rotation) as GameObject;
-            }
-            if (other.gameObject.name == "EggRifle")
-            {
-                equippedWeapon = Instantiate(weapons[1], weaponSlot.position, weaponSlot.rotation) as GameObject;
-            }
-
-            equippedWeapon.transform.parent = GameObject.Find("Player").transform;
-
-            Destroy(other.gameObject);
+            equippedWeapon = Instantiate(weapons[0], weaponSlot.position, weaponSlot.rotation) as GameObject;
+        }
+        if (weapon.gameObject.name == "EggRifle")
+        {
+            equippedWeapon = Instantiate(weapons[1], weaponSlot.position, weaponSlot.rotation) as GameObject;
         }
 
-        if (other.gameObject.tag == "Granate")
-        {
-            granates++;
+        equippedWeapon.transform.parent = GameObject.Find("Player").transform;
 
-            Destroy(other.gameObject);
-        }
+        Destroy(weapon.gameObject);
     }
 }
