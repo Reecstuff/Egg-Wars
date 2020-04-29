@@ -53,11 +53,23 @@ public class Collectable : MonoBehaviour
         transform.DOMoveY(wantToBeYValue, AnimationTime);
         
         FillitemText.gameObject.SetActive(setActiv);
+
+        // Set Text by Item
+        // Item can change
         DescriptionText.Instance.ActivateText(setActiv, itemText.Description);
+        FillitemText.SetItemText(itemText);
+
         if (setActiv)
         {
             FillitemText.ShowText(setActiv);
         }
+    }
+
+    public void UpdateData(ItemText newItem)
+    {
+        itemText = newItem;
+        DescriptionText.Instance.ActivateText(true, itemText.Description);
+        FillitemText.SetItemText(itemText);
     }
 
     private void OnValidate()

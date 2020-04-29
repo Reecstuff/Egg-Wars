@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4356318641713977776}
   - component: {fileID: 793001782610055473}
   m_Layer: 0
-  m_Name: EggPistol
+  m_Name: EggSlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,3 +109,4 @@ MonoBehaviour:
   bullet: {fileID: 5529024245268689379, guid: 098f736de9a185649a3b2d8769b482b3, type: 3}
   shootSpeed: 20
   startTimeBtwShots: 0.5
+  item: {fileID: 11400000, guid: 862d6e83d0e2eaa4dae1578fc915a4e6, type: 2}

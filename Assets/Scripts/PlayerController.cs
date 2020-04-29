@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed = 20f;
 
-    public GameObject[] weapons = new GameObject[2];
+    public Weapon[] weapons;
     public GameObject equippedWeapon;
     public Transform weaponSlot;
 
@@ -43,21 +45,34 @@ public class PlayerController : MonoBehaviour
         rb.velocity = moveVelocity;
     }
 
-    public void EquipWeapon(GameObject weapon)
+    /// <summary>
+    /// Tauscht die Waffe auf dem Boden mit der jetzigen aus
+    /// </summary>
+    /// <param name="weapon">Waffe auf dem Boden</param>
+    /// <returns>Ausgerüstete Waffe</returns>
+    public ItemText EquipWeapon(ItemText weapon)
     {
-        Destroy(equippedWeapon);
 
-        if (weapon.gameObject.name == "EggPistol")
+        // Finde die waffe aus den vorhanden Waffen
+        Weapon newWeapon = weapons.FirstOrDefault(w => w.item.Equals(weapon));
+
+        if(newWeapon == null)
         {
-            equippedWeapon = Instantiate(weapons[0], weaponSlot.position, weaponSlot.rotation) as GameObject;
+            // Keine Waffe gefunden also return
+            return weapon;
         }
-        if (weapon.gameObject.name == "EggRifle")
+        else
         {
-            equippedWeapon = Instantiate(weapons[1], weaponSlot.position, weaponSlot.rotation) as GameObject;
+            Weapon oldWeapon = equippedWeapon.GetComponent<Weapon>();
+                
+            Destroy(equippedWeapon);
+
+
+            // Instantiate the new Weapon
+            equippedWeapon = Instantiate(newWeapon.gameObject, weaponSlot.position, weaponSlot.rotation, transform);
+
+            // Return old Weapon back to Collectable
+            return oldWeapon.item;
         }
-
-        equippedWeapon.transform.parent = GameObject.Find("Player").transform;
-
-        Destroy(weapon.gameObject);
     }
 }
