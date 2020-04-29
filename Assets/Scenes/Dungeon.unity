@@ -188,7 +188,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4380048968086048028, guid: a0dfcdd4536c5154aba39f9fd1d43182, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a0dfcdd4536c5154aba39f9fd1d43182, type: 3}
 --- !u!1 &143890309 stripped
 GameObject:
@@ -235,7 +236,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f56be758da9abc34584e68917099dc84, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

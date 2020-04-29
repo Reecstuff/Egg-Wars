@@ -34,13 +34,10 @@ public class Door : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerController>())
         {
             if (DungeonMaster.Instance.PlayerMoving)
-            {
-                DungeonMaster.Instance.PlayerMoving = false;
                 return;
-            }
 
             GameObject player = other.gameObject;
-            DungeonMaster.Instance.PlayerMoving = false;
+
 
             // Check if generate Dungeon
             if (!doorVisited)
@@ -48,7 +45,6 @@ public class Door : MonoBehaviour
                 if(DungeonMaster.Instance.BossRoomTime)
                 {
                     player.transform.position = DungeonMaster.Instance.GetBossRoom();
-                    DungeonMaster.Instance.BossRoomTime = false;
                 }
                 else
                 {
@@ -68,11 +64,20 @@ public class Door : MonoBehaviour
 
 
 
+
     void MovePosition(Transform player)
     {
         DungeonMaster.Instance.PlayerMoving = true;
         player.transform.DOMove(NextDoor.PlayerSpawnPosition, DungeonMaster.Instance.PlayerMovingTime);
+        Invoke(nameof(ResetMoving), DungeonMaster.Instance.PlayerMovingTime + 0.1f);
     }
+
+
+    void ResetMoving()
+    {
+        DungeonMaster.Instance.PlayerMoving = false;
+    }
+
 
     // Generate other Dungeons in next Dungeon
     void CallDungeonGeneration()
