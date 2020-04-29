@@ -934,7 +934,7 @@ PrefabInstance:
     - target: {fileID: 3710390851667682995, guid: d368e7001688dcb4891d002ab03d94b1,
         type: 3}
       propertyPath: m_Name
-      value: CollectAble
+      value: EggPistol
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d368e7001688dcb4891d002ab03d94b1, type: 3}

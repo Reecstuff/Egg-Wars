@@ -33,6 +33,11 @@ public class LootSense : MonoBehaviour
 
             if(!closestLoot.isActivated)
                 closestLoot.ActivateCollectable(true);
+
+            if (Input.GetKey(KeyCode.F))
+            {
+                DungeonMaster.Instance.player.EquipWeapon(other.gameObject);
+            }
         }
     }
 
@@ -44,6 +49,5 @@ public class LootSense : MonoBehaviour
             current.ActivateCollectable(false);
             inSenseLoot.Remove(current);
         }
-
     }
 }
