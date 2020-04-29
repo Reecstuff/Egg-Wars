@@ -36,9 +36,7 @@ public class LootSense : MonoBehaviour
 
             if (Input.GetKey(KeyCode.F))
             {
-                PlayerController player = GameObject.Find("Player").GetComponent<PlayerController>();
-
-                player.EquipWeapon(other.gameObject);
+                DungeonMaster.Instance.player.EquipWeapon(other.gameObject);
             }
         }
     }
