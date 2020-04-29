@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        DungeonMaster.Instance.player = this;
     }
 
     private void Update()
