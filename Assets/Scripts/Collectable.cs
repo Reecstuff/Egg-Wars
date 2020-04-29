@@ -65,11 +65,21 @@ public class Collectable : MonoBehaviour
         }
     }
 
-    public void UpdateData(ItemText newItem)
+    public void UpdateData(Weapon newWeapon)
     {
-        itemText = newItem;
+        if (!newWeapon)
+            return;
+
+        itemText = newWeapon.item;
         DescriptionText.Instance.ActivateText(true, itemText.Description);
         FillitemText.SetItemText(itemText);
+
+        GameObject Modell = rotateAround.gameObject;
+        GameObject newModell = newWeapon.gameObject;
+
+        Modell.GetComponent<MeshFilter>().sharedMesh = newModell.GetComponent<MeshFilter>().sharedMesh;
+
+        Modell.GetComponent<Renderer>().sharedMaterial = newModell.GetComponent<Renderer>().sharedMaterial;
     }
 
     private void OnValidate()

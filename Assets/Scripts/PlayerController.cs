@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="weapon">Waffe auf dem Boden</param>
     /// <returns>Ausgerüstete Waffe</returns>
-    public ItemText EquipWeapon(ItemText weapon)
+    public Weapon EquipWeapon(ItemText weapon)
     {
 
         // Finde die waffe aus den vorhanden Waffen
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         if(newWeapon == null)
         {
             // Keine Waffe gefunden also return
-            return weapon;
+            return null;
         }
         else
         {
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
             equippedWeapon = Instantiate(newWeapon.gameObject, weaponSlot.position, weaponSlot.rotation, transform);
 
             // Return old Weapon back to Collectable
-            return oldWeapon.item;
+            return oldWeapon;
         }
     }
 }
