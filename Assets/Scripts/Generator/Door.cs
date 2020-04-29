@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(BoxCollider))]
@@ -28,13 +29,21 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+       
         // Check for player
-        if(other.gameObject.GetComponent<PlayerController>())
+        if (other.gameObject.GetComponent<PlayerController>())
         {
+            if (DungeonMaster.Instance.PlayerMoving)
+            {
+                DungeonMaster.Instance.PlayerMoving = false;
+                return;
+            }
+
             GameObject player = other.gameObject;
+            DungeonMaster.Instance.PlayerMoving = false;
 
             // Check if generate Dungeon
-            if(!doorVisited)
+            if (!doorVisited)
             {
                 if(DungeonMaster.Instance.BossRoomTime)
                 {
@@ -46,21 +55,23 @@ public class Door : MonoBehaviour
                     // Generate Dungeons in next Dungeon
                     CallDungeonGeneration();
                     ActivateNextDungeon();
-                    player.transform.position = MovePosition();
+                    MovePosition(player.transform);
                 }
                 doorVisited = true;
             }
             else
             {
-                player.transform.position = MovePosition();
+                MovePosition(player.transform);
             }
         }
     }
 
 
-    Vector3 MovePosition()
+
+    void MovePosition(Transform player)
     {
-       return NextDoor.PlayerSpawnPosition;
+        DungeonMaster.Instance.PlayerMoving = true;
+        player.transform.DOMove(NextDoor.PlayerSpawnPosition, DungeonMaster.Instance.PlayerMovingTime);
     }
 
     // Generate other Dungeons in next Dungeon
@@ -71,10 +82,6 @@ public class Door : MonoBehaviour
 
     void ActivateNextDungeon()
     {
-        if(NextDoor == null)
-        {
-          Debug.Log(dungeon);
-        }
 
         NextDoor.dungeon.StartDungeon();
         NextDoor.doorVisited = true;

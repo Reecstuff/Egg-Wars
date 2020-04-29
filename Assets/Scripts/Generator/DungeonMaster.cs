@@ -7,7 +7,15 @@ public class DungeonMaster : MonoBehaviour
 {
     public static DungeonMaster Instance;
     public NavMeshSurface navi;
+
+    /// <summary>
+    /// Player is moving between Doors
+    /// </summary>
+    public bool PlayerMoving = false;
     public bool BossRoomTime;
+
+    public float PlayerMovingTime = 0.3f;
+
     [HideInInspector]
     public StartDungeon dungeonStarter;
 

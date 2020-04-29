@@ -28,11 +28,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Glossiness: 32
-    - _RimAmount: 0.716
-    - _RimThreshold: 0.1
+    - _Glossiness: 7.45
+    - _RimAmount: 0.89
+    - _RimThreshold: 0.416
     m_Colors:
-    - _AmbientColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
-    - _Color: {r: 0.020309215, g: 0.2924528, b: 0, a: 1}
+    - _AmbientColor: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
+    - _Color: {r: 0, g: 0.5566038, b: 0.003913461, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SpecularColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+    - _SpecularColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}

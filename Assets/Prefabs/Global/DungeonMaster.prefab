@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navi: {fileID: 0}
+  PlayerMoving: 0
   BossRoomTime: 0
+  PlayerMovingTime: 0.3
   dungeonStarter: {fileID: 0}
   dungeonOffset: 100
   dungeons:
