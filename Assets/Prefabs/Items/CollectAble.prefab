@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemText: {fileID: 11400000, guid: f5513c7e70c561b4b9871ef0f0893ef5, type: 2}
-  AnimationTime: 0.3
+  AnimationTime: 0.2
+  isActivated: 0
 --- !u!135 &429585172
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -155,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  Rotate: 0
 --- !u!208 &3710390852334631081
 NavMeshObstacle:
   m_ObjectHideFlags: 0
