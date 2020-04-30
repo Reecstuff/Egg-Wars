@@ -16,6 +16,8 @@ public class DungeonMaster : MonoBehaviour
 
     public float PlayerMovingTime = 0.3f;
 
+    public PlayerController player;
+
     [HideInInspector]
     public StartDungeon dungeonStarter;
 

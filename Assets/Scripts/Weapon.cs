@@ -11,6 +11,8 @@ public class Weapon : MonoBehaviour
     private float timeBtwShots;
     public float startTimeBtwShots = 0.5f;
 
+    public ItemText item;
+
     void Update()
     {
         if (Input.GetMouseButton(0))

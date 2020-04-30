@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,14 +14,14 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed = 20f;
 
-    public GameObject[] weapons = new GameObject[2];
+    public Weapon[] weapons;
     public GameObject equippedWeapon;
     public Transform weaponSlot;
-    public int granates;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        DungeonMaster.Instance.player = this;
     }
 
     private void Update()
@@ -43,31 +45,34 @@ public class PlayerController : MonoBehaviour
         rb.velocity = moveVelocity;
     }
 
-    private void OnTriggerStay(Collider other)
+    /// <summary>
+    /// Tauscht die Waffe auf dem Boden mit der jetzigen aus
+    /// </summary>
+    /// <param name="weapon">Waffe auf dem Boden</param>
+    /// <returns>Ausgerüstete Waffe</returns>
+    public Weapon EquipWeapon(ItemText weapon)
     {
-        if (other.gameObject.tag == "collectable" && Input.GetKey(KeyCode.F))
+
+        // Finde die waffe aus den vorhanden Waffen
+        Weapon newWeapon = weapons.FirstOrDefault(w => w.item.Equals(weapon));
+
+        if(newWeapon == null)
         {
+            // Keine Waffe gefunden also return
+            return null;
+        }
+        else
+        {
+            Weapon oldWeapon = equippedWeapon.GetComponent<Weapon>();
+                
             Destroy(equippedWeapon);
 
-            if (other.gameObject.name == "EggPistol")
-            {
-                equippedWeapon = Instantiate(weapons[0], weaponSlot.position, weaponSlot.rotation) as GameObject;
-            }
-            if (other.gameObject.name == "EggRifle")
-            {
-                equippedWeapon = Instantiate(weapons[1], weaponSlot.position, weaponSlot.rotation) as GameObject;
-            }
 
-            equippedWeapon.transform.parent = GameObject.Find("Player").transform;
+            // Instantiate the new Weapon
+            equippedWeapon = Instantiate(newWeapon.gameObject, weaponSlot.position, weaponSlot.rotation, transform);
 
-            Destroy(other.gameObject);
-        }
-
-        if (other.gameObject.tag == "Granate")
-        {
-            granates++;
-
-            Destroy(other.gameObject);
+            // Return old Weapon back to Collectable
+            return oldWeapon;
         }
     }
 }
