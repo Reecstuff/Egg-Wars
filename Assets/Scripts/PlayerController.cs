@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
 
 
             // Instantiate the new Weapon
-            equippedWeapon = Instantiate(newWeapon.gameObject, weaponSlot.position, weaponSlot.rotation, transform);
+            equippedWeapon = Instantiate(newWeapon.gameObject, weaponSlot.position, weaponSlot.rotation, weaponSlot.transform);
 
             // Return old Weapon back to Collectable
             return oldWeapon;
