@@ -8,6 +8,7 @@ public class DungeonMaster : MonoBehaviour
     public static DungeonMaster Instance;
     public NavMeshSurface navi;
 
+
     /// <summary>
     /// Player is moving between Doors
     /// </summary>
@@ -33,7 +34,7 @@ public class DungeonMaster : MonoBehaviour
 
     private void Awake()
     {
-        MakeSingelton();
+        MakeSingelton(); 
     }
 
 
@@ -53,6 +54,7 @@ public class DungeonMaster : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+
 
     public void SetNewDungeons(DungeonGenerator currentDungeon, Direction originDirection)
     {
