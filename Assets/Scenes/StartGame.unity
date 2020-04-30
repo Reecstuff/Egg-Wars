@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4fb19fd8a03b4b49861c462dfe8a95d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: Dungeon
+  SceneName: MainMenu
 --- !u!1001 &2082174229
 PrefabInstance:
   m_ObjectHideFlags: 0
