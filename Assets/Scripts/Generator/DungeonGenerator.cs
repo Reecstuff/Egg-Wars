@@ -16,6 +16,8 @@ public class DungeonGenerator : MonoBehaviour
 
     public List<Direction> directions;
 
+    GameObject rootChildren;
+
     private void Start()
     {
         if (doors.Count == 0)
@@ -26,8 +28,6 @@ public class DungeonGenerator : MonoBehaviour
         {
             SetDirections();
         }
-
-
     }
 
     public void StartDungeon()

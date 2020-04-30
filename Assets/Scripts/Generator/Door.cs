@@ -49,15 +49,17 @@ public class Door : MonoBehaviour
                 else
                 {
                     // Generate Dungeons in next Dungeon
-                    CallDungeonGeneration();
-                    ActivateNextDungeon();
                     MovePosition(player.transform);
+                    CallDungeonGeneration();
+                    ActivateDungeon();
+                    StartDungeonDoor();
                 }
                 doorVisited = true;
             }
             else
             {
                 MovePosition(player.transform);
+                ActivateDungeon();
             }
         }
     }
@@ -85,9 +87,14 @@ public class Door : MonoBehaviour
         DungeonMaster.Instance.SetNewDungeons(NextDoor.dungeon, DoorInLevelDirection);
     }
 
-    void ActivateNextDungeon()
+    void ActivateDungeon()
     {
+        dungeon.gameObject.SetActive(false);
+        NextDoor.dungeon.gameObject.SetActive(true);
+    }
 
+    void StartDungeonDoor()
+    {
         NextDoor.dungeon.StartDungeon();
         NextDoor.doorVisited = true;
     }

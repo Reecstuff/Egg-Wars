@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,15 +19,32 @@ public class PlayerController : MonoBehaviour
     public GameObject equippedWeapon;
     public Transform weaponSlot;
 
+    Animator animator;
+
+    [SerializeField]
+    string walkingState = "Walking";
+    [SerializeField]
+    string standingState = "Standing";
+
+    [SerializeField]
+    string walkingValue = "WalkingMultiplier";
+
+
+    bool shouldAnimateMoving = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
         DungeonMaster.Instance.player = this;
+        animator.SetFloat(walkingValue, moveSpeed);
     }
 
     private void Update()
     {
         moveInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        shouldAnimateMoving = moveInput != Vector3.zero;
+
         moveVelocity = moveInput * moveSpeed;
 
         Ray cameraRay = cam.ScreenPointToRay(Input.mousePosition);
@@ -43,6 +61,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = moveVelocity;
+
+        if(!animator.GetCurrentAnimatorStateInfo(0).IsName(walkingState) && shouldAnimateMoving)
+            animator.Play(walkingState);
+        else if (!animator.GetCurrentAnimatorStateInfo(0).IsName(standingState) && !shouldAnimateMoving)
+            animator.CrossFade(standingState, 0.0f);
     }
 
     /// <summary>
@@ -69,10 +92,20 @@ public class PlayerController : MonoBehaviour
 
 
             // Instantiate the new Weapon
-            equippedWeapon = Instantiate(newWeapon.gameObject, weaponSlot.position, weaponSlot.rotation, transform);
+            equippedWeapon = Instantiate(newWeapon.gameObject, weaponSlot.position, weaponSlot.rotation, weaponSlot.transform);
 
             // Return old Weapon back to Collectable
             return oldWeapon;
         }
+    }
+
+    /// <summary>
+    /// Wenn eine Waffe oder eine Fähigkeit die Geschwindigkeit des Spielers ändert
+    /// </summary>
+    /// <param name="speed"></param>
+    public void OnSpeedChange(float speed)
+    {
+        animator.SetFloat(walkingValue, moveSpeed);
+        moveSpeed = speed;
     }
 }
