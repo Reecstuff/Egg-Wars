@@ -20,4 +20,21 @@ public class Bullet : MonoBehaviour
             timeBtwShots -= Time.deltaTime;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Enemy>())
+        {
+            DestroyBullet();
+        }
+        if (other.gameObject.GetComponentInParent<DungeonGenerator>())
+        {
+            DestroyBullet();
+        }
+    }
+
+    void DestroyBullet()
+    {
+        Destroy(this.gameObject);
+    }
 }
