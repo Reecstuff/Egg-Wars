@@ -97,6 +97,8 @@ public class DungeonMaster : MonoBehaviour
 
             // Set Up Door in Direction to the Dungeon
             SetUpDoor(ref currentDungeon, currentLevelDungeons.Last(), currentDirection);
+
+            newDungeon.SetActive(false);
         }
     }
 

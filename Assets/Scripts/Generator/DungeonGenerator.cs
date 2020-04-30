@@ -1,12 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class DungeonGenerator : MonoBehaviour
 {
+
+    [SerializeField]
+    List<DungeonObstacle> dungeonObstacles;
+
+    [SerializeField]
+    Transform[] spawnPositions;
+
     public List<Door> doors;
 
     public List<Direction> directions;
+
+    GameObject rootChildren;
 
     private void Start()
     {
@@ -69,6 +79,28 @@ public class DungeonGenerator : MonoBehaviour
         if(directions == null || directions.Count == 0)
         {
             SetDirections();
+        }
+
+        int sum = dungeonObstacles.ConvertAll(d => d.SpawnPercentage).Sum();
+        if (sum > 100)
+        {
+            int overhead = sum - 100;
+
+
+            for (int i = 0; i < dungeonObstacles.Count; i++)
+            {
+                if(dungeonObstacles[i].SpawnPercentage != 0 && dungeonObstacles[i].SpawnPercentage - overhead >= 0)
+                {
+                    
+                    dungeonObstacles[i].SpawnPercentage -= overhead;
+                    break;
+
+                }
+            }
+
+
+
+
         }
     }
 }
