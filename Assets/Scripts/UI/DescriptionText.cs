@@ -9,6 +9,8 @@ public class DescriptionText : MonoBehaviour
 {
     public static DescriptionText Instance;
 
+    public FadeOutInfo fadeOutInfo;
+
     TextMeshProUGUI field;
 
     private void Awake()

@@ -76,9 +76,9 @@ AnimatorState:
     type: 3}
   m_Tag: 
   m_SpeedParameter: WalkingMultiplier
-  m_MirrorParameter: 
+  m_MirrorParameter: IsWalkingBackwards
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: WalkingMultiplier
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0

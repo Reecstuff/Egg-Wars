@@ -14,12 +14,11 @@ public class Door : MonoBehaviour
 
     public Vector3 PlayerSpawnPosition;
 
-    bool doorVisited;
+    public bool doorVisited = false;
     
     private void Start()
     {
         GetComponent<BoxCollider>().isTrigger = true;
-        doorVisited = false;
 
         if (PlayerSpawnPosition == Vector3.zero)
         {
@@ -44,7 +43,7 @@ public class Door : MonoBehaviour
             {
                 if(DungeonMaster.Instance.BossRoomTime)
                 {
-                    player.transform.position = DungeonMaster.Instance.GetBossRoom();
+                  player.transform.position = DungeonMaster.Instance.GetBossRoom();
                 }
                 else
                 {
@@ -53,8 +52,9 @@ public class Door : MonoBehaviour
                     CallDungeonGeneration();
                     ActivateDungeon();
                     StartDungeonDoor();
+                    doorVisited = true;
+                    DungeonMaster.Instance.RaiseDungeonCount();
                 }
-                doorVisited = true;
             }
             else
             {
@@ -70,6 +70,7 @@ public class Door : MonoBehaviour
     void MovePosition(Transform player)
     {
         DungeonMaster.Instance.PlayerMoving = true;
+        NextDoor.doorVisited = true;
         player.transform.DOMove(NextDoor.PlayerSpawnPosition, DungeonMaster.Instance.PlayerMovingTime);
         Invoke(nameof(ResetMoving), DungeonMaster.Instance.PlayerMovingTime + 0.1f);
     }
