@@ -224,6 +224,7 @@ public class DungeonMaster : MonoBehaviour
             // Set Value for Bossroom
             BossRoomTime = true;
             SetUpBossRoom();
+            GameAudio.Instance.SetBossMusic();
         }
     }
 

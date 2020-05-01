@@ -5,9 +5,11 @@ using UnityEngine.SocialPlatforms;
 
 public class DungeonGenerator : MonoBehaviour
 {
-
+    /// <summary>
+    /// Dungeon Categorie
+    /// </summary>
     [SerializeField]
-    List<DungeonObstacle> dungeonObstacles;
+    List<DungeonObstacle> dungeonObstaclesCat;
 
     [SerializeField]
     Transform[] spawnPositions;
@@ -16,6 +18,20 @@ public class DungeonGenerator : MonoBehaviour
 
     public List<Direction> directions;
 
+    List<DungeonObstacle> noZeroDungeonObst = new List<DungeonObstacle>();
+
+    int sumPercentage;
+
+    private void Awake()
+    {
+        for (int i = 0; i < dungeonObstaclesCat.Count; i++)
+        {
+            if (dungeonObstaclesCat[i].SpawnPercentage > 0)
+                noZeroDungeonObst.Add(dungeonObstaclesCat[i]);
+        }
+
+        noZeroDungeonObst.OrderBy(n => n.SpawnPercentage);
+    }
 
     private void Start()
     {
@@ -33,23 +49,44 @@ public class DungeonGenerator : MonoBehaviour
     {
         BuildEnvironment();
         BuildNavMesh();
-        SpawnEnemies();
     }
 
     void BuildEnvironment()
     {
-        // Spawn Obstacles
-        // Spawn Traps
+        if(spawnPositions.Length > 0)
+        {
+            // Go Through every Position
+            for (int i = 0; i < spawnPositions.Length; i++)
+            {
+                // Roll percentage Random for every Categorie
+                for (int l = 0; l < noZeroDungeonObst.Count; l++)
+                {
+
+                    int rnd = Random.Range(1, 101);
+
+                    if(rnd <= noZeroDungeonObst[l].SpawnPercentage || l == noZeroDungeonObst.Count - 1)
+                    {
+                        // Roll random for which Index in Categorie to spawn
+                        // And Initialize it on Position
+                        GameObject obstacle = Instantiate(GetDungeonObject(noZeroDungeonObst[l]), transform);
+                        obstacle.transform.position = spawnPositions[i].position;
+                        break;
+                    }
+                }
+            }
+        }
     }
+
+    GameObject GetDungeonObject(DungeonObstacle obstacleCategorie)
+    {
+        Debug.Log(Random.Range(0, obstacleCategorie.categorieList.Obstacles.Length));
+        return obstacleCategorie.categorieList.Obstacles[Random.Range(0, obstacleCategorie.categorieList.Obstacles.Length)];
+    }
+
 
     void BuildNavMesh()
     {
         DungeonMaster.Instance.navi.BuildNavMesh();
-    }
-
-    void SpawnEnemies()
-    {
-        // Spawn Enemies with Navmeshagents
     }
 
     void SearchDoors()
@@ -80,26 +117,24 @@ public class DungeonGenerator : MonoBehaviour
             SetDirections();
         }
 
-        int sum = dungeonObstacles.ConvertAll(d => d.SpawnPercentage).Sum();
-        if (sum > 100)
+        sumPercentage = dungeonObstaclesCat.ConvertAll(d => d.SpawnPercentage).Sum();
+
+
+        if(sumPercentage > 100)
         {
-            int overhead = sum - 100;
-
-
-            for (int i = 0; i < dungeonObstacles.Count; i++)
+            for (int i = 0; i < dungeonObstaclesCat.Count; i++)
             {
-                if(dungeonObstacles[i].SpawnPercentage != 0 && dungeonObstacles[i].SpawnPercentage - overhead >= 0)
+                if(sumPercentage > 100)
                 {
-                    
-                    dungeonObstacles[i].SpawnPercentage -= overhead;
-                    break;
-
+                    if (dungeonObstaclesCat[i].SpawnPercentage > 0)
+                        dungeonObstaclesCat[i].SpawnPercentage--;
                 }
+                else
+                {
+                    break;
+                }
+                sumPercentage = dungeonObstaclesCat.ConvertAll(d => d.SpawnPercentage).Sum();
             }
-
-
-
-
         }
     }
 }

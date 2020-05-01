@@ -63,6 +63,7 @@ MonoBehaviour:
   dungeon: {fileID: 0}
   DoorInLevelDirection: 4
   PlayerSpawnPosition: {x: 0, y: 0, z: 0}
+  doorVisited: 0
 --- !u!1 &2307292696241699258
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469423662e13aef4eb9f6a9ca2440d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dungeonObstaclesCat: []
+  spawnPositions: []
   doors:
   - {fileID: 5265718536461481128}
   - {fileID: 5265718536461481130}
@@ -669,6 +672,7 @@ MonoBehaviour:
   dungeon: {fileID: 0}
   DoorInLevelDirection: 1
   PlayerSpawnPosition: {x: 0, y: 0, z: 0}
+  doorVisited: 0
 --- !u!1 &5602219660775396825
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,6 +736,7 @@ MonoBehaviour:
   dungeon: {fileID: 0}
   DoorInLevelDirection: 3
   PlayerSpawnPosition: {x: 0, y: 0, z: 0}
+  doorVisited: 0
 --- !u!1 &5884731311998387750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,3 +1131,4 @@ MonoBehaviour:
   dungeon: {fileID: 0}
   DoorInLevelDirection: 2
   PlayerSpawnPosition: {x: 0, y: 0, z: 0}
+  doorVisited: 0

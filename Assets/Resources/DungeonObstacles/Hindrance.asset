@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ee60195bf3e86428578b6f8ac5426a, type: 3}
+  m_Name: Hindrance
+  m_EditorClassIdentifier: 
+  Obstacles:
+  - {fileID: 526786118053599302, guid: 68873cd0d0dca6e46ae54abfe8d7f9d5, type: 3}
+  - {fileID: 293506577940647709, guid: 96c821c2b9cd5a74eafc0a53b3a899f2, type: 3}
+  - {fileID: 2074788299853496503, guid: 4e3dcf884a29fc741a114f449a74b858, type: 3}
+  - {fileID: 235093482969258738, guid: 73e83e4f31cfde2468b56eee973e29eb, type: 3}
+  - {fileID: 6748638483198351416, guid: d9ba70f4b93d9a240bc15a4d6237d7ad, type: 3}
