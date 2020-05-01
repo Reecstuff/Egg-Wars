@@ -70,6 +70,8 @@ public class DungeonGenerator : MonoBehaviour
                         // And Initialize it on Position
                         GameObject obstacle = Instantiate(GetDungeonObject(noZeroDungeonObst[l]), transform);
                         obstacle.transform.position = spawnPositions[i].position;
+                        obstacle.transform.Rotate(new Vector3(0, Random.Range(0, 9) * 45, 0), Space.Self);
+
                         break;
                     }
                 }
@@ -79,7 +81,6 @@ public class DungeonGenerator : MonoBehaviour
 
     GameObject GetDungeonObject(DungeonObstacle obstacleCategorie)
     {
-        Debug.Log(Random.Range(0, obstacleCategorie.categorieList.Obstacles.Length));
         return obstacleCategorie.categorieList.Obstacles[Random.Range(0, obstacleCategorie.categorieList.Obstacles.Length)];
     }
 
@@ -119,21 +120,23 @@ public class DungeonGenerator : MonoBehaviour
 
         sumPercentage = dungeonObstaclesCat.ConvertAll(d => d.SpawnPercentage).Sum();
 
-
         if(sumPercentage > 100)
         {
-            for (int i = 0; i < dungeonObstaclesCat.Count; i++)
+            while(sumPercentage > 100)
             {
-                if(sumPercentage > 100)
+                for (int i = 0; i < dungeonObstaclesCat.Count; i++)
                 {
-                    if (dungeonObstaclesCat[i].SpawnPercentage > 0)
-                        dungeonObstaclesCat[i].SpawnPercentage--;
+                    if(sumPercentage > 100)
+                    {
+                        if (dungeonObstaclesCat[i].SpawnPercentage > 0)
+                            dungeonObstaclesCat[i].SpawnPercentage--;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    sumPercentage = dungeonObstaclesCat.ConvertAll(d => d.SpawnPercentage).Sum();
                 }
-                else
-                {
-                    break;
-                }
-                sumPercentage = dungeonObstaclesCat.ConvertAll(d => d.SpawnPercentage).Sum();
             }
         }
     }

@@ -15,9 +15,13 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed = 20f;
 
-    public Weapon[] weapons;
     public GameObject equippedWeapon;
     public Transform weaponSlot;
+
+    public GameObject granadePrefab;
+
+    private float timeBtwShots;
+    public float startTimeBtwShots = 1f;
 
     Animator animator;
 
@@ -57,6 +61,20 @@ public class PlayerController : MonoBehaviour
             if(Vector3.Distance(pointToLook, transform.position) > 0.2)
                 transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
+
+        if (Input.GetKey(KeyCode.Q) && timeBtwShots <= 0)
+        {
+            timeBtwShots = startTimeBtwShots;
+
+            GameObject grenade = Instantiate(granadePrefab, transform.position, transform.rotation);
+            grenade.transform.position = transform.position + grenade.transform.forward;
+            Rigidbody rb = grenade.GetComponent<Rigidbody>();
+            rb.velocity = grenade.transform.forward * 10;
+        }
+        else
+        {
+            timeBtwShots -= Time.deltaTime;
+        }
     }
 
     private void FixedUpdate()
@@ -74,27 +92,38 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="weapon">Waffe auf dem Boden</param>
     /// <returns>Ausgerüstete Waffe</returns>
-    public Weapon EquipWeapon(ItemText weapon)
+    public EquipAbleItem EquipWeapon(ItemText weapon)
     {
         // Finde die waffe aus den vorhanden Waffen
-        Weapon newWeapon = weapons.FirstOrDefault(w => w.item.Equals(weapon));
+        EquipAbleItem newEquip = DungeonMaster.Instance.AllEquipableItems.FirstOrDefault(w => w.item.Equals(weapon));
 
-        if(newWeapon == null)
+        if(newEquip == null)
         {
             // Keine Waffe gefunden also return
             return null;
         }
         else
         {
-            Weapon oldWeapon = equippedWeapon.GetComponent<Weapon>();
+            GameObject oldWeapon = equippedWeapon;
+
                 
             Destroy(equippedWeapon);
 
-            // Instantiate the new Weapon
-            equippedWeapon = Instantiate(newWeapon.gameObject, weaponSlot.position, weaponSlot.rotation, weaponSlot.transform);
+            // Is this a Weapon
+            if(oldWeapon.GetComponent<Weapon>())
+            {
+
+                // Instantiate the new Weapon
+                equippedWeapon = Instantiate(newEquip.gameObject, weaponSlot.transform);
+            }
+            else
+            {
+                // Write Code to Equip on Itemslot instead of Weaponslot
+                equippedWeapon = Instantiate(newEquip.gameObject, weaponSlot.transform);
+            }
 
             // Return old Weapon back to Collectable
-            return oldWeapon;
+            return oldWeapon.GetComponent<EquipAbleItem>();
         }
     }
 

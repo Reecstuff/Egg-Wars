@@ -13,25 +13,29 @@ public class Collectable : MonoBehaviour
 
     FillItemText FillitemText;
     SphereCollider sphereCollider;
+    [SerializeField]
     RotateAround rotateAround;
 
     public bool isActivated = false;
 
     float standardY;
 
-    void Start()
+    void Awake()
+    {
+        SetUpObject();
+    }
+
+    void SetUpObject()
     {
         sphereCollider = GetComponentInChildren<SphereCollider>();
         sphereCollider.isTrigger = true;
 
-        rotateAround = GetComponentInChildren<RotateAround>();
+        if(rotateAround == null)
+            rotateAround = GetComponentInChildren<RotateAround>();
 
-        if (itemText == null)
-        {
-            FillitemText.itemText = itemText;
-            FillitemText = GetComponentInChildren<FillItemText>();
-        }
+        FillitemText = GetComponentInChildren<FillItemText>();
         FillitemText.gameObject.SetActive(false);
+
         standardY = transform.position.y;
     }
 
@@ -65,7 +69,7 @@ public class Collectable : MonoBehaviour
         }
     }
 
-    public void UpdateData(Weapon newWeapon)
+    public void UpdateData(EquipAbleItem newWeapon)
     {
         if (!newWeapon)
             return;
@@ -73,21 +77,13 @@ public class Collectable : MonoBehaviour
         itemText = newWeapon.item;
         DescriptionText.Instance.ActivateText(true, itemText.Description);
         FillitemText.SetItemText(itemText);
+        FillitemText.ShowText(true);
 
         GameObject Modell = rotateAround.gameObject;
         GameObject newModell = newWeapon.gameObject;
 
         Modell.GetComponent<MeshFilter>().sharedMesh = newModell.GetComponent<MeshFilter>().sharedMesh;
-
         Modell.GetComponent<Renderer>().sharedMaterial = newModell.GetComponent<Renderer>().sharedMaterial;
-    }
-
-    private void OnValidate()
-    {
-        if(itemText != null)
-        {
-            FillitemText = GetComponentInChildren<FillItemText>();
-            FillitemText.itemText = itemText;
-        }
+        
     }
 }

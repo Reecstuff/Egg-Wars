@@ -8,6 +8,9 @@ public class DungeonMaster : MonoBehaviour
     public static DungeonMaster Instance;
     public NavMeshSurface navi;
 
+    public ItemText lootbox;
+
+    public List<EquipAbleItem> AllEquipableItems;
 
     /// <summary>
     /// Player is moving between Doors
@@ -29,12 +32,14 @@ public class DungeonMaster : MonoBehaviour
     int dungeonOffset = 100;
 
     [SerializeField]
+    int currentDungeonMax = 3;
+
+    [SerializeField]
     List<DungeonGenerator> dungeons;
 
     public List<DungeonGenerator> currentLevelDungeons;
 
     int currentDungeonCount = 0;
-    int currentDungeonMax = 3;
     public int levelCount = 1;
 
     private void Awake()
@@ -205,13 +210,14 @@ public class DungeonMaster : MonoBehaviour
         currentLevelDungeons.Clear();
         levelCount++;
         currentDungeonCount = 0;
-        currentDungeonMax += levelCount;
+        currentDungeonMax += 10;
 
         player.transform.position = Vector3.up * 3;
 
         dungeonStarter.DungeonOn();
 
         BossRoomTime = false;
+        GameAudio.Instance.SetNormalMusic();
 
         // Reset Dungeon
     }

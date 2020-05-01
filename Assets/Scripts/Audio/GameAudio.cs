@@ -47,6 +47,9 @@ public class GameAudio : MonoBehaviour
             source.DOPitch(1, 2);
     }
 
-
-
+    public void SetNormalMusic()
+    {
+        source.clip = BossMusic;
+        source.Play();
+    }
 }
