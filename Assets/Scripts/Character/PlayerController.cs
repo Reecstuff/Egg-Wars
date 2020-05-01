@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed = 20f;
 
-    public Weapon[] weapons;
     public GameObject equippedWeapon;
     public Transform weaponSlot;
 
@@ -93,27 +92,38 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="weapon">Waffe auf dem Boden</param>
     /// <returns>Ausgerüstete Waffe</returns>
-    public GameObject EquipWeapon(ItemText weapon)
+    public EquipAbleItem EquipWeapon(ItemText weapon)
     {
         // Finde die waffe aus den vorhanden Waffen
-        Weapon newWeapon = weapons.FirstOrDefault(w => w.item.Equals(weapon));
+        EquipAbleItem newEquip = DungeonMaster.Instance.AllEquipableItems.FirstOrDefault(w => w.item.Equals(weapon));
 
-        if(newWeapon == null)
+        if(newEquip == null)
         {
             // Keine Waffe gefunden also return
             return null;
         }
         else
         {
-            Weapon oldWeapon = equippedWeapon.GetComponent<Weapon>();
+            GameObject oldWeapon = equippedWeapon;
+
                 
             Destroy(equippedWeapon);
 
-            // Instantiate the new Weapon
-            equippedWeapon = Instantiate(newWeapon.gameObject, weaponSlot.position, weaponSlot.rotation, weaponSlot.transform);
+            // Is this a Weapon
+            if(oldWeapon.GetComponent<Weapon>())
+            {
+
+                // Instantiate the new Weapon
+                equippedWeapon = Instantiate(newEquip.gameObject, weaponSlot.transform);
+            }
+            else
+            {
+                // Write Code to Equip on Itemslot instead of Weaponslot
+                equippedWeapon = Instantiate(newEquip.gameObject, weaponSlot.transform);
+            }
 
             // Return old Weapon back to Collectable
-            return oldWeapon.gameObject;
+            return oldWeapon.GetComponent<EquipAbleItem>();
         }
     }
 

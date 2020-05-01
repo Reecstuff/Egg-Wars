@@ -46,9 +46,9 @@ MonoBehaviour:
   navi: {fileID: 0}
   lootbox: {fileID: 11400000, guid: c5050a5d41464154eb942249a36900e7, type: 2}
   AllEquipableItems:
-  - {fileID: 5541961383840092128, guid: a32437d622383ea41a7719000a045532, type: 3}
-  - {fileID: 4501283778872923625, guid: 54f1ab6bfd8d062419748c82e580bb0f, type: 3}
-  - {fileID: 2171840517126204734, guid: 8c41192366835e14284bd0efc84d306f, type: 3}
+  - {fileID: 4596184633010804463, guid: a32437d622383ea41a7719000a045532, type: 3}
+  - {fileID: 1393550350971035854, guid: 54f1ab6bfd8d062419748c82e580bb0f, type: 3}
+  - {fileID: 8423158574257146108, guid: 8c41192366835e14284bd0efc84d306f, type: 3}
   PlayerMoving: 0
   BossRoomTime: 0
   PlayerMovingTime: 0.3
