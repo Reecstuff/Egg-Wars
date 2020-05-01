@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class LootSense : MonoBehaviour
 {
+
+
     [SerializeField]
     List<Collectable> inSenseLoot;
 
@@ -19,11 +21,20 @@ public class LootSense : MonoBehaviour
 
     private void Update()
     {
-        if(closestLoot)
+        if(closestLoot && inSenseLoot.Count > 0)
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                closestLoot.UpdateData(DungeonMaster.Instance.player.EquipWeapon(closestLoot.itemText));
+                if(closestLoot.itemText.Equals(DungeonMaster.Instance.lootbox))
+                {
+                    closestLoot.GetComponentInParent<Lootbox>().OpenBox();
+                    inSenseLoot.Remove(closestLoot);
+                    closestLoot = null;
+                }
+                else
+                {
+                    closestLoot.UpdateData(DungeonMaster.Instance.player.EquipWeapon(closestLoot.itemText));
+                }
             }
         }
     }
@@ -41,9 +52,10 @@ public class LootSense : MonoBehaviour
         if(other.gameObject.GetComponent<Collectable>())
         {
             closestLoot = inSenseLoot.Find(l => Vector3.Distance(l.transform.position, transform.position) < closestDistance);
-
+            
             if(!closestLoot.isActivated)
                 closestLoot.ActivateCollectable(true);
+
         }
     }
 
