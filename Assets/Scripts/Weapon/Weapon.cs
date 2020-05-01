@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : EquipAbleItem
 {
-    //public Transform firePoint;
+    public Transform firePoint;
     public GameObject bullet;
 
     public float spreadAngle = 10;
@@ -24,6 +24,18 @@ public class Weapon : EquipAbleItem
             {
                 Shotgun();
             }
+            if (item.name == "EggGewehr")
+            {
+                Shoot();
+            }
+            if (item.name == "Strohballenwerfer")
+            {
+                Shoot();
+            }
+            if (item.name == "Milkgun")
+            {
+                Shoot();
+            }
         }
         else
         {
@@ -33,7 +45,7 @@ public class Weapon : EquipAbleItem
 
     public void Shoot()
     {
-        GameObject p = Instantiate(bullet, transform.position, transform.rotation);
+        GameObject p = Instantiate(bullet, firePoint.position, firePoint.rotation);
         p.GetComponent<Rigidbody>().AddForce(p.transform.forward * shootSpeed, ForceMode.Impulse);
     }
 
@@ -43,7 +55,7 @@ public class Weapon : EquipAbleItem
 
         while (i < bulletcount)
         {
-            GameObject p = Instantiate(bullet, transform.position, transform.rotation);
+            GameObject p = Instantiate(bullet, firePoint.position, firePoint.rotation);
             p.transform.rotation = Quaternion.RotateTowards(p.transform.rotation, Random.rotation, spreadAngle);
             p.GetComponent<Rigidbody>().AddForce(p.transform.forward * shootSpeed, ForceMode.Impulse);
 

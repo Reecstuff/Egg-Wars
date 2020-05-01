@@ -15,4 +15,12 @@ public class Enemy : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Melee")
+        {
+            Destroy(gameObject); //Or takes damage
+        }
+    }
 }

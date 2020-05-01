@@ -19,6 +19,11 @@ public class PlayerController : MonoBehaviour
     public GameObject equippedWeapon;
     public Transform weaponSlot;
 
+    public GameObject granadePrefab;
+
+    private float timeBtwShots;
+    public float startTimeBtwShots = 1f;
+
     Animator animator;
 
     [SerializeField]
@@ -56,6 +61,20 @@ public class PlayerController : MonoBehaviour
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
             if(Vector3.Distance(pointToLook, transform.position) > 0.2)
                 transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+        }
+
+        if (Input.GetKey(KeyCode.Q) && timeBtwShots <= 0)
+        {
+            timeBtwShots = startTimeBtwShots;
+
+            GameObject grenade = Instantiate(granadePrefab, transform.position, transform.rotation);
+            grenade.transform.position = transform.position + grenade.transform.forward;
+            Rigidbody rb = grenade.GetComponent<Rigidbody>();
+            rb.velocity = grenade.transform.forward * 10;
+        }
+        else
+        {
+            timeBtwShots -= Time.deltaTime;
         }
     }
 

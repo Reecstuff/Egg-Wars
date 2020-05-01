@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 308601671476663735}
   - component: {fileID: 1577825707594235633}
   - component: {fileID: 143890311}
+  - component: {fileID: 6175335940463636752}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -45,17 +46,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 308601671476663732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d7efb6cccb4294f97f04a2600c6c1b, type: 3}
+  m_Script: {fileID: 11500000, guid: 878b23522ac96d44990907f1b2e66d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 9079839455816992976}
-  moveSpeed: 14
+  moveSpeed: 20
   weapons:
-  - {fileID: 4423694278191572863, guid: 8c41192366835e14284bd0efc84d306f, type: 3}
-  - {fileID: 1393550350971035854, guid: 54f1ab6bfd8d062419748c82e580bb0f, type: 3}
+  - {fileID: 3160222438303380427, guid: 5a5e0f4d41cc573428495a89f0fa1088, type: 3}
   - {fileID: 4596184633010804463, guid: a32437d622383ea41a7719000a045532, type: 3}
   equippedWeapon: {fileID: 3065123745014835920}
   weaponSlot: {fileID: 9210877384641666040}
+  granadePrefab: {fileID: 2171840517126204734, guid: 8c41192366835e14284bd0efc84d306f,
+    type: 3}
+  startTimeBtwShots: 1
   walkingState: Walking
   standingState: Standing
   walkingValue: WalkingMultiplier
@@ -89,6 +92,23 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6175335940463636752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308601671476663732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f0c6c7e78bb38479c916f1f7a58bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damage:
+    baseValue: 0
+  armor:
+    baseValue: 0
 --- !u!1 &1320866033293059286
 GameObject:
   m_ObjectHideFlags: 0
