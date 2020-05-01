@@ -16,7 +16,6 @@ public class DungeonGenerator : MonoBehaviour
 
     public List<Direction> directions;
 
-    GameObject rootChildren;
 
     private void Start()
     {

@@ -7,6 +7,8 @@ public class StartDungeon : MonoBehaviour
     [SerializeField]
     DungeonGenerator firstDungeon;
 
+    public DungeonGenerator bossRoom;
+
     [SerializeField]
     GameObject playerObject;
 
@@ -35,5 +37,6 @@ public class StartDungeon : MonoBehaviour
 
         DungeonMaster.Instance.currentLevelDungeons.Add(firstDungeon);
         DungeonMaster.Instance.SetNewDungeons(firstDungeon, Direction.nothing);
+        DescriptionText.Instance.fadeOutInfo.FadeOutText(string.Concat("Level ", DungeonMaster.Instance.levelCount));
     }
 }

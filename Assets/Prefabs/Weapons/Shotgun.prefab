@@ -94,8 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 5529024245268689379, guid: 098f736de9a185649a3b2d8769b482b3, type: 3}
-  shootSpeed: 20
-  startTimeBtwShots: 0.5
+  spreadAngle: 10
+  shootSpeed: 30
   item: {fileID: 11400000, guid: 862d6e83d0e2eaa4dae1578fc915a4e6, type: 2}
 --- !u!208 &1683636263714330521
 NavMeshObstacle:

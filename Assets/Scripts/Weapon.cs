@@ -4,38 +4,52 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    Transform firePoint;
+    //public Transform firePoint;
     public GameObject bullet;
 
-    public float shootSpeed = 20;
-    private float timeBtwShots;
-    public float startTimeBtwShots = 0.5f;
+    public float spreadAngle = 10;
+    public float shootSpeed = 10;
+    public float bulletcount = 8;
 
     public ItemText item;
 
-    void Update()
+    private float timeBtwShots;
+    public float startTimeBtwShots = 0.5f;
+
+    private void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && timeBtwShots <= 0)
         {
-            firePoint = transform;
-
-            Shoot();
-        }
-    }
-
-    void Shoot()
-    {
-        if (timeBtwShots <= 0)
-        {
-            GameObject projectile = Instantiate(bullet, transform.position, transform.rotation);
-            Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            rb.AddForce(firePoint.forward * shootSpeed, ForceMode.Impulse);
-
             timeBtwShots = startTimeBtwShots;
+
+            if (item.name == "EggShotgun")
+            {
+                Shotgun();
+            }
         }
         else
         {
             timeBtwShots -= Time.deltaTime;
+        }
+    }
+
+    public void Shoot()
+    {
+        GameObject p = Instantiate(bullet, transform.position, transform.rotation);
+        p.GetComponent<Rigidbody>().AddForce(p.transform.forward * shootSpeed, ForceMode.Impulse);
+    }
+
+    public void Shotgun()
+    {
+        int i = 0;
+
+        while (i < bulletcount)
+        {
+            GameObject p = Instantiate(bullet, transform.position, transform.rotation);
+            p.transform.rotation = Quaternion.RotateTowards(p.transform.rotation, Random.rotation, spreadAngle);
+            p.GetComponent<Rigidbody>().AddForce(p.transform.forward * shootSpeed, ForceMode.Impulse);
+
+            i++;
         }
     }
 }

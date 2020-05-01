@@ -75,7 +75,6 @@ public class PlayerController : MonoBehaviour
     /// <returns>Ausgerüstete Waffe</returns>
     public Weapon EquipWeapon(ItemText weapon)
     {
-
         // Finde die waffe aus den vorhanden Waffen
         Weapon newWeapon = weapons.FirstOrDefault(w => w.item.Equals(weapon));
 
@@ -89,7 +88,6 @@ public class PlayerController : MonoBehaviour
             Weapon oldWeapon = equippedWeapon.GetComponent<Weapon>();
                 
             Destroy(equippedWeapon);
-
 
             // Instantiate the new Weapon
             equippedWeapon = Instantiate(newWeapon.gameObject, weaponSlot.position, weaponSlot.rotation, weaponSlot.transform);

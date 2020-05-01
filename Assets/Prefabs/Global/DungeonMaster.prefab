@@ -47,6 +47,8 @@ MonoBehaviour:
   PlayerMoving: 0
   BossRoomTime: 0
   PlayerMovingTime: 0.3
+  player: {fileID: 0}
+  bossDoorsMaterial: {fileID: 2100000, guid: d448309613ccd36448683be4b88faebf, type: 2}
   dungeonStarter: {fileID: 0}
   dungeonOffset: 100
   dungeons:
@@ -56,3 +58,4 @@ MonoBehaviour:
   - {fileID: 6074312043405687546, guid: a20134bb6a59abe49a79b00a6552a239, type: 3}
   - {fileID: 6412339666115295167, guid: 4e7f5295889b9c548b785dd4e6b33db0, type: 3}
   currentLevelDungeons: []
+  levelCount: 1

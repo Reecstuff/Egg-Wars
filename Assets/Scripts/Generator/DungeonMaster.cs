@@ -19,6 +19,9 @@ public class DungeonMaster : MonoBehaviour
 
     public PlayerController player;
 
+    [SerializeField]
+    Material bossDoorsMaterial;
+
     [HideInInspector]
     public StartDungeon dungeonStarter;
 
@@ -30,7 +33,9 @@ public class DungeonMaster : MonoBehaviour
 
     public List<DungeonGenerator> currentLevelDungeons;
 
-    
+    int currentDungeonCount = 0;
+    int currentDungeonMax = 3;
+    public int levelCount = 1;
 
     private void Awake()
     {
@@ -59,6 +64,7 @@ public class DungeonMaster : MonoBehaviour
     public void SetNewDungeons(DungeonGenerator currentDungeon, Direction originDirection)
     {
         Direction opposite = GetOppositeDirection(originDirection);
+
 
         // Generate Multiple Dungeon based on current
         for (int i = 0; i < currentDungeon.directions.Count; i++)
@@ -99,6 +105,8 @@ public class DungeonMaster : MonoBehaviour
 
             // Set Up Door in Direction to the Dungeon
             SetUpDoor(ref currentDungeon, currentLevelDungeons.Last(), currentDirection);
+
+
 
             newDungeon.SetActive(false);
         }
@@ -182,17 +190,64 @@ public class DungeonMaster : MonoBehaviour
         return currentLevelDungeons.Find(cd => Vector3.Distance(cd.gameObject.transform.position, dungeonPosition) <= 50.0 && cd != currentDungeon);
     }
 
-
+    /// <summary>
+    /// Call this on Boss Defeat
+    /// </summary>
     public void AdvanceLevel()
     {
-        // Reset Dungeon except First one
-        
-        // Make a Bossroom
+        // Destroy every Dungeon
+        for (int i = 0; i < currentLevelDungeons.Count; i++)
+        {
+            Destroy(currentLevelDungeons[i].gameObject);
+        }
+
+        // Clean up
+        currentLevelDungeons.Clear();
+        levelCount++;
+        currentDungeonCount = 0;
+        currentDungeonMax += levelCount;
+
+        player.transform.position = Vector3.up * 3;
+
+        dungeonStarter.DungeonOn();
+
+        BossRoomTime = false;
+
+        // Reset Dungeon
+    }
+
+    public void RaiseDungeonCount()
+    {
+        currentDungeonCount++;
+        if(currentDungeonCount >= currentDungeonMax)
+        {
+            // Set Value for Bossroom
+            BossRoomTime = true;
+            SetUpBossRoom();
+        }
+    }
+
+    public void  SetUpBossRoom()
+    {
+        // Go through all Doors that are not visited and change the Material
+        for (int i = 0; i < currentLevelDungeons.Count; i++)
+        {
+            for (int l = 0; l < currentLevelDungeons[i].doors.Count; l++)
+            {
+                if(currentLevelDungeons[i].doors[l].doorVisited == false)
+                {
+                    currentLevelDungeons[i].doors[l].GetComponentsInChildren<Renderer>().All(r => r.sharedMaterial = bossDoorsMaterial);
+                }
+            }
+        }
     }
 
     public Vector3 GetBossRoom()
     {
-        return Vector3.zero;
+        dungeonStarter.bossRoom.StartDungeon();
+        dungeonStarter.bossRoom.gameObject.SetActive(true);
+
+        return dungeonStarter.bossRoom.transform.position  + Vector3.up;
     }
 
     int GetRandomIndex(int length)

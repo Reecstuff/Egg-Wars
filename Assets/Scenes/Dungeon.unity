@@ -1705,6 +1705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstDungeon: {fileID: 5265718536461481127, guid: 53c832ed373edae4585129afee9b1f75,
     type: 3}
+  bossRoom: {fileID: 1706212290}
   playerObject: {fileID: 143890309}
   navi: {fileID: 602607529}
 --- !u!1001 &1094970603
@@ -2037,6 +2038,92 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   Rotate: 0
+--- !u!1001 &1706212289
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2127810349652204691, guid: 4e7f5295889b9c548b785dd4e6b33db0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127810349652204691, guid: 4e7f5295889b9c548b785dd4e6b33db0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127810349652204691, guid: 4e7f5295889b9c548b785dd4e6b33db0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127810349652204691, guid: 4e7f5295889b9c548b785dd4e6b33db0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127810349652204691, guid: 4e7f5295889b9c548b785dd4e6b33db0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127810349652204691, guid: 4e7f5295889b9c548b785dd4e6b33db0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127810349652204691, guid: 4e7f5295889b9c548b785dd4e6b33db0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127810349652204691, guid: 4e7f5295889b9c548b785dd4e6b33db0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127810349652204691, guid: 4e7f5295889b9c548b785dd4e6b33db0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127810349652204691, guid: 4e7f5295889b9c548b785dd4e6b33db0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127810349652204691, guid: 4e7f5295889b9c548b785dd4e6b33db0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160640618896404096, guid: 4e7f5295889b9c548b785dd4e6b33db0,
+        type: 3}
+      propertyPath: m_Name
+      value: Raum6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160640618896404096, guid: 4e7f5295889b9c548b785dd4e6b33db0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4e7f5295889b9c548b785dd4e6b33db0, type: 3}
+--- !u!114 &1706212290 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6412339666115295167, guid: 4e7f5295889b9c548b785dd4e6b33db0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1706212289}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469423662e13aef4eb9f6a9ca2440d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1824735336
 GameObject:
   m_ObjectHideFlags: 0
@@ -2357,11 +2444,6 @@ PrefabInstance:
       propertyPath: navi
       value: 
       objectReference: {fileID: 602607529}
-    - target: {fileID: 4601523300737890181, guid: d2da2f890381b6a46a5760aa4c80d174,
-        type: 3}
-      propertyPath: cursorTexture
-      value: 
-      objectReference: {fileID: 2800000, guid: 67db124b7c70b624eaa9cef72ca04e4e, type: 3}
     - target: {fileID: 4601523300737890187, guid: d2da2f890381b6a46a5760aa4c80d174,
         type: 3}
       propertyPath: m_Name
@@ -2376,34 +2458,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2134258122, guid: f19d23c711ec6f34b99ea02d85df1975, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -458.58
-      objectReference: {fileID: 0}
-    - target: {fileID: 2134258122, guid: f19d23c711ec6f34b99ea02d85df1975, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 599.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 2134258122, guid: f19d23c711ec6f34b99ea02d85df1975, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 496.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2134258123, guid: f19d23c711ec6f34b99ea02d85df1975, type: 3}
-      propertyPath: m_fontColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2134258123, guid: f19d23c711ec6f34b99ea02d85df1975, type: 3}
-      propertyPath: m_fontColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2134258123, guid: f19d23c711ec6f34b99ea02d85df1975, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 2134258123, guid: f19d23c711ec6f34b99ea02d85df1975, type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7379498985313093449, guid: f19d23c711ec6f34b99ea02d85df1975,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2513,21 +2567,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DescriptionText
-      objectReference: {fileID: 0}
-    - target: {fileID: 7379498985853201506, guid: f19d23c711ec6f34b99ea02d85df1975,
-        type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.9098039
-      objectReference: {fileID: 0}
-    - target: {fileID: 7379498985853201506, guid: f19d23c711ec6f34b99ea02d85df1975,
-        type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.12156863
-      objectReference: {fileID: 0}
-    - target: {fileID: 7379498985853201507, guid: f19d23c711ec6f34b99ea02d85df1975,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 50.899902
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f19d23c711ec6f34b99ea02d85df1975, type: 3}
