@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Enemies
   m_EditorClassIdentifier: 
   Obstacles:
-  - {fileID: 1511822769164291238, guid: 54dfadda6acb7644786112428d7e614e, type: 3}
+  - {fileID: 3648672545318274770, guid: 400863165b005d24facad9ca4267d356, type: 3}
