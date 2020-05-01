@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour
     Vector3 moveInput;
     Vector3 moveVelocity;
 
+    // For Slowing or Speeding Effect
     public float moveSpeed = 20f;
+    public float standardSpeed;
 
     public GameObject equippedWeapon;
     public Transform weaponSlot;
@@ -33,15 +35,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     string walkingValue = "WalkingMultiplier";
 
-
+    AudioSource walkingSource;
     bool shouldAnimateMoving = false;
 
     private void Start()
     {
+        walkingSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         DungeonMaster.Instance.player = this;
         animator.SetFloat(walkingValue, moveSpeed);
+        standardSpeed = moveSpeed;
     }
 
     private void Update()
@@ -82,9 +86,16 @@ public class PlayerController : MonoBehaviour
         rb.velocity = moveVelocity;
 
         if(!animator.GetCurrentAnimatorStateInfo(0).IsName(walkingState) && shouldAnimateMoving)
+        {
             animator.Play(walkingState);
+            walkingSource.Play();
+        }
         else if (!animator.GetCurrentAnimatorStateInfo(0).IsName(standingState) && !shouldAnimateMoving)
+        {
             animator.CrossFade(standingState, 0.0f);
+            walkingSource.Stop();
+
+        }
     }
 
     /// <summary>
@@ -133,7 +144,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="speed"></param>
     public void OnSpeedChange(float speed)
     {
-        animator.SetFloat(walkingValue, moveSpeed);
         moveSpeed = speed;
+        animator.SetFloat(walkingValue, moveSpeed);
     }
 }

@@ -313,6 +313,11 @@ PrefabInstance:
       propertyPath: equippedWeapon
       value: 
       objectReference: {fileID: 572324734}
+    - target: {fileID: 308601671476663735, guid: a0dfcdd4536c5154aba39f9fd1d43182,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 314651236321705882, guid: a0dfcdd4536c5154aba39f9fd1d43182,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
