@@ -45,17 +45,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 308601671476663732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d7efb6cccb4294f97f04a2600c6c1b, type: 3}
+  m_Script: {fileID: 11500000, guid: 878b23522ac96d44990907f1b2e66d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 9079839455816992976}
-  moveSpeed: 14
+  moveSpeed: 20
   weapons:
-  - {fileID: 4423694278191572863, guid: 8c41192366835e14284bd0efc84d306f, type: 3}
-  - {fileID: 1393550350971035854, guid: 54f1ab6bfd8d062419748c82e580bb0f, type: 3}
+  - {fileID: 3160222438303380427, guid: 5a5e0f4d41cc573428495a89f0fa1088, type: 3}
   - {fileID: 4596184633010804463, guid: a32437d622383ea41a7719000a045532, type: 3}
+  - {fileID: 1393550350971035854, guid: 54f1ab6bfd8d062419748c82e580bb0f, type: 3}
   equippedWeapon: {fileID: 0}
   weaponSlot: {fileID: 9210877384641666040}
+  granadePrefab: {fileID: 2171840517126204734, guid: 8c41192366835e14284bd0efc84d306f,
+    type: 3}
+  startTimeBtwShots: 1
   walkingState: Walking
   standingState: Standing
   walkingValue: WalkingMultiplier
