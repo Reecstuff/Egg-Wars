@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grenade : MonoBehaviour
+public class Grenade : EquipAbleItem
 {
 	public float delay = 1f;
 	public float radius = 6f;

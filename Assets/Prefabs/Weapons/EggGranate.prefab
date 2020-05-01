@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 204559c4d0530844b8d31e5a0941ba87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 030696e7f36621245ab2ecd79131aec2, type: 2}
   delay: 1
   radius: 6
   force: 70
