@@ -30,6 +30,14 @@ public class Weapon : MonoBehaviour
             {
                 Shoot();
             }
+            if (item.name == "Strohballenwerfer")
+            {
+                Shoot();
+            }
+            if (item.name == "Milkgun")
+            {
+                Shoot();
+            }
         }
         else
         {
