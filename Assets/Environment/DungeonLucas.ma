@@ -1,6 +1,6 @@
 //Maya ASCII 2020 scene
 //Name: DungeonLucas.ma
-//Last modified: Fri, May 01, 2020 10:43:34 PM
+//Last modified: Fri, May 01, 2020 10:56:51 PM
 //Codeset: 1252
 requires maya "2020";
 requires "mtoa" "4.0.0";
@@ -11,12 +11,12 @@ fileInfo "product" "Maya 2020";
 fileInfo "version" "2020";
 fileInfo "cutIdentifier" "201911140446-42a737a01c";
 fileInfo "osv" "Microsoft Windows 10 Technical Preview  (Build 18362)\n";
-fileInfo "UUID" "59E99A51-4A08-E13F-E031-109DEED5AEC5";
+fileInfo "UUID" "ED973D9D-4EF2-86D5-52B1-2399D3FC0804";
 fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "702D7ECA-4D45-4F7E-2A66-12A875B2AFF0";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -89.676992572962831 37.878328433104194 -46.371796185976947 ;
+	setAttr ".t" -type "double3" -91.12214100818035 39.181234629206998 -48.689369204397408 ;
 	setAttr ".r" -type "double3" -25.538351586957432 571.79999999972631 0 ;
 	setAttr ".rp" -type "double3" 3.4106051316484808e-15 -4.5474735088646413e-15 0 ;
 	setAttr ".rpt" -type "double3" 4.1813091613792159e-16 5.2999798674709893e-16 -1.229802172473275e-15 ;
@@ -27,12 +27,12 @@ createNode camera -s -n "perspShape" -p "persp";
 	setAttr ".ncp" 0.001;
 	setAttr ".fcp" 1000;
 	setAttr ".fd" 0.05;
-	setAttr ".coi" 85.390331588328806;
+	setAttr ".coi" 88.412508325984689;
 	setAttr ".ow" 0.1;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
-	setAttr ".tp" -type "double3" -4907.64013671875 106.52622985839844 1911.025390625 ;
+	setAttr ".tp" -type "double3" -4908.4593650637435 106.52622985839844 1911.025390625 ;
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 	setAttr ".ai_translator" -type "string" "perspective";
 createNode transform -s -n "top";
