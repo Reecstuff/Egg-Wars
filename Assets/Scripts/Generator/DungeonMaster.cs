@@ -10,7 +10,7 @@ public class DungeonMaster : MonoBehaviour
 
     public ItemText lootbox;
 
-    public List<GameObject> AllEquipableItems;
+    public List<EquipAbleItem> AllEquipableItems;
 
     /// <summary>
     /// Player is moving between Doors

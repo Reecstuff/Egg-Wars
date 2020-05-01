@@ -13,9 +13,10 @@ public class PlayerController : MonoBehaviour
     Vector3 moveInput;
     Vector3 moveVelocity;
 
+    // For Slowing or Speeding Effect
     public float moveSpeed = 20f;
+    public float standardSpeed;
 
-    public Weapon[] weapons;
     public GameObject equippedWeapon;
     public Transform weaponSlot;
 
@@ -34,15 +35,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     string walkingValue = "WalkingMultiplier";
 
-
+    AudioSource walkingSource;
     bool shouldAnimateMoving = false;
 
     private void Start()
     {
+        walkingSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         DungeonMaster.Instance.player = this;
         animator.SetFloat(walkingValue, moveSpeed);
+        standardSpeed = moveSpeed;
     }
 
     private void Update()
@@ -83,9 +86,16 @@ public class PlayerController : MonoBehaviour
         rb.velocity = moveVelocity;
 
         if(!animator.GetCurrentAnimatorStateInfo(0).IsName(walkingState) && shouldAnimateMoving)
+        {
             animator.Play(walkingState);
+            walkingSource.Play();
+        }
         else if (!animator.GetCurrentAnimatorStateInfo(0).IsName(standingState) && !shouldAnimateMoving)
+        {
             animator.CrossFade(standingState, 0.0f);
+            walkingSource.Stop();
+
+        }
     }
 
     /// <summary>
@@ -93,27 +103,38 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="weapon">Waffe auf dem Boden</param>
     /// <returns>Ausgerüstete Waffe</returns>
-    public GameObject EquipWeapon(ItemText weapon)
+    public EquipAbleItem EquipWeapon(ItemText weapon)
     {
         // Finde die waffe aus den vorhanden Waffen
-        Weapon newWeapon = weapons.FirstOrDefault(w => w.item.Equals(weapon));
+        EquipAbleItem newEquip = DungeonMaster.Instance.AllEquipableItems.FirstOrDefault(w => w.item.Equals(weapon));
 
-        if(newWeapon == null)
+        if(newEquip == null)
         {
             // Keine Waffe gefunden also return
             return null;
         }
         else
         {
-            Weapon oldWeapon = equippedWeapon.GetComponent<Weapon>();
+            GameObject oldWeapon = equippedWeapon;
+
                 
             Destroy(equippedWeapon);
 
-            // Instantiate the new Weapon
-            equippedWeapon = Instantiate(newWeapon.gameObject, weaponSlot.position, weaponSlot.rotation, weaponSlot.transform);
+            // Is this a Weapon
+            if(oldWeapon.GetComponent<Weapon>())
+            {
+
+                // Instantiate the new Weapon
+                equippedWeapon = Instantiate(newEquip.gameObject, weaponSlot.transform);
+            }
+            else
+            {
+                // Write Code to Equip on Itemslot instead of Weaponslot
+                equippedWeapon = Instantiate(newEquip.gameObject, weaponSlot.transform);
+            }
 
             // Return old Weapon back to Collectable
-            return oldWeapon.gameObject;
+            return oldWeapon.GetComponent<EquipAbleItem>();
         }
     }
 
@@ -123,7 +144,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="speed"></param>
     public void OnSpeedChange(float speed)
     {
-        animator.SetFloat(walkingValue, moveSpeed);
         moveSpeed = speed;
+        animator.SetFloat(walkingValue, moveSpeed);
     }
 }
