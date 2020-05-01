@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="weapon">Waffe auf dem Boden</param>
     /// <returns>Ausgerüstete Waffe</returns>
-    public Weapon EquipWeapon(ItemText weapon)
+    public GameObject EquipWeapon(ItemText weapon)
     {
         // Finde die waffe aus den vorhanden Waffen
         Weapon newWeapon = weapons.FirstOrDefault(w => w.item.Equals(weapon));
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
             equippedWeapon = Instantiate(newWeapon.gameObject, weaponSlot.position, weaponSlot.rotation, weaponSlot.transform);
 
             // Return old Weapon back to Collectable
-            return oldWeapon;
+            return oldWeapon.gameObject;
         }
     }
 

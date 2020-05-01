@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11ee60195bf3e86428578b6f8ac5426a, type: 3}
-  m_Name: Traps
+  m_Script: {fileID: 11500000, guid: 42e2d304e8e750d4584cab2659bd7cf6, type: 3}
+  m_Name: Lootbox
   m_EditorClassIdentifier: 
-  Obstacles:
-  - {fileID: 8760215335022681816, guid: 18f489027c9a52442bea94698e9060fc, type: 3}
-  - {fileID: 5282220697425780350, guid: 97c9081e2d867a347b9ed3b7c990122f, type: 3}
+  Titel: Lootbox
+  Description: EA approved

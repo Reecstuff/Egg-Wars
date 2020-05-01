@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1637786788110488774}
   - component: {fileID: 7773653685412327152}
   - component: {fileID: 4097459532582851081}
-  - component: {fileID: 1866152912}
+  - component: {fileID: 418649160596618249}
+  - component: {fileID: 5429538297872217894}
   m_Layer: 0
   m_Name: LandMine
   m_TagString: Untagged
@@ -80,7 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &1866152912
+--- !u!135 &418649160596618249
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,5 +92,21 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.57804626
-  m_Center: {x: 0, y: 0.33408087, z: 0.000000029802322}
+  m_Radius: 0.92487407
+  m_Center: {x: -0.000000029802322, y: 0.53452945, z: 0.000000059604645}
+--- !u!208 &5429538297872217894
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2369403237631633109}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.9250001, y: 0.535, z: 0.9250001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.535, z: 0}
+  m_TimeToStationary: 0.5

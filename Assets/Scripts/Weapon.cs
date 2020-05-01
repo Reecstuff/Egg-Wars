@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon : EquipAbleItem
 {
     //public Transform firePoint;
     public GameObject bullet;
@@ -10,8 +10,6 @@ public class Weapon : MonoBehaviour
     public float spreadAngle = 10;
     public float shootSpeed = 10;
     public float bulletcount = 8;
-
-    public ItemText item;
 
     private float timeBtwShots;
     public float startTimeBtwShots = 0.5f;

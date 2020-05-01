@@ -7,14 +7,15 @@ using UnityEngine;
 [RequireComponent(typeof(Canvas), typeof(ThisFaceCamera))]
 public class FillItemText : MonoBehaviour
 {
-    public ItemText itemText;
 
+    [SerializeField]
     TextMeshProUGUI titelText;
     ThisFaceCamera faceCamera;
 
     private void Start()
     {
-        SetItemText(itemText);
+        SearchForTextFields();
+        SetItemText(GetComponentInParent<Collectable>().itemText);
         if (faceCamera == null)
             faceCamera = GetComponent<ThisFaceCamera>();
     }
@@ -51,15 +52,6 @@ public class FillItemText : MonoBehaviour
 
     public void SetItemText(ItemText item)
     {
-        itemText = item;
-        titelText.text = itemText.Titel;
-    }
-
-    private void OnValidate()
-    {
-        if(titelText == null)
-        {
-            SearchForTextFields();
-        }
+         titelText.SetText(item.Titel);
     }
 }
