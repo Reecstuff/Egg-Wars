@@ -20,6 +20,7 @@ public class SlowDownPlayer : MonoBehaviour
         if(other.GetComponent<PlayerController>())
         {
             DungeonMaster.Instance.player.OnSpeedChange(DungeonMaster.Instance.player.moveSpeed / 2);
+            DungeonMaster.Instance.player.PitchWalking(0.5f);
         }
 
         if (other.GetComponent<Enemy>())
@@ -34,6 +35,7 @@ public class SlowDownPlayer : MonoBehaviour
         if (other.GetComponent<PlayerController>())
         {
             DungeonMaster.Instance.player.OnSpeedChange(DungeonMaster.Instance.player.standardSpeed);
+            DungeonMaster.Instance.player.PitchWalking(1);
         }
 
         if(other.GetComponent<Enemy>())

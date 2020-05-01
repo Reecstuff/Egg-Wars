@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -37,6 +38,10 @@ public class PlayerController : MonoBehaviour
 
     AudioSource walkingSource;
     bool shouldAnimateMoving = false;
+
+    [SerializeField]
+    AudioClip[] walkingClips;
+    int currentWalkingClip = 0;
 
     private void Start()
     {
@@ -94,7 +99,8 @@ public class PlayerController : MonoBehaviour
         {
             animator.CrossFade(standingState, 0.0f);
             walkingSource.Stop();
-
+            currentWalkingClip = currentWalkingClip == walkingClips.Length - 1 ? 0 : currentWalkingClip + 1;
+            walkingSource.clip = walkingClips[currentWalkingClip];
         }
     }
 
@@ -146,5 +152,10 @@ public class PlayerController : MonoBehaviour
     {
         moveSpeed = speed;
         animator.SetFloat(walkingValue, moveSpeed);
+    }
+
+    public void PitchWalking(float pitch)
+    {
+        walkingSource.DOPitch(pitch, 0.1f);
     }
 }

@@ -61,6 +61,20 @@ MonoBehaviour:
   walkingState: Walking
   standingState: Standing
   walkingValue: WalkingMultiplier
+  walkingClips:
+  - {fileID: 8300000, guid: 45e2e3e8968d81a48aefecf6846a9c7b, type: 3}
+  - {fileID: 8300000, guid: 8db07f73ebba52b43823a8af4374cdf8, type: 3}
+  - {fileID: 8300000, guid: 118c872223a6fcf419ca44b18038df20, type: 3}
+  - {fileID: 8300000, guid: 8a926cd0c33a649428cf2895272206e8, type: 3}
+  - {fileID: 8300000, guid: 9817ced6bb982844194d6955c7069047, type: 3}
+  - {fileID: 8300000, guid: 9104adbef3c9a3a4e8efd11ba5716582, type: 3}
+  - {fileID: 8300000, guid: b705717ca5a41be43a9a1b5f82003e26, type: 3}
+  - {fileID: 8300000, guid: 16dd883d634b1754aa63f3b06f694e0a, type: 3}
+  - {fileID: 8300000, guid: 6b7e9ad782ac96b4d8a52327160f5551, type: 3}
+  - {fileID: 8300000, guid: 70c7119e5ece2fe4fa0f4335081f5031, type: 3}
+  - {fileID: 8300000, guid: dc6c5d7f790594545bd1b3bb3794e4e9, type: 3}
+  - {fileID: 8300000, guid: 0a3cc88200f0289489704c5a2935c02c, type: 3}
+  - {fileID: 8300000, guid: 54a5aeae88aac7c4383f95af12d3645c, type: 3}
 --- !u!54 &1577825707594235633
 Rigidbody:
   m_ObjectHideFlags: 0
