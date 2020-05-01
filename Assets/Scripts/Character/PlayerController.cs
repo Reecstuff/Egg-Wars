@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -13,7 +14,9 @@ public class PlayerController : MonoBehaviour
     Vector3 moveInput;
     Vector3 moveVelocity;
 
+    // For Slowing or Speeding Effect
     public float moveSpeed = 20f;
+    public float standardSpeed;
 
     public GameObject equippedWeapon;
     public Transform weaponSlot;
@@ -33,15 +36,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     string walkingValue = "WalkingMultiplier";
 
-
+    AudioSource walkingSource;
     bool shouldAnimateMoving = false;
+
+    [SerializeField]
+    AudioClip[] walkingClips;
+    int currentWalkingClip = 0;
 
     private void Start()
     {
+        walkingSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         DungeonMaster.Instance.player = this;
         animator.SetFloat(walkingValue, moveSpeed);
+        standardSpeed = moveSpeed;
     }
 
     private void Update()
@@ -82,9 +91,17 @@ public class PlayerController : MonoBehaviour
         rb.velocity = moveVelocity;
 
         if(!animator.GetCurrentAnimatorStateInfo(0).IsName(walkingState) && shouldAnimateMoving)
+        {
             animator.Play(walkingState);
+            walkingSource.Play();
+        }
         else if (!animator.GetCurrentAnimatorStateInfo(0).IsName(standingState) && !shouldAnimateMoving)
+        {
             animator.CrossFade(standingState, 0.0f);
+            walkingSource.Stop();
+            currentWalkingClip = currentWalkingClip == walkingClips.Length - 1 ? 0 : currentWalkingClip + 1;
+            walkingSource.clip = walkingClips[currentWalkingClip];
+        }
     }
 
     /// <summary>
@@ -133,7 +150,12 @@ public class PlayerController : MonoBehaviour
     /// <param name="speed"></param>
     public void OnSpeedChange(float speed)
     {
-        animator.SetFloat(walkingValue, moveSpeed);
         moveSpeed = speed;
+        animator.SetFloat(walkingValue, moveSpeed);
+    }
+
+    public void PitchWalking(float pitch)
+    {
+        walkingSource.DOPitch(pitch, 0.1f);
     }
 }
