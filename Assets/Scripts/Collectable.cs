@@ -69,18 +69,18 @@ public class Collectable : MonoBehaviour
         }
     }
 
-    public void UpdateData(GameObject newWeapon)
+    public void UpdateData(EquipAbleItem newWeapon)
     {
         if (!newWeapon)
             return;
 
-        itemText = newWeapon.GetComponent<EquipAbleItem>().item;
+        itemText = newWeapon.item;
         DescriptionText.Instance.ActivateText(true, itemText.Description);
         FillitemText.SetItemText(itemText);
         FillitemText.ShowText(true);
 
         GameObject Modell = rotateAround.gameObject;
-        GameObject newModell = newWeapon;
+        GameObject newModell = newWeapon.gameObject;
 
         Modell.GetComponent<MeshFilter>().sharedMesh = newModell.GetComponent<MeshFilter>().sharedMesh;
         Modell.GetComponent<Renderer>().sharedMaterial = newModell.GetComponent<Renderer>().sharedMaterial;
