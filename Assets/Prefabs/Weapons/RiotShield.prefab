@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8464404279211007436}
   - component: {fileID: 2759320857110176053}
   - component: {fileID: 1393550350971035854}
-  - component: {fileID: -1791172225751113928}
   m_Layer: 0
   m_Name: RiotShield
   m_TagString: Untagged
@@ -93,23 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e023b0798f131e64ba2e188f81c26f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 5529024245268689379, guid: 098f736de9a185649a3b2d8769b482b3, type: 3}
-  shootSpeed: 20
-  startTimeBtwShots: 0.5
   item: {fileID: 11400000, guid: 9de84a89e65380541b09de5f2e5e88fb, type: 2}
---- !u!208 &-1791172225751113928
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4501283778872923625}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.896, y: 1.644, z: 0.096}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0.066}
-  m_TimeToStationary: 0.5
+  firePoint: {fileID: 0}
+  bullet: {fileID: 5529024245268689379, guid: 098f736de9a185649a3b2d8769b482b3, type: 3}
+  spreadAngle: 10
+  shootSpeed: 20
+  bulletcount: 8
+  startTimeBtwShots: 0.5
