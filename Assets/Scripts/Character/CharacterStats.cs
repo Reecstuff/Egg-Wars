@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterStats : MonoBehaviour
 {
 	public int maxHealth = 100;
 	public int currentHealth { get; private set; }
+
+	public HealthBar healthBar;
 
 	public Stat damage;
 	public Stat armor;
@@ -11,6 +14,12 @@ public class CharacterStats : MonoBehaviour
 	private void Awake()
 	{
 		currentHealth = maxHealth;
+		healthBar.SetMaxHealth(maxHealth);
+	}
+
+	private void Update()
+	{
+		healthBar.count = currentHealth;
 	}
 
 	public void TakeDamage(int damage)
@@ -20,6 +29,8 @@ public class CharacterStats : MonoBehaviour
 
 		currentHealth -= damage;
 		Debug.Log(transform.name + " take " + damage + " damage.");
+
+		healthBar.SetHealth(currentHealth);
 
 		if (currentHealth <= 0)
 		{
