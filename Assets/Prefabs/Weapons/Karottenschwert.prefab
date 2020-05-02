@@ -249,7 +249,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 200f1cc29d954364c88d7dd75ff92167, type: 3}
+  - {fileID: 2100000, guid: b580130cc31f5a34bb4b283cc29f7642, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -296,8 +296,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7880460590665284401}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.7496299, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 2.564, z: -0}
+  m_LocalScale: {x: 1, y: 0.72, z: 1}
   m_Children: []
   m_Father: {fileID: 5734946209910928808}
   m_RootOrder: 1
@@ -359,6 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5734946209910928808}
   - component: {fileID: 787052412827279024}
+  - component: {fileID: 3816005397279902339}
   m_Layer: 0
   m_Name: Karottenschwert
   m_TagString: Untagged
@@ -373,15 +374,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8776889955799549883}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 11.662, z: 4.84}
+  m_LocalRotation: {x: 0.5827614, y: 0, z: 0, w: 0.81264335}
+  m_LocalPosition: {x: 0, y: -0.12, z: -0.551}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1301357318554847778}
   - {fileID: 4953712119780247511}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 71.29, y: 0, z: 0}
 --- !u!114 &787052412827279024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,10 +395,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e023b0798f131e64ba2e188f81c26f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
-  firePoint: {fileID: 0}
+  item: {fileID: 11400000, guid: d91bdc716a8551f479926b84bf05687d, type: 2}
+  firePoint: {fileID: 1301357318554847778}
   bullet: {fileID: 0}
   spreadAngle: 10
   shootSpeed: 10
   bulletcount: 8
   startTimeBtwShots: 0.5
+--- !u!114 &3816005397279902339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776889955799549883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7247cd5cae72c5446aace940dfc74080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Laser: {fileID: 4953712119780247511}
