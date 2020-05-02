@@ -20,27 +20,36 @@ public class Weapon : EquipAbleItem
         {
             timeBtwShots = startTimeBtwShots;
 
-            if (item.name == "EggShotgun")
+
+            switch(item.name)
             {
-                Shotgun();
-            }
-            if (item.name == "EggGewehr")
-            {
-                Shoot();
-            }
-            if (item.name == "Strohballenwerfer")
-            {
-                Shoot();
-            }
-            if (item.name == "Milkgun")
-            {
-                Shoot();
+                case "EggShotgun":
+                    Shotgun();
+                    break;
+                case "EggGewehr":
+                    Shoot();
+                    break;
+                case "Strohballenwerfer":
+                    Shoot();
+                    break;
+                case "Milkgun":
+                    Shoot();
+                    break;
+                case "LaserKarottenSchwert":
+                    Swing();
+                    GetComponent<LaserAnimation>().ShowLaser();
+                    break;
             }
         }
         else
         {
             timeBtwShots -= Time.deltaTime;
         }
+    }
+
+    void Swing()
+    {
+        GetComponentInParent<PlayerController>().SwingWeapon();
     }
 
     public void Shoot()

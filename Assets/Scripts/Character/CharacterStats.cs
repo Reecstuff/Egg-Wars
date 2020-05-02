@@ -2,7 +2,7 @@
 
 public class CharacterStats : MonoBehaviour
 {
-	public int maxHealth = 100;
+	public int maxHealth = 10;
 	public int currentHealth { get; private set; }
 
 	public StatsUI statsUI;
@@ -13,15 +13,12 @@ public class CharacterStats : MonoBehaviour
 
 	private void Start()
 	{
-		currentHealth = maxHealth;
+		currentHealth = maxHealth - 1;
 		statsUI.SetMaxHealth(maxHealth);
+		statsUI.SetHealth(currentHealth);
+		statsUI.SetAmmo(player.ammoGrenade);
 	}
 
-	private void Update()
-	{
-		statsUI.countHealth = currentHealth;
-		statsUI.countGrenade = player.ammoGrenade;
-	}
 
 	public void TakeDamage(int damage)
 	{
@@ -37,6 +34,25 @@ public class CharacterStats : MonoBehaviour
 		{
 			Die();
 		}
+	}
+
+	public void Heal(int healingAmount)
+	{
+		if(healingAmount + currentHealth >= maxHealth)
+		{
+			currentHealth = maxHealth;
+		}
+		else
+		{
+			currentHealth += healingAmount;
+		}
+		statsUI.SetHealth(currentHealth);
+	}
+
+	public void UpgradeMaxHealth(int upgradeAmount)
+	{
+		maxHealth += upgradeAmount;
+		statsUI.SetMaxHealth(maxHealth);
 	}
 
 	public virtual void Die()

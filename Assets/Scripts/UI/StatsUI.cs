@@ -1,41 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StatsUI : MonoBehaviour
 {
-	public Slider slider;
 
-	public GameObject health;
-	public GameObject ammo;
+	public TextMeshProUGUI textHealth;
 
-	public Text textHealth;
-	public int countHealth;
+	public TextMeshProUGUI textAmmo;
 
-	public Text textAmmo;
-	public int countGrenade;
+	[SerializeField]
+	TextMeshProUGUI maxHealth;
 
-	void Start()
+	char uniformChar = 'I';
+
+
+	public void SetMaxHealth(int tobeMaxHealth)
 	{
-		textHealth = health.GetComponent<Text>();
-		textAmmo = ammo.GetComponent<Text>();
-	}
-
-	private void Update()
-	{
-		textHealth.text = countHealth.ToString();
-		textAmmo.text = countGrenade.ToString();
-	}
-
-	public void SetMaxHealth(int health)
-	{
-		slider.maxValue = health;
-		slider.value = health;
+		maxHealth.text = string.Concat(Enumerable.Repeat(uniformChar, tobeMaxHealth));
 	}
 
 	public void SetHealth(int health)
 	{
-		slider.value = health;
+		if (health == 0)
+			textHealth.text = string.Empty;
+		else
+			textHealth.text = string.Concat(Enumerable.Repeat(uniformChar, health));
 	}
+
+	public void SetAmmo(int ammo)
+	{
+		if (ammo == 0)
+			textAmmo.text = string.Empty;
+		else
+			textAmmo.text = string.Concat(Enumerable.Repeat(uniformChar, ammo));
+	}
+
 }

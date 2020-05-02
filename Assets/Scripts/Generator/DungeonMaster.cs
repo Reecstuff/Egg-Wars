@@ -9,7 +9,6 @@ public class DungeonMaster : MonoBehaviour
     public static DungeonMaster Instance;
     public NavMeshSurface navi;
 
-    public ItemText lootbox;
 
     public List<EquipAbleItem> AllEquipableItems;
 
@@ -20,6 +19,12 @@ public class DungeonMaster : MonoBehaviour
     public bool BossRoomTime;
 
     public float PlayerMovingTime = 0.3f;
+
+    [SerializeField]
+    int levelHealingAmount = 3;
+
+    [SerializeField]
+    int levelMaxHealthUpgradeAmount = 1;
 
     public PlayerController player;
 
@@ -213,6 +218,10 @@ public class DungeonMaster : MonoBehaviour
         currentDungeonCount = 0;
         currentDungeonMax += 10;
 
+        
+        
+        
+        // Reset Dungeon
         player.transform.DOJump(Vector3.up * 3, 1, 1, 2f);
 
         dungeonStarter.DungeonOn();
@@ -220,7 +229,11 @@ public class DungeonMaster : MonoBehaviour
         BossRoomTime = false;
         GameAudio.Instance.SetNormalMusic();
 
-        // Reset Dungeon
+        // Upgrade Player
+        player.characterStats.UpgradeMaxHealth(levelMaxHealthUpgradeAmount);
+        player.characterStats.Heal(levelHealingAmount);
+
+
     }
 
     public void RaiseDungeonCount()

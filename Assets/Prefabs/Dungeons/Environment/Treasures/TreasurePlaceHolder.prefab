@@ -84,6 +84,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7838613710634201326}
     m_Modifications:
+    - target: {fileID: -1998978759826810288, guid: d368e7001688dcb4891d002ab03d94b1,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1439ee01d3bca464080d6713bf7c6f33, type: 3}
+    - target: {fileID: -1998978759826810288, guid: d368e7001688dcb4891d002ab03d94b1,
+        type: 3}
+      propertyPath: MinDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3710390851667682992, guid: d368e7001688dcb4891d002ab03d94b1,
         type: 3}
       propertyPath: m_LocalPosition.x
