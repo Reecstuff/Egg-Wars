@@ -29,7 +29,7 @@ public class StartDungeon : MonoBehaviour
     {
         GameObject newStartDungeon = Instantiate(firstDungeon.gameObject);
         newStartDungeon.transform.position = Vector3.zero * 1.5f;
-        playerObject.transform.position = Vector3.up;
+        playerObject.transform.position = Vector3.up * 1.5f;
 
         firstDungeon = newStartDungeon.GetComponent<DungeonGenerator>();
 

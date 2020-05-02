@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
     AudioSource walkingSource;
     bool shouldAnimateMoving = false;
 
+    int playerGroundProtectionCount = 0;
+    float playerGroundProtectionY = 0.0f;
+
     private void Start()
     {
         walkingSource = GetComponent<AudioSource>();
@@ -47,6 +50,7 @@ public class PlayerController : MonoBehaviour
         DungeonMaster.Instance.player = this;
         animator.SetFloat(walkingValue, moveSpeed);
         standardSpeed = moveSpeed;
+        
     }
 
     private void Update()
@@ -63,8 +67,8 @@ public class PlayerController : MonoBehaviour
         if (groundPlane.Raycast(cameraRay, out rayLength))
         {
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
-            if(Vector3.Distance(pointToLook, transform.position) > 0.2)
-                transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+            if (Vector3.Distance(new Vector3(pointToLook.x, playerGroundProtectionY, pointToLook.z),new Vector3(transform.position.x, playerGroundProtectionY, transform.position.z)) > 2)
+                transform.LookAt(new Vector3(pointToLook.x, playerGroundProtectionY, pointToLook.z));
         }
 
         if (Input.GetKey(KeyCode.Q) && timeBtwShots <= 0)
@@ -95,6 +99,27 @@ public class PlayerController : MonoBehaviour
         {
             animator.CrossFade(standingState, 0.0f);
             walkingSource.Stop();
+        }
+        OnPlayerGroundProtection();
+    }
+
+    void OnPlayerGroundProtection()
+    {
+        if (playerGroundProtectionY == 0.0f || playerGroundProtectionCount >= 10)
+        {
+            playerGroundProtectionCount = 0;
+            playerGroundProtectionY = transform.position.y;
+
+        }
+
+        if (!DungeonMaster.Instance.PlayerMoving && (Mathf.Abs(transform.position.y - playerGroundProtectionY) > 0.02))
+        {
+            transform.position = new Vector3(transform.position.x, playerGroundProtectionY, transform.position.z);
+            playerGroundProtectionCount = 0;
+        }
+        else
+        {
+            playerGroundProtectionCount++;
         }
     }
 

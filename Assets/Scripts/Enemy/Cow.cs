@@ -12,6 +12,7 @@ public class Cow : Enemy
         maxPitch = 0;
         source.Stop();
         source.Play();
+        sonar.gameObject.SetActive(false);
         source.DOPitch(3, 0.1f);
         source.DOFade(2, 0.5f);
         Invoke(nameof(PlayParticles), 0.5f);

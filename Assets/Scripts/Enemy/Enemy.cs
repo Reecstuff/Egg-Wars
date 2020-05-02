@@ -18,11 +18,12 @@ public class Enemy : MonoBehaviour
     protected NavMeshAgent agent;
     protected AudioSource source;
     protected Animator animator;
-
+    protected PlayerSonar sonar;
 
     // Start is called before the first frame update
     protected void Start()
     {
+        sonar = GetComponentInChildren<PlayerSonar>();
         animator = GetComponentInChildren<Animator>();
         particleSystem = GetComponentsInChildren<ParticleSystem>();
         agent = GetComponent<NavMeshAgent>();
@@ -69,7 +70,7 @@ public class Enemy : MonoBehaviour
 
     virtual protected void OnPlayerCollision()
     {
-        
+
     }
 
     protected void PlayParticles()
