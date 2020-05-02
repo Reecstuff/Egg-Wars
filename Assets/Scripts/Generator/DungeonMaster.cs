@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DG.Tweening;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
@@ -212,7 +213,7 @@ public class DungeonMaster : MonoBehaviour
         currentDungeonCount = 0;
         currentDungeonMax += 10;
 
-        player.transform.position = Vector3.up * 3;
+        player.transform.DOJump(Vector3.up * 3, 1, 1, 2f);
 
         dungeonStarter.DungeonOn();
 
@@ -254,7 +255,7 @@ public class DungeonMaster : MonoBehaviour
         dungeonStarter.bossRoom.StartDungeon();
         dungeonStarter.bossRoom.gameObject.SetActive(true);
 
-        return dungeonStarter.bossRoom.transform.position  + Vector3.up;
+        return dungeonStarter.bossRoom.transform.position  + Vector3.up * 1.5f;
     }
 
     int GetRandomIndex(int length)
