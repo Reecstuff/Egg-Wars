@@ -10,16 +10,21 @@ public class Enemy : MonoBehaviour
 
     public float Speed = 10;
     public float standardSpeed;
+
+    protected ParticleSystem[] particleSystem; 
+
     [SerializeField]
-    float maxPitch = 2;
+    protected float maxPitch = 2;
+    protected NavMeshAgent agent;
+    protected AudioSource source;
+    protected Animator animator;
 
-    NavMeshAgent agent;
-
-    AudioSource source;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
+        animator = GetComponentInChildren<Animator>();
+        particleSystem = GetComponentsInChildren<ParticleSystem>();
         agent = GetComponent<NavMeshAgent>();
         standardSpeed = Speed;
         OnSpeedChange(Speed);
@@ -40,8 +45,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
-
     public void OnSpeedChange(float newSpeed)
     {
         Speed = newSpeed;
@@ -50,27 +53,37 @@ public class Enemy : MonoBehaviour
         // Set Animation Speed;
     }
 
-    private void OnCollisionEnter(Collision other)
+    protected void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Melee"))
         {
             Destroy(gameObject); //Or takes damage
         }
 
-        if(other.gameObject.GetComponent<PlayerController>())
+        if (other.gameObject.GetComponent<PlayerController>())
         {
-            transform.DOScale(1.5f, 0.6f);
-            maxPitch = 0;
-            source.Stop();
-            source.Play();
-            source.DOPitch(3, 0.1f);
-            source.DOFade(2, 0.5f);
-            Invoke(nameof(Die), 1f);
+            OnPlayerCollision();
         }
     }
 
-    void Die()
+
+    virtual protected void OnPlayerCollision()
     {
+        
+    }
+
+    protected void PlayParticles()
+    {
+        animator.gameObject.SetActive(false);
+        for (int i = 0; i < particleSystem.Length; i++)
+        {
+            particleSystem[i].Play();
+        }
+    }
+
+    protected void Die()
+    {
+        
         Destroy(gameObject);
     }
 }
