@@ -318,6 +318,11 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 308601671476663735, guid: a0dfcdd4536c5154aba39f9fd1d43182,
+        type: 3}
+      propertyPath: ammoGrenade
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 314651236321705882, guid: a0dfcdd4536c5154aba39f9fd1d43182,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1142,12 +1147,22 @@ PrefabInstance:
         type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 1256449073}
+      objectReference: {fileID: 0}
     - target: {fileID: 6175335940463636752, guid: a0dfcdd4536c5154aba39f9fd1d43182,
         type: 3}
       propertyPath: maxHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6175335940463636752, guid: a0dfcdd4536c5154aba39f9fd1d43182,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 143890314}
+    - target: {fileID: 6175335940463636752, guid: a0dfcdd4536c5154aba39f9fd1d43182,
+        type: 3}
+      propertyPath: statsUI
+      value: 
+      objectReference: {fileID: 1256449073}
     - target: {fileID: 6287581385594183717, guid: a0dfcdd4536c5154aba39f9fd1d43182,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1537,6 +1552,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 143890308}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &143890314 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 308601671476663735, guid: a0dfcdd4536c5154aba39f9fd1d43182,
+    type: 3}
+  m_PrefabInstance: {fileID: 143890308}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143890309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878b23522ac96d44990907f1b2e66d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &198138821
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1648,7 +1675,7 @@ GameObject:
   - component: {fileID: 648367650}
   - component: {fileID: 648367649}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2011,10 +2038,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1256449072}
   - component: {fileID: 1256449074}
-  - component: {fileID: 1256449073}
   - component: {fileID: 1256449075}
+  - component: {fileID: 1256449073}
   m_Layer: 5
-  m_Name: Health Bar
+  m_Name: StatsUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2034,12 +2061,13 @@ RectTransform:
   - {fileID: 1650749122}
   - {fileID: 767476709}
   - {fileID: 648367648}
+  - {fileID: 2104352127}
   m_Father: {fileID: 442858822}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 620, y: 560.00006}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -211, y: 123}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1256449073
@@ -2051,12 +2079,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1256449071}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ef5b4a509a115e438841e0295911b54, type: 3}
+  m_Script: {fileID: 11500000, guid: cf129db58666d094b9ffb75648c6c4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1256449074}
+  health: {fileID: 648367647}
+  ammo: {fileID: 2104352126}
   textHealth: {fileID: 648367649}
-  count: 0
+  countHealth: 0
+  textAmmo: {fileID: 2104352129}
+  countGrenade: 0
 --- !u!114 &1256449074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2599,6 +2631,83 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a32437d622383ea41a7719000a045532, type: 3}
+--- !u!1 &2104352126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2104352127}
+  - component: {fileID: 2104352130}
+  - component: {fileID: 2104352129}
+  m_Layer: 5
+  m_Name: Ammo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2104352127
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104352126}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.25, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1256449072}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1.5999756, y: -83.599945}
+  m_SizeDelta: {x: 407.1, y: 67.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2104352129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104352126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 1
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 249
+    m_Alignment: 2
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 0
+--- !u!222 &2104352130
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104352126}
+  m_CullTransparentMesh: 0
 --- !u!1001 &2149860616494362390
 PrefabInstance:
   m_ObjectHideFlags: 0
