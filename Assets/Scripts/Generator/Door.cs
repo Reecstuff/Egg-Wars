@@ -44,8 +44,8 @@ public class Door : MonoBehaviour
                 if(DungeonMaster.Instance.BossRoomTime)
                 {
                     DungeonMaster.Instance.PlayerMoving = true;
+                    Invoke(nameof(ResetMoving), 2.0f);
                     player.transform.DOJump(DungeonMaster.Instance.GetBossRoom(), 1, 1, 2f);
-                    Invoke(nameof(ResetMoving), 2.1f);
                 }
                 else
                 {
