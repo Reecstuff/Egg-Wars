@@ -1,12 +1,12 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Collectable : MonoBehaviour
 {
 
     
     public ItemText itemText;
-
 
     [SerializeField]
     float AnimationTime = 0.3f;
@@ -19,6 +19,7 @@ public class Collectable : MonoBehaviour
     public bool isActivated = false;
 
     float standardY;
+    AudioSource audioSource;
 
     void Awake()
     {
@@ -37,6 +38,7 @@ public class Collectable : MonoBehaviour
         FillitemText.gameObject.SetActive(false);
 
         standardY = transform.position.y;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void ActivateCollectable(bool setActiv)
@@ -69,8 +71,15 @@ public class Collectable : MonoBehaviour
         }
     }
 
+    public void PlayAudio()
+    {
+        if (audioSource.clip)
+            audioSource.Play();
+    }
+
     public void UpdateData(EquipAbleItem newWeapon)
     {
+        PlayAudio();
         if (!newWeapon)
             return;
 
@@ -82,8 +91,8 @@ public class Collectable : MonoBehaviour
         GameObject Modell = rotateAround.gameObject;
         GameObject newModell = newWeapon.gameObject;
 
-        Modell.GetComponent<MeshFilter>().sharedMesh = newModell.GetComponent<MeshFilter>().sharedMesh;
-        Modell.GetComponent<Renderer>().sharedMaterial = newModell.GetComponent<Renderer>().sharedMaterial;
+        Modell.GetComponent<MeshFilter>().sharedMesh = newModell.GetComponentInChildren<MeshFilter>().sharedMesh;
+        Modell.GetComponent<Renderer>().sharedMaterial = newModell.GetComponentInChildren<Renderer>().sharedMaterial;
         
     }
 }

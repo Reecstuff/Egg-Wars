@@ -30,7 +30,7 @@ public class Lootbox : MonoBehaviour
         GetComponentInChildren<FillItemText>().SetItemText(text);
         transform.DOScale(0.1f, 0.5f);
         transform.DOLocalRotate(new Vector3(0, 280, 0), 0.5f);
-        Invoke(nameof(Exterminate), 0.6f);
+        Invoke(nameof(Exterminate), 2.5f);
     }
 
     void Exterminate()

@@ -4,6 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class LootSense : MonoBehaviour
 {
+    [SerializeField]
+    ItemText Lootbox;
+
+    [SerializeField]
+    ItemText Heal;
 
 
     [SerializeField]
@@ -25,9 +30,18 @@ public class LootSense : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if(closestLoot.itemText.Equals(DungeonMaster.Instance.lootbox))
+                if(closestLoot.itemText.Equals(Lootbox))
                 {
+                    closestLoot.PlayAudio();
                     closestLoot.GetComponentInParent<Lootbox>().OpenBox();
+                    inSenseLoot.Remove(closestLoot);
+                    closestLoot = null;
+                }
+                else if(closestLoot.itemText.Equals(Heal))
+                {
+                    closestLoot.PlayAudio();
+                    closestLoot.GetComponent<Heal>().HealPlayer();
+                    closestLoot.ActivateCollectable(false);
                     inSenseLoot.Remove(closestLoot);
                     closestLoot = null;
                 }
@@ -53,7 +67,7 @@ public class LootSense : MonoBehaviour
         {
             closestLoot = inSenseLoot.Find(l => Vector3.Distance(l.transform.position, transform.position) < closestDistance);
             
-            if(!closestLoot.isActivated)
+            if(closestLoot && !closestLoot.isActivated)
                 closestLoot.ActivateCollectable(true);
 
         }
