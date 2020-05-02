@@ -66,9 +66,9 @@ public class LootSense : MonoBehaviour
         if(other.gameObject.GetComponent<Collectable>())
         {
             closestLoot = inSenseLoot.Find(l => Vector3.Distance(l.transform.position, transform.position) < closestDistance);
-            
             if(closestLoot && !closestLoot.isActivated)
                 closestLoot.ActivateCollectable(true);
+
 
         }
     }
