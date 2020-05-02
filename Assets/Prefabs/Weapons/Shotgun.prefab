@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 570092260224485317}
   - component: {fileID: 6113027951768025916}
   - component: {fileID: 4596184633010804463}
-  - component: {fileID: 1683636263714330521}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -124,26 +123,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e023b0798f131e64ba2e188f81c26f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 862d6e83d0e2eaa4dae1578fc915a4e6, type: 2}
   firePoint: {fileID: 8303286402924430406}
   bullet: {fileID: 5529024245268689379, guid: 098f736de9a185649a3b2d8769b482b3, type: 3}
   spreadAngle: 10
   shootSpeed: 30
   bulletcount: 8
-  item: {fileID: 11400000, guid: 862d6e83d0e2eaa4dae1578fc915a4e6, type: 2}
   startTimeBtwShots: 0.5
---- !u!208 &1683636263714330521
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5541961383840092128}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.377, y: 0.40500003, z: 1.891}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5

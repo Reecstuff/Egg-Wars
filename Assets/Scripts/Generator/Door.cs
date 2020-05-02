@@ -43,7 +43,7 @@ public class Door : MonoBehaviour
             {
                 if(DungeonMaster.Instance.BossRoomTime)
                 {
-                  player.transform.position = DungeonMaster.Instance.GetBossRoom();
+                  player.transform.DOJump(DungeonMaster.Instance.GetBossRoom(), 1, 1, 2f);
                 }
                 else
                 {
@@ -71,7 +71,7 @@ public class Door : MonoBehaviour
     {
         DungeonMaster.Instance.PlayerMoving = true;
         NextDoor.doorVisited = true;
-        player.transform.DOMove(NextDoor.PlayerSpawnPosition, DungeonMaster.Instance.PlayerMovingTime);
+        player.transform.DOJump(NextDoor.PlayerSpawnPosition, 1, 1, DungeonMaster.Instance.PlayerMovingTime);
         Invoke(nameof(ResetMoving), DungeonMaster.Instance.PlayerMovingTime + 0.1f);
     }
 
