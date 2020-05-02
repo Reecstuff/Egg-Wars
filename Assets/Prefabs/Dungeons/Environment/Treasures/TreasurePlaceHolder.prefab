@@ -193,6 +193,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FantasySun
       objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 0dc8a41118815f049b519e777f0eb41e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: 0dc8a41118815f049b519e777f0eb41e, type: 3}
       propertyPath: m_IsActive
       value: 1
