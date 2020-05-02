@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 16bc8a9d5451ca44d8f70575adbece3a, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 20794adb21ce44d4f831b312aa65b862, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -957,7 +957,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 45e2e3e8968d81a48aefecf6846a9c7b, type: 3}
+      objectReference: {fileID: 8300000, guid: c67098cff741c9f40a701ec3409afc92, type: 3}
     - target: {fileID: 5226081667706724411, guid: a0dfcdd4536c5154aba39f9fd1d43182,
         type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
@@ -1981,11 +1981,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4601523300737890181, guid: d2da2f890381b6a46a5760aa4c80d174,
-        type: 3}
-      propertyPath: navi
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4601523300737890187, guid: d2da2f890381b6a46a5760aa4c80d174,
         type: 3}

@@ -39,10 +39,6 @@ public class PlayerController : MonoBehaviour
     AudioSource walkingSource;
     bool shouldAnimateMoving = false;
 
-    [SerializeField]
-    AudioClip[] walkingClips;
-    int currentWalkingClip = 0;
-
     private void Start()
     {
         walkingSource = GetComponent<AudioSource>();
@@ -99,8 +95,6 @@ public class PlayerController : MonoBehaviour
         {
             animator.CrossFade(standingState, 0.0f);
             walkingSource.Stop();
-            currentWalkingClip = currentWalkingClip == walkingClips.Length - 1 ? 0 : currentWalkingClip + 1;
-            walkingSource.clip = walkingClips[currentWalkingClip];
         }
     }
 

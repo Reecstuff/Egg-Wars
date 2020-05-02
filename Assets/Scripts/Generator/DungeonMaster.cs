@@ -254,7 +254,7 @@ public class DungeonMaster : MonoBehaviour
         dungeonStarter.bossRoom.StartDungeon();
         dungeonStarter.bossRoom.gameObject.SetActive(true);
 
-        return dungeonStarter.bossRoom.transform.position  + Vector3.up;
+        return dungeonStarter.bossRoom.transform.position  + Vector3.up * 1.5f;
     }
 
     int GetRandomIndex(int length)
