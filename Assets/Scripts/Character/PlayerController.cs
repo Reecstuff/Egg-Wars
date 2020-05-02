@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
         DungeonMaster.Instance.player = this;
         animator.SetFloat(walkingValue, moveSpeed);
         standardSpeed = moveSpeed;
-        
     }
 
     private void Update()
@@ -63,14 +62,22 @@ public class PlayerController : MonoBehaviour
         moveVelocity = moveInput * moveSpeed;
 
         Ray cameraRay = cam.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        Plane groundPlane = new Plane(Vector3.up, transform.position);
         float rayLength;
 
         if (groundPlane.Raycast(cameraRay, out rayLength))
         {
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
-            if (Vector3.Distance(new Vector3(pointToLook.x, playerGroundProtectionY, pointToLook.z),new Vector3(transform.position.x, playerGroundProtectionY, transform.position.z)) > 2)
-                transform.LookAt(new Vector3(pointToLook.x, playerGroundProtectionY, pointToLook.z));
+            if (Vector3.Distance(new Vector3(pointToLook.x, transform.position.y, pointToLook.z),transform.position) > 2)
+            {
+                rb.angularVelocity = Vector3.zero;
+                transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+            }
+            else
+            {
+                rb.angularVelocity = Vector3.one;
+            }
+
         }
 
         if (Input.GetKey(KeyCode.Q) && timeBtwShots <= 0 && ammoGrenade > 0)
