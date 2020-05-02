@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class CharacterStats : MonoBehaviour
 {
 	public int maxHealth = 100;
 	public int currentHealth { get; private set; }
 
-	public HealthBar healthBar;
+	public StatsUI statsUI;
+	public PlayerController player;
 
 	public Stat damage;
 	public Stat armor;
 
-	private void Awake()
+	private void Start()
 	{
 		currentHealth = maxHealth;
-		healthBar.SetMaxHealth(maxHealth);
+		statsUI.SetMaxHealth(maxHealth);
 	}
 
 	private void Update()
 	{
-		healthBar.count = currentHealth;
+		statsUI.countHealth = currentHealth;
+		statsUI.countGrenade = player.ammoGrenade;
 	}
 
 	public void TakeDamage(int damage)
@@ -30,7 +31,7 @@ public class CharacterStats : MonoBehaviour
 		currentHealth -= damage;
 		Debug.Log(transform.name + " take " + damage + " damage.");
 
-		healthBar.SetHealth(currentHealth);
+		statsUI.SetHealth(currentHealth);
 
 		if (currentHealth <= 0)
 		{

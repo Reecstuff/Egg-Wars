@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private float timeBtwShots;
     public float startTimeBtwShots = 1f;
 
+    public int ammoGrenade = 0;
+
     Animator animator;
 
     [SerializeField]
@@ -67,7 +69,7 @@ public class PlayerController : MonoBehaviour
                 transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
 
-        if (Input.GetKey(KeyCode.Q) && timeBtwShots <= 0)
+        if (Input.GetKey(KeyCode.Q) && timeBtwShots <= 0 && ammoGrenade > 0)
         {
             timeBtwShots = startTimeBtwShots;
 
@@ -75,6 +77,8 @@ public class PlayerController : MonoBehaviour
             grenade.transform.position = transform.position + grenade.transform.forward;
             Rigidbody rb = grenade.GetComponent<Rigidbody>();
             rb.velocity = grenade.transform.forward * 10;
+
+            ammoGrenade--;
         }
         else
         {
