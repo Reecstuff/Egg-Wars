@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1419878380221396874}
   - component: {fileID: 3000943885608051191}
-  m_Layer: 0
-  m_Name: PlayerCheck
+  - component: {fileID: 1621114056598607998}
+  m_Layer: 10
+  m_Name: PlayerSonar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +45,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 12.29
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1621114056598607998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3605498566003819442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825c15ee4c440684b9e0e0a09662a244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3648672545318274770
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,6 +69,7 @@ GameObject:
   - component: {fileID: 3648672545318274780}
   - component: {fileID: 3648672545318274783}
   - component: {fileID: 4269113744102760570}
+  - component: {fileID: 7940862305894702328}
   m_Layer: 0
   m_Name: Cow_Enemy
   m_TagString: Untagged
@@ -71,7 +85,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3648672545318274770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.50193036, y: 1.5361866, z: 1.3406012}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8635657335659971477}
@@ -212,6 +226,20 @@ CapsuleCollider:
   m_Height: 7.01
   m_Direction: 2
   m_Center: {x: 0, y: 2.49, z: 0}
+--- !u!114 &7940862305894702328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3648672545318274770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f92c495a4dbae41acabc7ed12cc29c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 10
+  standardSpeed: 0
 --- !u!95 &3648672545891936393
 Animator:
   serializedVersion: 3
