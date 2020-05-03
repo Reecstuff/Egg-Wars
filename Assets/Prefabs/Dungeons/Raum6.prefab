@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 3120238739813417324}
   - component: {fileID: 7913494053809612572}
   - component: {fileID: 6373909764548125162}
+  - component: {fileID: 6951221788899659570}
   m_Layer: 0
   m_Name: Wand_Fesnter4 1
   m_TagString: Untagged
@@ -114,6 +115,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6951221788899659570
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718345970296467484}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4709988953547193465, guid: fe5204988c6a2724da04fec43733bcb3, type: 3}
 --- !u!1 &951852769152416648
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +327,7 @@ GameObject:
   - component: {fileID: 77370469547857144}
   - component: {fileID: 1676668895285231009}
   - component: {fileID: 281630715194191797}
+  - component: {fileID: 1270328413463755564}
   m_Layer: 0
   m_Name: Wand_Fesnter6
   m_TagString: Untagged
@@ -380,6 +396,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1270328413463755564
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884362490067702943}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2497169274632478518, guid: fe5204988c6a2724da04fec43733bcb3, type: 3}
 --- !u!1 &2407387986384051133
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,6 +421,7 @@ GameObject:
   - component: {fileID: 8327655930756758032}
   - component: {fileID: 2014581491183136961}
   - component: {fileID: 3771704509993491236}
+  - component: {fileID: 1193946978536396385}
   m_Layer: 0
   m_Name: Wand_Fesnter3 1
   m_TagString: Untagged
@@ -459,6 +490,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1193946978536396385
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2407387986384051133}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6982251122014413436, guid: fe5204988c6a2724da04fec43733bcb3, type: 3}
 --- !u!1 &2673122719456750897
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,13 +642,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dungeonObstaclesCat:
-  - SpawnPercentage: 0
+  - SpawnPercentage: 36
     categorieList: {fileID: 11400000, guid: 7ac57a7ea9d05804aaecc1c5e81476bb, type: 2}
-  - SpawnPercentage: 0
+  - SpawnPercentage: 35
     categorieList: {fileID: 11400000, guid: f367faa1bfc38eb4c9a99bf017a0fd4e, type: 2}
-  - SpawnPercentage: 0
+  - SpawnPercentage: 19
     categorieList: {fileID: 11400000, guid: 453ba191ea2cc5d45aa83e4e7190eb41, type: 2}
-  - SpawnPercentage: 100
+  - SpawnPercentage: 10
     categorieList: {fileID: 11400000, guid: 3bfb429245db22e49a3018b00cc86802, type: 2}
   spawnPositions:
   - {fileID: 8290006599013701548}
@@ -628,6 +673,7 @@ GameObject:
   - component: {fileID: 1183736708516952339}
   - component: {fileID: 691400387725372454}
   - component: {fileID: 3509703210416814557}
+  - component: {fileID: 2804625796719286996}
   m_Layer: 0
   m_Name: Wand_Fesnter4 2
   m_TagString: Untagged
@@ -696,6 +742,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2804625796719286996
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3174189111839287223}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2247203871122810983, guid: fe5204988c6a2724da04fec43733bcb3, type: 3}
 --- !u!1 &3303989631803227421
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,6 +925,7 @@ GameObject:
   - component: {fileID: 4638328688952202146}
   - component: {fileID: 7157936803019275359}
   - component: {fileID: 2412114946227026061}
+  - component: {fileID: 8169655960967601303}
   m_Layer: 0
   m_Name: Wand_Fesnter3 2
   m_TagString: Untagged
@@ -933,6 +994,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8169655960967601303
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3624874951469514892}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1347091174616677295, guid: fe5204988c6a2724da04fec43733bcb3, type: 3}
 --- !u!1 &4172207904108005943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,6 +1256,7 @@ GameObject:
   - component: {fileID: 7244611892413918992}
   - component: {fileID: 8598209194050326749}
   - component: {fileID: 6891007190239689740}
+  - component: {fileID: 688970447724986532}
   m_Layer: 0
   m_Name: Wand_Fesnter4
   m_TagString: Untagged
@@ -1249,6 +1325,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &688970447724986532
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4835554138117851108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3052669940779909244, guid: fe5204988c6a2724da04fec43733bcb3, type: 3}
 --- !u!1 &5074494530055487399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,6 +1460,7 @@ GameObject:
   - component: {fileID: 4194752310402041649}
   - component: {fileID: 5550851855696866404}
   - component: {fileID: 8003987053976319949}
+  - component: {fileID: 530695480645638178}
   m_Layer: 0
   m_Name: Wand_Fesnter5
   m_TagString: Untagged
@@ -1438,6 +1529,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &530695480645638178
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5588067318797597755}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3481940767385692662, guid: fe5204988c6a2724da04fec43733bcb3, type: 3}
 --- !u!1 &5624925802447105840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,6 +1554,7 @@ GameObject:
   - component: {fileID: 3801370115812142918}
   - component: {fileID: 7240314379522216001}
   - component: {fileID: 36104613691094333}
+  - component: {fileID: 6079028626211138471}
   m_Layer: 0
   m_Name: Wand_Fesnter3
   m_TagString: Untagged
@@ -1517,6 +1623,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6079028626211138471
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624925802447105840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3797788804437979825, guid: fe5204988c6a2724da04fec43733bcb3, type: 3}
 --- !u!1 &5814094281137241099
 GameObject:
   m_ObjectHideFlags: 0
