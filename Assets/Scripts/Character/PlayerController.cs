@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject granadePrefab;
 
+    public CharacterStats characterStats;
+
     private float timeBtwShots;
     public float startTimeBtwShots = 1f;
 
@@ -36,9 +38,14 @@ public class PlayerController : MonoBehaviour
     string standingState = "Standing";
 
     [SerializeField]
+    string meeleState = "Meele";
+
+    [SerializeField]
     string walkingValue = "WalkingMultiplier";
 
+
     AudioSource walkingSource;
+    AudioSource speakingSource;
     bool shouldAnimateMoving = false;
 
     int playerGroundProtectionCount = 0;
@@ -46,7 +53,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        characterStats = GetComponent<CharacterStats>();
         walkingSource = GetComponent<AudioSource>();
+        speakingSource = GetComponents<AudioSource>()[1];
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         DungeonMaster.Instance.player = this;
@@ -100,18 +109,39 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = moveVelocity;
-
-        if(!animator.GetCurrentAnimatorStateInfo(0).IsName(walkingState) && shouldAnimateMoving)
-        {
-            animator.Play(walkingState);
-            walkingSource.Play();
-        }
-        else if (!animator.GetCurrentAnimatorStateInfo(0).IsName(standingState) && !shouldAnimateMoving)
-        {
-            animator.CrossFade(standingState, 0.0f);
-            walkingSource.Stop();
-        }
+        AnimationInFixedUpdate();
         OnPlayerGroundProtection();
+    }
+
+    public void SwingWeapon()
+    {
+        //animator.Play(meeleState);
+        animator.CrossFade(meeleState, 0.01f, 0);
+        // Do Sound here
+    }
+
+    void AnimationInFixedUpdate()
+    {
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName(meeleState))
+        {
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName(walkingState) && shouldAnimateMoving)
+            {
+                CancelInvoke(nameof(PlaySpeakSound));
+                animator.Play(walkingState);
+                walkingSource.Play();
+            }
+            else if (!shouldAnimateMoving && !animator.GetCurrentAnimatorStateInfo(0).IsName(standingState))
+            {
+                animator.CrossFade(standingState, 0.0f);
+                walkingSource.Stop();
+                Invoke(nameof(PlaySpeakSound), 2);
+            }
+        }
+    }
+
+    void PlaySpeakSound()
+    {
+        speakingSource.Play();
     }
 
     void OnPlayerGroundProtection()
@@ -137,12 +167,12 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Tauscht die Waffe auf dem Boden mit der jetzigen aus
     /// </summary>
-    /// <param name="weapon">Waffe auf dem Boden</param>
+    /// <param name="item">Waffe auf dem Boden</param>
     /// <returns>Ausgerüstete Waffe</returns>
-    public EquipAbleItem EquipWeapon(ItemText weapon)
+    public EquipAbleItem EquipWeapon(ItemText item)
     {
         // Finde die waffe aus den vorhanden Waffen
-        EquipAbleItem newEquip = DungeonMaster.Instance.AllEquipableItems.FirstOrDefault(w => w.item.Equals(weapon));
+        EquipAbleItem newEquip = DungeonMaster.Instance.AllEquipableItems.FirstOrDefault(w => w.item.Equals(item));
 
         if(newEquip == null)
         {
@@ -153,24 +183,31 @@ public class PlayerController : MonoBehaviour
         {
             GameObject oldWeapon = equippedWeapon;
 
-                
-            Destroy(equippedWeapon);
 
             // Is this a Weapon
-            if(oldWeapon.GetComponent<Weapon>())
+            if(newEquip.GetComponent<Weapon>())
             {
-
+                Destroy(equippedWeapon);
                 // Instantiate the new Weapon
                 equippedWeapon = Instantiate(newEquip.gameObject, weaponSlot.transform);
             }
             else
             {
+                Destroy(equippedWeapon);
                 // Write Code to Equip on Itemslot instead of Weaponslot
                 equippedWeapon = Instantiate(newEquip.gameObject, weaponSlot.transform);
             }
 
-            // Return old Weapon back to Collectable
-            return oldWeapon.GetComponent<EquipAbleItem>();
+            if(oldWeapon)
+            {
+                // Return old Weapon back to Collectable
+                return oldWeapon.GetComponent<EquipAbleItem>();
+            }
+            else
+            {
+                return null;
+            }
+
         }
     }
 

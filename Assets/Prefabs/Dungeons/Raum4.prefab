@@ -234,7 +234,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8667393620559840367, guid: b47a6d1572cfb5e4f80e612fdae84f94, type: 3}
 --- !u!1 &1357866085083577068
@@ -881,7 +881,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2829138896493899622, guid: b47a6d1572cfb5e4f80e612fdae84f94, type: 3}
 --- !u!1 &4858448022533018598
@@ -1114,7 +1114,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5308538089480621945, guid: b47a6d1572cfb5e4f80e612fdae84f94, type: 3}
 --- !u!1 &6577293065142356247
@@ -1208,7 +1208,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7385937609903189714, guid: b47a6d1572cfb5e4f80e612fdae84f94, type: 3}
 --- !u!1 &6831084584085555170
@@ -1746,7 +1746,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -462257906841497919, guid: b47a6d1572cfb5e4f80e612fdae84f94, type: 3}
 --- !u!1 &8329007266595441963
@@ -1976,13 +1976,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dungeonObstaclesCat:
-  - SpawnPercentage: 100
+  - SpawnPercentage: 36
     categorieList: {fileID: 11400000, guid: 7ac57a7ea9d05804aaecc1c5e81476bb, type: 2}
-  - SpawnPercentage: 0
+  - SpawnPercentage: 35
     categorieList: {fileID: 11400000, guid: f367faa1bfc38eb4c9a99bf017a0fd4e, type: 2}
-  - SpawnPercentage: 0
+  - SpawnPercentage: 19
     categorieList: {fileID: 11400000, guid: 453ba191ea2cc5d45aa83e4e7190eb41, type: 2}
-  - SpawnPercentage: 0
+  - SpawnPercentage: 10
     categorieList: {fileID: 11400000, guid: 3bfb429245db22e49a3018b00cc86802, type: 2}
   spawnPositions:
   - {fileID: 8641403422208752444}
@@ -2120,6 +2120,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2500552096499427090, guid: b47a6d1572cfb5e4f80e612fdae84f94, type: 3}

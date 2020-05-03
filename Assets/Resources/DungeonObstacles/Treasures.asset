@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Obstacles:
   - {fileID: 7838613710634201322, guid: 96d5adcaf1980ec4ab5e9d8aba965aed, type: 3}
+  - {fileID: 3710390851667682995, guid: c412a525c59a1ee4b8e16be523ba16fe, type: 3}
