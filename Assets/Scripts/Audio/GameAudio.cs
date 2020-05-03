@@ -49,7 +49,7 @@ public class GameAudio : MonoBehaviour
 
     public void SetNormalMusic()
     {
-        source.clip = BossMusic;
+        source.clip = normalBackGroundMusic;
         source.Play();
     }
 }

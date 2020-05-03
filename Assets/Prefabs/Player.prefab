@@ -56,15 +56,18 @@ MonoBehaviour:
   standardSpeed: 0
   equippedWeapon: {fileID: 3065123745014835920}
   weaponSlot: {fileID: 9210877384641666040}
+  abilitySlot: {fileID: 5465383867993340876}
+  equippedAbility: {fileID: 0}
   granadePrefab: {fileID: 2171840517126204734, guid: 8c41192366835e14284bd0efc84d306f,
     type: 3}
   characterStats: {fileID: 0}
   startTimeBtwShots: 1
-  ammoGrenade: 2
+  GravityOn: 0
   walkingState: Walking
   standingState: Standing
   meeleState: Meele
   walkingValue: WalkingMultiplier
+  playerGroundProtectionY: 0
 --- !u!54 &1577825707594235633
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -110,10 +113,9 @@ MonoBehaviour:
   maxHealth: 12
   statsUI: {fileID: 0}
   player: {fileID: 308601671476663735}
-  damage:
-    baseValue: 0
-  armor:
-    baseValue: 0
+  ammoGrenade: 0
+  damage: 0
+  armor: 0
 --- !u!82 &5226081667706724411
 AudioSource:
   m_ObjectHideFlags: 0
@@ -517,6 +519,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &6348478271857397879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5465383867993340876}
+  m_Layer: 0
+  m_Name: AbilitySlot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5465383867993340876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6348478271857397879}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.448, y: 0.998, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3809902463333273680}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4038728820054758470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1801,6 +1833,12 @@ Transform:
 --- !u!4 &3859071985471318998 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 973445958154256272, guid: 4b90f93f462120d46a21a4650869df67,
+    type: 3}
+  m_PrefabInstance: {fileID: 4038728820054758470}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3809902463333273680 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 924096008628110358, guid: 4b90f93f462120d46a21a4650869df67,
     type: 3}
   m_PrefabInstance: {fileID: 4038728820054758470}
   m_PrefabAsset: {fileID: 0}

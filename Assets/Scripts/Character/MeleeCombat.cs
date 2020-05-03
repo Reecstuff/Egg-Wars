@@ -4,22 +4,14 @@ using UnityEngine;
 
 public class MeleeCombat : MonoBehaviour
 {
-	Animator anim;
+    public int damage = 50;
 
-	private void Start()
-	{
-		anim = GetComponent<Animator>();
-	}
-
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-			anim.SetBool("attacking", true);
-		}
-		else if (Input.GetKeyUp(KeyCode.Space))
-		{
-			anim.SetBool("attacking", false);
-		}
-	}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Enemy>())
+        {
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            enemy.health -= damage;
+        }
+    }
 }

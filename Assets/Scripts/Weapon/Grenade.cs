@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grenade : EquipAbleItem
+public class Grenade : Ability
 {
 	public float delay = 1f;
 	public float radius = 6f;
@@ -36,7 +36,6 @@ public class Grenade : EquipAbleItem
 			Enemy destruct = nearbyObj.GetComponent<Enemy>();
 			if (destruct != null)
 			{
-				Debug.Log("Damage");
 				destruct.health -= damage;
 			}
 		}
