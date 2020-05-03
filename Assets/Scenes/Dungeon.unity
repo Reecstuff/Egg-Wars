@@ -846,7 +846,7 @@ PrefabInstance:
     - target: {fileID: 4601523300737890181, guid: d2da2f890381b6a46a5760aa4c80d174,
         type: 3}
       propertyPath: currentDungeonMax
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4601523300737890187, guid: d2da2f890381b6a46a5760aa4c80d174,
         type: 3}

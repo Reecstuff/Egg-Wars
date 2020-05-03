@@ -21,8 +21,12 @@ public class PlayerController : MonoBehaviour
     public GameObject equippedWeapon;
     public Transform weaponSlot;
 
+    [SerializeField]
+    Transform abilitySlot;
+
+    public GameObject equippedAbility;
+
     public GameObject granadePrefab;
-    public int ammoGrenade = 0;
 
     public CharacterStats characterStats;
 
@@ -89,19 +93,25 @@ public class PlayerController : MonoBehaviour
                 rb.angularVelocity = Vector3.one;
                 GravityOn = true;
             }
-
+            UseAbility();
         }
 
-        if (Input.GetKey(KeyCode.Q) && timeBtwShots <= 0 && ammoGrenade > 0)
+       
+    }
+
+    private void UseAbility()
+    {
+        if (Input.GetKey(KeyCode.G) && timeBtwShots <= 0 && characterStats.ammoGrenade > 0)
         {
             timeBtwShots = startTimeBtwShots;
 
             GameObject grenade = Instantiate(granadePrefab, transform.position, transform.rotation);
             grenade.transform.position = transform.position + grenade.transform.forward;
+            grenade.GetComponent<Grenade>().StartCountdown();
             Rigidbody rb = grenade.GetComponent<Rigidbody>();
             rb.velocity = grenade.transform.forward * 10;
 
-            ammoGrenade--;
+            characterStats.SetGrenadeAmmo(-1);
         }
         else
         {
@@ -184,27 +194,36 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            GameObject oldWeapon = equippedWeapon;
-
+            GameObject oldItem = null;
 
             // Is this a Weapon
-            if(newEquip.GetComponent<Weapon>())
+            if (newEquip.GetComponent<Weapon>())
             {
+                oldItem = equippedWeapon;
                 Destroy(equippedWeapon);
                 // Instantiate the new Weapon
                 equippedWeapon = Instantiate(newEquip.gameObject, weaponSlot.transform);
             }
-            else
+            else if(newEquip.GetComponent<Ability>())
             {
-                Destroy(equippedWeapon);
-                // Write Code to Equip on Itemslot instead of Weaponslot
-                equippedWeapon = Instantiate(newEquip.gameObject, weaponSlot.transform);
+                if(equippedAbility == null)
+                {
+                    equippedAbility = Instantiate(newEquip.gameObject, abilitySlot.transform);
+                    equippedAbility.GetComponent<Rigidbody>().detectCollisions = false;
+                }
+                else
+                {
+                    oldItem = equippedAbility;
+                    // Write Code to Equip on Itemslot instead of Weaponslot
+                    Destroy(equippedAbility);
+                    equippedAbility = Instantiate(newEquip.gameObject, abilitySlot.transform);
+                }
             }
 
-            if(oldWeapon)
+            if(oldItem)
             {
                 // Return old Weapon back to Collectable
-                return oldWeapon.GetComponent<EquipAbleItem>();
+                return oldItem.GetComponent<EquipAbleItem>();
             }
             else
             {

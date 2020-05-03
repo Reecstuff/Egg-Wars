@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grenade : EquipAbleItem
+public class Grenade : Ability
 {
 	public float delay = 1f;
 	public float radius = 6f;
@@ -11,19 +11,28 @@ public class Grenade : EquipAbleItem
 
 	float countdown;
 	bool hasExploded = false;
+	bool fuse = false;
 
 	private void Start()
 	{
+	}
+
+	public void StartCountdown()
+	{
 		countdown = delay;
+		fuse = true;
 	}
 
 	private void Update()
 	{
-		countdown -= Time.deltaTime;
-		if (countdown <= 0f && !hasExploded)
+		if(fuse)
 		{
-			Explode();
-			hasExploded = true;
+			countdown -= Time.deltaTime;
+			if (countdown <= 0f && !hasExploded)
+			{
+				Explode();
+				hasExploded = true;
+			}
 		}
 	}
 
@@ -36,7 +45,6 @@ public class Grenade : EquipAbleItem
 			Enemy destruct = nearbyObj.GetComponent<Enemy>();
 			if (destruct != null)
 			{
-				Debug.Log("Damage");
 				destruct.health -= damage;
 			}
 		}

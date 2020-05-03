@@ -8,8 +8,9 @@ public class CharacterStats : MonoBehaviour
 	public StatsUI statsUI;
 	public PlayerController player;
 
-	public Stat damage;
-	public Stat armor;
+	public int ammoGrenade = 0;
+	public int damage;
+	public int armor;
 
 
 	private void Start()
@@ -17,13 +18,13 @@ public class CharacterStats : MonoBehaviour
 		currentHealth = maxHealth - 3;
 		statsUI.SetMaxHealth(maxHealth);
 		statsUI.SetHealth(currentHealth);
-		statsUI.SetAmmo(player.ammoGrenade);
+		statsUI.SetAmmo(ammoGrenade);
 	}
 
 
 	public void TakeDamage(int damage)
 	{
-		damage -= armor.GetValue();
+		damage -= armor;
 		damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
 		currentHealth -= damage;
@@ -48,17 +49,23 @@ public class CharacterStats : MonoBehaviour
 
 	public void Armor(int armorAmount)
 	{
-		if (armorAmount + currentHealth <= maxHealth)
+		if (armorAmount + armor <= maxHealth)
 		{
-			currentHealth += armorAmount;
+			armor += armorAmount;
 		}
-		statsUI.SetHealth(currentHealth);
+		statsUI.SetArmor(armor);
 	}
 
 	public void UpgradeMaxHealth(int upgradeAmount)
 	{
 		maxHealth += upgradeAmount;
 		statsUI.SetMaxHealth(maxHealth);
+	}
+
+	public void SetGrenadeAmmo(int grenadeAmount)
+	{
+		ammoGrenade += grenadeAmount;
+		statsUI.SetAmmo(ammoGrenade);
 	}
 
 	public virtual void Die()
