@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(AudioSource))]
 public class Enemy : MonoBehaviour
@@ -76,13 +77,13 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            OnPlayerCollision();
+            OnPlayerCollision(other.gameObject);
         }
     }
 
-    virtual protected void OnPlayerCollision()
+    virtual protected void OnPlayerCollision(GameObject player)
     {
-
+        
     }
 
     virtual protected void DamagePlayer()
