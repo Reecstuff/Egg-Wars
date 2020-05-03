@@ -43,9 +43,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7889190202161524475, guid: 58be5ef42ece6c844802b4c7030fc475,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: f56be758da9abc34584e68917099dc84, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5a3f857a15c1255498a0f282c9bf5984, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.72
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -144,4 +144,4 @@ MonoBehaviour:
   normalBackGroundMusic: {fileID: 8300000, guid: f56be758da9abc34584e68917099dc84,
     type: 3}
   BossMusic: {fileID: 8300000, guid: ca0aaa130d497304a98a0cef0853375e, type: 3}
-  MenuMusic: {fileID: 0}
+  MenuMusic: {fileID: 8300000, guid: 5a3f857a15c1255498a0f282c9bf5984, type: 3}

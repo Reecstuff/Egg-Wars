@@ -52,4 +52,10 @@ public class GameAudio : MonoBehaviour
         source.clip = normalBackGroundMusic;
         source.Play();
     }
+
+    public void SetMenuMusic()
+    {
+        source.clip = MenuMusic;
+        source.Play();
+    }
 }

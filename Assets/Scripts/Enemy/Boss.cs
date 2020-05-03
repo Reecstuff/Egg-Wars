@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Boss : Enemy
 {
+    [SerializeField]
+    AudioClip beginningClip;
+
+    [SerializeField]
+    AudioClip walkingClip;
+
+    [SerializeField]
+    AudioClip deathClip;
+
     string[] animationAttack = { "Boss_Jump", "Boss_Hack_Attack", "Boss_WirbelAttacke" };
     string[] animationStandard = { "Boss_Standing", "Boss_Walking", "Boss_Dying" };
     string walkingSpeed = "Walking_Speed";
@@ -11,6 +20,12 @@ public class Boss : Enemy
     float damageRadius = 15;
     Vector3 damagePosition;
     bool animateMoving = false;
+
+    protected override void Start()
+    {
+        base.Start();
+        health = 2000;
+    }
 
 
     protected override void OnPlayerCollision(GameObject Player)
@@ -52,8 +67,6 @@ public class Boss : Enemy
     }
 
 
-
-
     protected override void DamagePlayer()
     {
         float force = 2000f;
@@ -75,5 +88,4 @@ public class Boss : Enemy
             }
         }
     }
-
 }

@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     public event EnemyDeath OnEnemyDeath;
 
     // Start is called before the first frame update
-    protected void Start()
+    protected virtual void Start()
     {
         sonar = GetComponentInChildren<PlayerSonar>();
         animator = GetComponentInChildren<Animator>();

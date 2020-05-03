@@ -31,6 +31,7 @@ GameObject:
   - component: {fileID: 4943024217073367971}
   - component: {fileID: 4943024217073367970}
   - component: {fileID: 4943024217073367969}
+  - component: {fileID: 3084658352832550539}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -63,9 +64,10 @@ AudioSource:
   m_GameObject: {fileID: 4943024217073367997}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4831032651398657920, guid: 58be5ef42ece6c844802b4c7030fc475,
+    type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -186,6 +188,26 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3084658352832550539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943024217073367997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b87c70224cfc1a8428d2ae22d57f241b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2000
+  Speed: 10
+  standardSpeed: 0
+  damage: 5
+  maxPitch: 2
+  beginningClip: {fileID: 8300000, guid: da2b8fef01a6ad349a513d1e02ce80e5, type: 3}
+  walkingClip: {fileID: 8300000, guid: 1c153e732589b894da48cfdf6b7b68be, type: 3}
+  deathClip: {fileID: 0}
 --- !u!1 &7803927238810543191
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +585,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: f05f552018f7609498c572326becd1c5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.31
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f05f552018f7609498c572326becd1c5,
         type: 3}

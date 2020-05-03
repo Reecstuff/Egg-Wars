@@ -27,6 +27,7 @@ public class StartDungeon : MonoBehaviour
 
     public void DungeonOn()
     {
+        GameAudio.Instance.SetNormalMusic();
         SetupDungeon();
         SetupPlayer();
 
