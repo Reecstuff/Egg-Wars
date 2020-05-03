@@ -77,11 +77,16 @@ public class Collectable : MonoBehaviour
             audioSource.Play();
     }
 
-    public void UpdateData(EquipAbleItem newWeapon)
+    public bool UpdateData(EquipAbleItem newWeapon)
     {
         PlayAudio();
         if (!newWeapon)
-            return;
+        {
+            DescriptionText.Instance.ActivateText(false, "");
+            Destroy(gameObject);
+            return false;
+        }
+
 
         itemText = newWeapon.item;
         DescriptionText.Instance.ActivateText(true, itemText.Description);
@@ -93,6 +98,7 @@ public class Collectable : MonoBehaviour
 
         Modell.GetComponent<MeshFilter>().sharedMesh = newModell.GetComponentInChildren<MeshFilter>().sharedMesh;
         Modell.GetComponent<Renderer>().sharedMaterial = newModell.GetComponentInChildren<Renderer>().sharedMaterial;
+        return true;
         
     }
 }

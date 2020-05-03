@@ -56,7 +56,7 @@ MonoBehaviour:
   standardSpeed: 0
   equippedWeapon: {fileID: 3035403610708228767}
   weaponSlot: {fileID: 9210877384641666040}
-  abilitySlot: {fileID: 5465383867993340876}
+  abilitySlot: {fileID: 6551324071130120749}
   equippedAbility: {fileID: 0}
   granadePrefab: {fileID: 2171840517126204734, guid: 8c41192366835e14284bd0efc84d306f,
     type: 3}
@@ -113,7 +113,7 @@ MonoBehaviour:
   maxHealth: 12
   statsUI: {fileID: 0}
   player: {fileID: 308601671476663735}
-  ammoGrenade: 0
+  ammoAbility: 0
   damage: 0
   armor: 0
 --- !u!82 &5226081667706724411
@@ -549,6 +549,36 @@ Transform:
   m_Father: {fileID: 3809902463333273680}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 12.56, y: -34.510002, z: -53.346}
+--- !u!1 &9156865885342650200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6551324071130120749}
+  m_Layer: 0
+  m_Name: AbilitySlot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6551324071130120749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9156865885342650200}
+  m_LocalRotation: {x: -0.32505125, y: -0.75130635, z: -0.4938572, w: 0.29323304}
+  m_LocalPosition: {x: -0.986, y: 0.375, z: 0.949}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3859071985471318998}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -68.861, y: -160.639, z: 33.452003}
 --- !u!1001 &4038728820054758470
 PrefabInstance:
   m_ObjectHideFlags: 0

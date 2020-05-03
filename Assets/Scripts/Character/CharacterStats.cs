@@ -8,7 +8,7 @@ public class CharacterStats : MonoBehaviour
 	public StatsUI statsUI;
 	public PlayerController player;
 
-	public int ammoGrenade = 0;
+	public int ammoAbility = 0;
 	public int damage;
 	public int armor = 0;
 
@@ -18,7 +18,7 @@ public class CharacterStats : MonoBehaviour
 		currentHealth = maxHealth - 3;
 		statsUI.SetMaxHealth(maxHealth);
 		statsUI.SetHealth(currentHealth);
-		statsUI.SetAmmo(ammoGrenade);
+		statsUI.SetAmmo(ammoAbility);
 		statsUI.SetArmor(armor);
 	}
 
@@ -78,10 +78,16 @@ public class CharacterStats : MonoBehaviour
 		statsUI.SetMaxHealth(maxHealth);
 	}
 
-	public void SetGrenadeAmmo(int grenadeAmount)
+	public void SetAbilityAmmo(int grenadeAmount)
 	{
-		ammoGrenade += grenadeAmount;
-		statsUI.SetAmmo(ammoGrenade);
+		ammoAbility += grenadeAmount;
+		statsUI.SetAmmo(ammoAbility);
+	}
+
+	public void ResetAmmo()
+	{
+		ammoAbility = 0;
+		statsUI.SetAmmo(ammoAbility);
 	}
 
 	public virtual void Die()
