@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4733640929757071134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.99}
+  m_LocalPosition: {x: 0, y: 0, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5414070861840924028}
@@ -39,8 +39,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5414070861840924028}
-  - component: {fileID: 3689651594556562408}
-  - component: {fileID: 4018666392547845072}
   - component: {fileID: 2948872439566990193}
   m_Layer: 0
   m_Name: Strohballenwerfer
@@ -61,56 +59,10 @@ Transform:
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 4382778427756384409}
+  - {fileID: 5818580917703317621}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3689651594556562408
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6715640658134456065}
-  m_Mesh: {fileID: 4206863451049842226, guid: 84bce727331e07941a54b47b3b7fcb24, type: 3}
---- !u!23 &4018666392547845072
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6715640658134456065}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a94cd593cc720304f8b11995416bdeed, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!114 &2948872439566990193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,8 +78,88 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: fa10eebb06315f246add8e353ef5bf3e, type: 2}
   firePoint: {fileID: 4382778427756384409}
   bullet: {fileID: 5015661641837129399, guid: ac708add053393348b11d234c33a2d54, type: 3}
-  spreadAngle: 10
+  spreadAngle: 0
   shootSpeed: 10
-  bulletcount: 8
-  damage: 1
+  bulletcount: 1
+  damage: 50
   startTimeBtwShots: 0.5
+--- !u!1001 &1568787909489406831
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5414070861840924028}
+    m_Modifications:
+    - target: {fileID: -4216859302048453862, guid: 84bce727331e07941a54b47b3b7fcb24,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 84bce727331e07941a54b47b3b7fcb24,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 84bce727331e07941a54b47b3b7fcb24,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 84bce727331e07941a54b47b3b7fcb24,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 84bce727331e07941a54b47b3b7fcb24,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 84bce727331e07941a54b47b3b7fcb24,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 84bce727331e07941a54b47b3b7fcb24,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 84bce727331e07941a54b47b3b7fcb24,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 84bce727331e07941a54b47b3b7fcb24,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 84bce727331e07941a54b47b3b7fcb24,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 84bce727331e07941a54b47b3b7fcb24,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 84bce727331e07941a54b47b3b7fcb24,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a94cd593cc720304f8b11995416bdeed, type: 2}
+    - target: {fileID: -927199367670048503, guid: 84bce727331e07941a54b47b3b7fcb24,
+        type: 3}
+      propertyPath: m_Name
+      value: StrohballenWerfer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 84bce727331e07941a54b47b3b7fcb24, type: 3}
+--- !u!4 &5818580917703317621 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 84bce727331e07941a54b47b3b7fcb24,
+    type: 3}
+  m_PrefabInstance: {fileID: 1568787909489406831}
+  m_PrefabAsset: {fileID: 0}
