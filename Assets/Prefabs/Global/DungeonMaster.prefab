@@ -49,6 +49,7 @@ MonoBehaviour:
   - {fileID: 1393550350971035854, guid: 54f1ab6bfd8d062419748c82e580bb0f, type: 3}
   - {fileID: 8423158574257146108, guid: 8c41192366835e14284bd0efc84d306f, type: 3}
   - {fileID: 787052412827279024, guid: 7247f53433c01444aa58d0eda1bcadd5, type: 3}
+  - {fileID: 9071154779984818260, guid: e7be72bde38cb7f4fb1e62d58706f773, type: 3}
   PlayerMoving: 0
   BossRoomTime: 0
   PlayerMovingTime: 0.3
