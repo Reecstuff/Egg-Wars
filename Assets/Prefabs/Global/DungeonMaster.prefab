@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navi: {fileID: 0}
-  lootbox: {fileID: 11400000, guid: c5050a5d41464154eb942249a36900e7, type: 2}
   AllEquipableItems:
   - {fileID: 4596184633010804463, guid: a32437d622383ea41a7719000a045532, type: 3}
   - {fileID: 1393550350971035854, guid: 54f1ab6bfd8d062419748c82e580bb0f, type: 3}
@@ -53,11 +52,14 @@ MonoBehaviour:
   PlayerMoving: 0
   BossRoomTime: 0
   PlayerMovingTime: 0.3
+  levelHealingAmount: 3
+  levelMaxHealthUpgradeAmount: 1
   player: {fileID: 0}
   bossDoorsMaterial: {fileID: 2100000, guid: d448309613ccd36448683be4b88faebf, type: 2}
+  normalMaterial: {fileID: 2100000, guid: a28859eef36fdde44b9b8d25e035b1f0, type: 2}
   dungeonStarter: {fileID: 0}
   dungeonOffset: 100
-  currentDungeonMax: 10
+  currentDungeonMax: 1
   dungeons:
   - {fileID: 7104993032198819115, guid: ac024c1c94205144ab2457a84fddf611, type: 3}
   - {fileID: 6618335001263330819, guid: 853d9e31bc3fa274a99370d63fee23ad, type: 3}

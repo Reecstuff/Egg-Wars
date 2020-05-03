@@ -9,7 +9,9 @@ public class Weapon : EquipAbleItem
 
     public float spreadAngle = 10;
     public float shootSpeed = 10;
-    public float bulletcount = 8;
+    public float bulletcount = 1;
+
+    public int damage = 1;
 
     private float timeBtwShots;
     public float startTimeBtwShots = 0.5f;
@@ -24,7 +26,7 @@ public class Weapon : EquipAbleItem
             switch(item.name)
             {
                 case "EggShotgun":
-                    Shotgun();
+                    Shoot();
                     break;
                 case "EggGewehr":
                     Shoot();
@@ -54,18 +56,18 @@ public class Weapon : EquipAbleItem
 
     public void Shoot()
     {
-        GameObject p = Instantiate(bullet, firePoint.position, firePoint.rotation);
-        p.GetComponent<Rigidbody>().AddForce(p.transform.forward * shootSpeed, ForceMode.Impulse);
-    }
-
-    public void Shotgun()
-    {
         int i = 0;
 
         while (i < bulletcount)
         {
             GameObject p = Instantiate(bullet, firePoint.position, firePoint.rotation);
-            p.transform.rotation = Quaternion.RotateTowards(p.transform.rotation, Random.rotation, spreadAngle);
+
+            if (item.name == "EggShotgun")
+            {
+                p.transform.rotation = Quaternion.RotateTowards(p.transform.rotation, Random.rotation, spreadAngle);
+            }
+
+            p.GetComponent<Bullet>().damage = damage;
             p.GetComponent<Rigidbody>().AddForce(p.transform.forward * shootSpeed, ForceMode.Impulse);
 
             i++;

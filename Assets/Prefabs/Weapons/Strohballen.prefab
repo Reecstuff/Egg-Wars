@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3788724964955540654}
   - component: {fileID: 3409965557036567130}
   - component: {fileID: 6783523658413600535}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Strohballen
   m_TagString: Untagged
   m_Icon: {fileID: 0}

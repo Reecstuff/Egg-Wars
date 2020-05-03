@@ -7,9 +7,11 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent), typeof(AudioSource))]
 public class Enemy : MonoBehaviour
 {
-
+    public int health = 100;
     public float Speed = 10;
     public float standardSpeed;
+
+    public int damage = 3;
 
     protected ParticleSystem[] particleSystem; 
 
@@ -19,6 +21,9 @@ public class Enemy : MonoBehaviour
     protected AudioSource source;
     protected Animator animator;
     protected PlayerSonar sonar;
+
+    public delegate void EnemyDeath(Enemy thisEnemy);
+    public event EnemyDeath OnEnemyDeath;
 
     // Start is called before the first frame update
     protected void Start()
@@ -30,6 +35,14 @@ public class Enemy : MonoBehaviour
         standardSpeed = Speed;
         OnSpeedChange(Speed);
         source = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 
     public void PlayAudio()
@@ -67,8 +80,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
     virtual protected void OnPlayerCollision()
+    {
+
+    }
+
+    virtual protected void DamagePlayer()
     {
 
     }
@@ -82,9 +99,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        OnEnemyDeath?.Invoke(this);
+    }
+
     protected void Die()
     {
-        
         Destroy(gameObject);
     }
 }
