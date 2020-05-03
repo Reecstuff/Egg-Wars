@@ -9,7 +9,6 @@ public class PlayerSonar : MonoBehaviour
     Enemy thisEnemy;
 
 
-    int wiggleSafe = 0;
 
     private void Start()
     {
@@ -21,9 +20,7 @@ public class PlayerSonar : MonoBehaviour
     {
         if(other.GetComponent<PlayerController>())
         {
-            Vector3 target = new Vector3(other.transform.position.x, thisEnemy.transform.position.y, other.transform.position.z);
-            thisEnemy.GetComponent<NavMeshAgent>().SetDestination(target);
-            thisEnemy.PlayAudio();
+            thisEnemy.PlayerEnterTrigger(other.gameObject);
         }
     }
 
@@ -31,15 +28,11 @@ public class PlayerSonar : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>())
         {
-            Vector3 target = new Vector3(other.transform.position.x, thisEnemy.transform.position.y, other.transform.position.z);
-            if(wiggleSafe <= 0)
-            {
-                thisEnemy.GetComponent<NavMeshAgent>().SetDestination(target);
-                wiggleSafe = 20;
-            }
-            thisEnemy.PitchAudio(Vector3.Distance(target, transform.position) * 0.05f);
-            thisEnemy.PlayAudio();
-            wiggleSafe--;
+            thisEnemy.PlayerInTriggerStay(other.gameObject);
+        }
+        else
+        {
+            thisEnemy.PlayerNOTInTriggerStay();
         }
     }
 }

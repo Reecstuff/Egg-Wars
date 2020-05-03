@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(AudioSource))]
 public class Enemy : MonoBehaviour
@@ -21,6 +22,8 @@ public class Enemy : MonoBehaviour
     protected AudioSource source;
     protected Animator animator;
     protected PlayerSonar sonar;
+    protected int wiggleSafe = 0;
+    
 
     public delegate void EnemyDeath(Enemy thisEnemy);
     public event EnemyDeath OnEnemyDeath;
@@ -45,10 +48,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void PlayAudio()
+    public void PlayAudio(AudioClip clip = null)
     {
         if(!source.isPlaying)
+        {
+            if (clip != null)
+                source.clip = clip;
             source.Play();
+        }
     }
 
     public void PitchAudio(float negativationValue)
@@ -67,6 +74,21 @@ public class Enemy : MonoBehaviour
         // Set Animation Speed;
     }
 
+    virtual public void PlayerEnterTrigger(GameObject other)
+    {
+
+    }
+
+    virtual public void PlayerInTriggerStay(GameObject other)
+    {
+
+    }
+
+    virtual public void PlayerNOTInTriggerStay()
+    {
+
+    }
+
     protected void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Melee"))
@@ -76,13 +98,13 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            OnPlayerCollision();
+            OnPlayerCollision(other.gameObject);
         }
     }
 
-    virtual protected void OnPlayerCollision()
+    virtual protected void OnPlayerCollision(GameObject player)
     {
-
+        
     }
 
     virtual protected void DamagePlayer()

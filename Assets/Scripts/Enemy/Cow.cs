@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Cow : Enemy
 {
-    protected override void OnPlayerCollision()
+
+    protected override void OnPlayerCollision(GameObject player)
     {
-        base.OnPlayerCollision();
+        base.OnPlayerCollision(player);
         sonar.gameObject.SetActive(false);
         transform.DOScale(1.5f, 0.6f);
         Invoke(nameof(DamagePlayer), 0.6f);
@@ -41,5 +42,28 @@ public class Cow : Enemy
                 destruct.TakeDamage(damage);
             }
         }
+    }
+
+    public override void PlayerEnterTrigger(GameObject other)
+    {
+        base.PlayerEnterTrigger(other);
+        Vector3 target = new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z);
+       
+        agent.SetDestination(target);
+        PlayAudio();
+    }
+
+    public override void PlayerInTriggerStay(GameObject other)
+    {
+        base.PlayerInTriggerStay(other);
+        Vector3 target = new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z);
+        if (wiggleSafe <= 0)
+        {
+            agent.SetDestination(target);
+            wiggleSafe = 20;
+        }
+        PitchAudio(Vector3.Distance(target, transform.position) * 0.05f);
+        PlayAudio();
+        wiggleSafe--;
     }
 }

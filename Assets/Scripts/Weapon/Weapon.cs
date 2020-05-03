@@ -28,6 +28,9 @@ public class Weapon : EquipAbleItem
                 case "EggShotgun":
                     Shoot();
                     break;
+                case "EggPistole":
+                    Shoot();
+                    break;
                 case "EggGewehr":
                     Shoot();
                     break;
@@ -67,7 +70,15 @@ public class Weapon : EquipAbleItem
                 p.transform.rotation = Quaternion.RotateTowards(p.transform.rotation, Random.rotation, spreadAngle);
             }
 
-            p.GetComponent<Bullet>().damage = damage;
+            if (item.name == "Strohballenwerfer")
+            {
+                p.GetComponent<Heuballen>().damage = damage;
+            }
+            else
+            {
+                p.GetComponent<Bullet>().damage = damage;
+            }
+
             p.GetComponent<Rigidbody>().AddForce(p.transform.forward * shootSpeed, ForceMode.Impulse);
 
             i++;
