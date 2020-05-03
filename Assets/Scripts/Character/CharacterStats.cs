@@ -13,7 +13,7 @@ public class CharacterStats : MonoBehaviour
 
 	private void Start()
 	{
-		currentHealth = maxHealth - 1;
+		currentHealth = maxHealth - 3;
 		statsUI.SetMaxHealth(maxHealth);
 		statsUI.SetHealth(currentHealth);
 		statsUI.SetAmmo(player.ammoGrenade);

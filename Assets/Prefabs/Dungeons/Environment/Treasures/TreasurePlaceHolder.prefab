@@ -89,7 +89,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 36b739d1548bfc649a6c34d70bba2297, type: 3}
+      objectReference: {fileID: 8300000, guid: fc40b8bc351702c49b6b43195a9c33c7, type: 3}
     - target: {fileID: -1998978759826810288, guid: d368e7001688dcb4891d002ab03d94b1,
         type: 3}
       propertyPath: MinDistance
@@ -247,15 +247,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 0dc8a41118815f049b519e777f0eb41e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.222362
+      value: 0.13302138
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 0dc8a41118815f049b519e777f0eb41e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.222362
+      value: 0.13302138
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 0dc8a41118815f049b519e777f0eb41e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.222362
+      value: 0.13302138
       objectReference: {fileID: 0}
     - target: {fileID: 10800000, guid: 0dc8a41118815f049b519e777f0eb41e, type: 3}
       propertyPath: m_Range

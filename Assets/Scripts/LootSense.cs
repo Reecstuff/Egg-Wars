@@ -33,8 +33,8 @@ public class LootSense : MonoBehaviour
                 if(closestLoot.itemText.Equals(Lootbox))
                 {
                     closestLoot.PlayAudio();
-                    closestLoot.GetComponentInParent<Lootbox>().OpenBox();
                     inSenseLoot.Remove(closestLoot);
+                    closestLoot.GetComponentInParent<Lootbox>().OpenBox();
                     closestLoot = null;
                 }
                 else if(closestLoot.itemText.Equals(Heal))
@@ -65,7 +65,10 @@ public class LootSense : MonoBehaviour
     {
         if(other.gameObject.GetComponent<Collectable>())
         {
-            closestLoot = inSenseLoot.Find(l => Vector3.Distance(l.transform.position, transform.position) < closestDistance);
+
+            if(inSenseLoot.Count > 0)
+                closestLoot = inSenseLoot.Find(l => Vector3.Distance(l.transform.position, transform.position) < closestDistance);
+
             if(closestLoot && !closestLoot.isActivated)
                 closestLoot.ActivateCollectable(true);
 
