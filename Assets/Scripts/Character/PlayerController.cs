@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     private float timeBtwShots;
     public float startTimeBtwShots = 1f;
 
+    public bool GravityOn = false;
+
     Animator animator;
 
     [SerializeField]
@@ -79,11 +81,13 @@ public class PlayerController : MonoBehaviour
             if (Vector3.Distance(new Vector3(pointToLook.x, transform.position.y, pointToLook.z),transform.position) > 2)
             {
                 rb.angularVelocity = Vector3.zero;
+                GravityOn = false;
                 transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
             }
             else
             {
                 rb.angularVelocity = Vector3.one;
+                GravityOn = true;
             }
 
         }

@@ -39,11 +39,7 @@ public class CharacterStats : MonoBehaviour
 
 	public void Heal(int healingAmount)
 	{
-		if(healingAmount + currentHealth >= maxHealth)
-		{
-			currentHealth = maxHealth;
-		}
-		else
+		if(healingAmount + currentHealth <= maxHealth)
 		{
 			currentHealth += healingAmount;
 		}
@@ -52,11 +48,7 @@ public class CharacterStats : MonoBehaviour
 
 	public void Armor(int armorAmount)
 	{
-		if (armorAmount + currentHealth >= maxHealth)
-		{
-			currentHealth = maxHealth;
-		}
-		else
+		if (armorAmount + currentHealth <= maxHealth)
 		{
 			currentHealth += armorAmount;
 		}

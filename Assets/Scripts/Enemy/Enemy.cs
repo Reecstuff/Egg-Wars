@@ -22,6 +22,9 @@ public class Enemy : MonoBehaviour
     protected Animator animator;
     protected PlayerSonar sonar;
 
+    public delegate void EnemyDeath(Enemy thisEnemy);
+    public event EnemyDeath OnEnemyDeath;
+
     // Start is called before the first frame update
     protected void Start()
     {
@@ -94,6 +97,11 @@ public class Enemy : MonoBehaviour
         {
             particleSystem[i].Play();
         }
+    }
+
+    private void OnDisable()
+    {
+        OnEnemyDeath?.Invoke(this);
     }
 
     protected void Die()
