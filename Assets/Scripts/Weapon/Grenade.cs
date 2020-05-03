@@ -11,19 +11,28 @@ public class Grenade : Ability
 
 	float countdown;
 	bool hasExploded = false;
+	bool fuse = false;
 
 	private void Start()
 	{
+	}
+
+	public void StartCountdown()
+	{
 		countdown = delay;
+		fuse = true;
 	}
 
 	private void Update()
 	{
-		countdown -= Time.deltaTime;
-		if (countdown <= 0f && !hasExploded)
+		if(fuse)
 		{
-			Explode();
-			hasExploded = true;
+			countdown -= Time.deltaTime;
+			if (countdown <= 0f && !hasExploded)
+			{
+				Explode();
+				hasExploded = true;
+			}
 		}
 	}
 
