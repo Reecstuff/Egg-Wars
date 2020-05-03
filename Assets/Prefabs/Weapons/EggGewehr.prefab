@@ -107,12 +107,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e023b0798f131e64ba2e188f81c26f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 75210201fe201924b815c56838a60d58, type: 2}
   firePoint: {fileID: 612582551108789699}
   bullet: {fileID: 5529024245268689379, guid: 098f736de9a185649a3b2d8769b482b3, type: 3}
-  spreadAngle: 10
-  shootSpeed: 20
-  bulletcount: 8
-  item: {fileID: 11400000, guid: 75210201fe201924b815c56838a60d58, type: 2}
+  spreadAngle: 0
+  shootSpeed: 30
+  bulletcount: 1
+  damage: 10
   startTimeBtwShots: 0.1
 --- !u!1 &927452543445633979
 GameObject:
