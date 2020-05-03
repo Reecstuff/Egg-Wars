@@ -17,6 +17,8 @@ public class LootSense : MonoBehaviour
     Collectable closestLoot;
     float closestDistance = 10;
 
+    Collectable bufferLoot;
+
     void Start()
     {
         SphereCollider collider = GetComponent<SphereCollider>();
@@ -32,18 +34,23 @@ public class LootSense : MonoBehaviour
             {
                 if(closestLoot.itemText.Equals(Lootbox))
                 {
-                    closestLoot.PlayAudio();
+                    bufferLoot = closestLoot;
                     inSenseLoot.Remove(closestLoot);
-                    closestLoot.GetComponentInParent<Lootbox>().OpenBox();
                     closestLoot = null;
+                    
+                    bufferLoot.PlayAudio();
+                    bufferLoot.GetComponentInParent<Lootbox>().OpenBox();
+                    bufferLoot.ActivateCollectable(false);
                 }
                 else if(closestLoot.itemText.Equals(Heal))
                 {
-                    closestLoot.PlayAudio();
-                    closestLoot.GetComponent<Heal>().HealPlayer();
-                    closestLoot.ActivateCollectable(false);
+                    bufferLoot = closestLoot;
                     inSenseLoot.Remove(closestLoot);
                     closestLoot = null;
+                    
+                    bufferLoot.PlayAudio();
+                    bufferLoot.GetComponent<Heal>().HealPlayer();
+                    bufferLoot.ActivateCollectable(false);
                 }
                 else
                 {
@@ -65,9 +72,14 @@ public class LootSense : MonoBehaviour
     {
         if(other.gameObject.GetComponent<Collectable>())
         {
-
-            if(inSenseLoot.Count > 0)
-                closestLoot = inSenseLoot.Find(l => Vector3.Distance(l.transform.position, transform.position) < closestDistance);
+            try
+            {
+                if (inSenseLoot.Count > 0)
+                    closestLoot = inSenseLoot.Find(l => Vector3.Distance(l.transform.position, transform.position) < closestDistance);
+            }
+            catch (System.Exception e)
+            {
+            }
 
             if(closestLoot && !closestLoot.isActivated)
                 closestLoot.ActivateCollectable(true);

@@ -9,21 +9,28 @@ public class DungeonGenerator : MonoBehaviour
     /// Dungeon Categorie
     /// </summary>
     [SerializeField]
-    List<DungeonObstacle> dungeonObstaclesCat;
+    protected List<DungeonObstacle> dungeonObstaclesCat;
 
     [SerializeField]
-    Transform[] spawnPositions;
+    protected Transform[] spawnPositions;
 
     public List<Door> doors;
 
     public List<Direction> directions;
 
-    List<DungeonObstacle> noZeroDungeonObst = new List<DungeonObstacle>();
+    protected List<DungeonObstacle> noZeroDungeonObst = new List<DungeonObstacle>();
 
-    int sumPercentage;
+    protected int sumPercentage;
 
-    private void Awake()
+
+    protected void Awake()
     {
+        CalculateNoZeroDungeonObst();
+    }
+
+    protected void CalculateNoZeroDungeonObst()
+    {
+        noZeroDungeonObst.Clear();
         for (int i = 0; i < dungeonObstaclesCat.Count; i++)
         {
             if (dungeonObstaclesCat[i].SpawnPercentage > 0)
@@ -33,7 +40,7 @@ public class DungeonGenerator : MonoBehaviour
         noZeroDungeonObst.OrderBy(n => n.SpawnPercentage);
     }
 
-    private void Start()
+    protected void Start()
     {
         if (doors.Count == 0)
         {
@@ -45,13 +52,13 @@ public class DungeonGenerator : MonoBehaviour
         }
     }
 
-    public void StartDungeon()
+    virtual public void StartDungeon()
     {
         BuildEnvironment();
         BuildNavMesh();
     }
 
-    void BuildEnvironment()
+    protected void BuildEnvironment()
     {
         if(spawnPositions.Length > 0)
         {
@@ -66,12 +73,8 @@ public class DungeonGenerator : MonoBehaviour
 
                     if(rnd <= noZeroDungeonObst[l].SpawnPercentage || l == noZeroDungeonObst.Count - 1)
                     {
-                        // Roll random for which Index in Categorie to spawn
-                        // And Initialize it on Position
                         GameObject obstacle = Instantiate(GetDungeonObject(noZeroDungeonObst[l]), transform);
-                        obstacle.transform.position = spawnPositions[i].position;
-                        obstacle.transform.Rotate(new Vector3(0, Random.Range(0, 9) * 45, 0), Space.Self);
-
+                        SetObstacle(ref obstacle,ref i,ref l);
                         break;
                     }
                 }
@@ -79,35 +82,43 @@ public class DungeonGenerator : MonoBehaviour
         }
     }
 
-    GameObject GetDungeonObject(DungeonObstacle obstacleCategorie)
+    protected virtual void SetObstacle(ref GameObject obstacle,ref int i,ref int l)
+    {
+        // Roll random for which Index in Categorie to spawn
+        // And Initialize it on Position
+        obstacle.transform.position = spawnPositions[i].position;
+        obstacle.transform.Rotate(new Vector3(0, Random.Range(0, 9) * 45, 0), Space.Self);
+    }
+
+    protected GameObject GetDungeonObject(DungeonObstacle obstacleCategorie)
     {
         return obstacleCategorie.categorieList.Obstacles[Random.Range(0, obstacleCategorie.categorieList.Obstacles.Length)];
     }
 
 
-    void BuildNavMesh()
+    protected void BuildNavMesh()
     {
         DungeonMaster.Instance.navi.BuildNavMesh();
     }
 
-    void SearchDoors()
+    protected void SearchDoors()
     {
         doors = new List<Door>();
         if(doors.Count == 0)
             doors = GetComponentsInChildren<Door>().ToList();
     }
 
-    private void SetDirections()
+    protected void SetDirections()
     {
-        directions = new List<Direction>();
         // Set the Direction for this Dungeon
         if (doors != null && doors.Count != 0)
         {
+            directions = new List<Direction>();
             directions = doors.ConvertAll(d => d.DoorInLevelDirection);
         }
     }
 
-    private void OnValidate()
+    protected void OnValidate()
     {
         if(doors == null || doors.Count == 0)
         {
@@ -118,7 +129,8 @@ public class DungeonGenerator : MonoBehaviour
             SetDirections();
         }
 
-        sumPercentage = dungeonObstaclesCat.ConvertAll(d => d.SpawnPercentage).Sum();
+        if(dungeonObstaclesCat.Count > 0)
+            sumPercentage = dungeonObstaclesCat.ConvertAll(d => d.SpawnPercentage).Sum();
 
         if(sumPercentage > 100)
         {

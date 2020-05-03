@@ -8,6 +8,8 @@ public class SlowDownPlayer : MonoBehaviour
     [SerializeField]
     float slowDownSpeed = 2;
 
+    bool shouldReset = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +21,12 @@ public class SlowDownPlayer : MonoBehaviour
     {
         if(other.GetComponent<PlayerController>())
         {
-            DungeonMaster.Instance.player.OnSpeedChange(DungeonMaster.Instance.player.moveSpeed / 2);
-            DungeonMaster.Instance.player.PitchWalking(0.5f);
+            if(!DungeonMaster.Instance.player.GravityOn)
+            {
+                DungeonMaster.Instance.player.OnSpeedChange(DungeonMaster.Instance.player.moveSpeed / 2);
+                DungeonMaster.Instance.player.PitchWalking(0.5f);
+                shouldReset = true;
+            }
         }
 
         if (other.GetComponent<Enemy>())
@@ -34,8 +40,11 @@ public class SlowDownPlayer : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>())
         {
-            DungeonMaster.Instance.player.OnSpeedChange(DungeonMaster.Instance.player.standardSpeed);
-            DungeonMaster.Instance.player.PitchWalking(1);
+            if(shouldReset)
+            {
+                DungeonMaster.Instance.player.OnSpeedChange(DungeonMaster.Instance.player.standardSpeed);
+                DungeonMaster.Instance.player.PitchWalking(1);
+            }
         }
 
         if(other.GetComponent<Enemy>())

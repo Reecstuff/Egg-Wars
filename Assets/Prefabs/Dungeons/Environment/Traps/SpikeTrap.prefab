@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3644210382751209213}
   - component: {fileID: 7038668143386356228}
   - component: {fileID: 771070430218520543}
-  - component: {fileID: 5077738597690701520}
+  - component: {fileID: 3752960111818545563}
   m_Layer: 0
   m_Name: SpikeTrap
   m_TagString: Untagged
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.3190236, y: 1.3648163, z: 2.5747476}
   m_Center: {x: 0, y: 0.7, z: 0}
---- !u!208 &5077738597690701520
+--- !u!208 &3752960111818545563
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

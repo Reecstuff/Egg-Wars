@@ -31,6 +31,9 @@ public class DungeonMaster : MonoBehaviour
     [SerializeField]
     Material bossDoorsMaterial;
 
+    [SerializeField]
+    Material normalMaterial;
+
     [HideInInspector]
     public StartDungeon dungeonStarter;
 
@@ -42,6 +45,7 @@ public class DungeonMaster : MonoBehaviour
 
     [SerializeField]
     List<DungeonGenerator> dungeons;
+
 
     public List<DungeonGenerator> currentLevelDungeons;
 
@@ -222,17 +226,38 @@ public class DungeonMaster : MonoBehaviour
         
         
         // Reset Dungeon
-        player.transform.DOJump(Vector3.up * 3, 1, 1, 2f);
+        //player.transform.DOJump(Vector3.up * 3, 1, 1, 2f);
+        BossRoomTime = false;
 
         dungeonStarter.DungeonOn();
 
-        BossRoomTime = false;
+        CleanUpDoors();
+
         GameAudio.Instance.SetNormalMusic();
 
         // Upgrade Player
         player.characterStats.UpgradeMaxHealth(levelMaxHealthUpgradeAmount);
         player.characterStats.Heal(levelHealingAmount);
 
+
+    }
+
+    void CleanUpDoors()
+    {
+        SetUpDoorsForBossroom(normalMaterial);
+
+        for (int i = 0; i < dungeonStarter.firstDungeon.doors.Count; i++)
+        {
+            dungeonStarter.firstDungeon.doors[i].doorVisited = false;
+        }
+
+        for (int i = 0; i < dungeons.Count; i++)
+        {
+            for (int l = 0; l < dungeons[i].doors.Count; l++)
+            {
+                dungeons[i].doors[l].doorVisited = false;
+            }
+        }
 
     }
 
@@ -243,12 +268,12 @@ public class DungeonMaster : MonoBehaviour
         {
             // Set Value for Bossroom
             BossRoomTime = true;
-            SetUpBossRoom();
+            SetUpDoorsForBossroom(bossDoorsMaterial);
             GameAudio.Instance.SetBossMusic();
         }
     }
 
-    public void  SetUpBossRoom()
+    public void  SetUpDoorsForBossroom(Material material)
     {
         // Go through all Doors that are not visited and change the Material
         for (int i = 0; i < currentLevelDungeons.Count; i++)
@@ -257,7 +282,7 @@ public class DungeonMaster : MonoBehaviour
             {
                 if(currentLevelDungeons[i].doors[l].doorVisited == false)
                 {
-                    currentLevelDungeons[i].doors[l].GetComponentsInChildren<Renderer>().All(r => r.sharedMaterial = bossDoorsMaterial);
+                    currentLevelDungeons[i].doors[l].GetComponentsInChildren<Renderer>().All(r => r.sharedMaterial = material);
                 }
             }
         }
@@ -268,7 +293,7 @@ public class DungeonMaster : MonoBehaviour
         dungeonStarter.bossRoom.StartDungeon();
         dungeonStarter.bossRoom.gameObject.SetActive(true);
 
-        return dungeonStarter.bossRoom.transform.position  + Vector3.up * 1.6f;
+        return dungeonStarter.bossRoom.PlayerPosition.position;
     }
 
     int GetRandomIndex(int length)
