@@ -9,6 +9,7 @@ public class DungeonMaster : MonoBehaviour
     public static DungeonMaster Instance;
     public NavMeshSurface navi;
 
+    public Camera mainCamera;
 
     public List<EquipAbleItem> AllEquipableItems;
 
@@ -223,9 +224,10 @@ public class DungeonMaster : MonoBehaviour
         currentDungeonCount = 0;
         currentDungeonMax += 10;
 
-        
-        
-        
+        CameraController camera = mainCamera.GetComponent<CameraController>();
+        camera.offset = new Vector3(0, -1.5f, 0.5f);
+
+
         // Reset Dungeon
         //player.transform.DOJump(Vector3.up * 3, 1, 1, 2f);
         BossRoomTime = false;
@@ -293,6 +295,9 @@ public class DungeonMaster : MonoBehaviour
     {
         dungeonStarter.bossRoom.StartDungeon();
         dungeonStarter.bossRoom.gameObject.SetActive(true);
+
+        CameraController camera = mainCamera.GetComponent<CameraController>();
+        camera.offset = new Vector3(0, -2.75f, 3);
 
         return dungeonStarter.bossRoom.PlayerPosition.position;
     }
