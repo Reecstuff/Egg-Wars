@@ -111,6 +111,7 @@ MonoBehaviour:
   delay: 1
   radius: 6
   force: 70
+  damage: 100
 --- !u!54 &7454894359029348955
 Rigidbody:
   m_ObjectHideFlags: 0

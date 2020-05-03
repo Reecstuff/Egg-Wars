@@ -15,12 +15,8 @@ public class StatsUI : MonoBehaviour
 	[SerializeField]
 	TextMeshProUGUI textArmor;
 
-
-
-
 	char uniformChar = 'I';
 	char armorChar = '\\' ;
-
 
 	public void SetMaxHealth(int tobeMaxHealth)
 	{

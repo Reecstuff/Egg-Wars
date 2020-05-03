@@ -7,6 +7,7 @@ public class Grenade : EquipAbleItem
 	public float delay = 1f;
 	public float radius = 6f;
 	public float force = 70f;
+	public int damage = 100;
 
 	float countdown;
 	bool hasExploded = false;
@@ -35,7 +36,8 @@ public class Grenade : EquipAbleItem
 			Enemy destruct = nearbyObj.GetComponent<Enemy>();
 			if (destruct != null)
 			{
-				Debug.Log("Damage!");
+				Debug.Log("Damage");
+				destruct.health -= damage;
 			}
 		}
 

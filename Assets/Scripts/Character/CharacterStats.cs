@@ -21,7 +21,7 @@ public class CharacterStats : MonoBehaviour
 	}
 
 
-	void TakeDamage(int damage)
+	public void TakeDamage(int damage)
 	{
 		damage -= armor.GetValue();
 		damage = Mathf.Clamp(damage, 0, int.MaxValue);
@@ -46,6 +46,19 @@ public class CharacterStats : MonoBehaviour
 		else
 		{
 			currentHealth += healingAmount;
+		}
+		statsUI.SetHealth(currentHealth);
+	}
+
+	public void Armor(int armorAmount)
+	{
+		if (armorAmount + currentHealth >= maxHealth)
+		{
+			currentHealth = maxHealth;
+		}
+		else
+		{
+			currentHealth += armorAmount;
 		}
 		statsUI.SetHealth(currentHealth);
 	}
