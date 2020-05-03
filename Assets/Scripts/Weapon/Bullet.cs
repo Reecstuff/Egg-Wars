@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
     private float timeBtwShots = 2;
     float startTimeBtwShots = 0;
 
+    public int damage;
+
     void Update()
     {
         if (timeBtwShots <= 0)
@@ -23,9 +25,13 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Enemy>())
+        if (other.gameObject.GetComponent<Enemy>())
         {
-            DestroyBullet();
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+
+            enemy.health -= damage;
+
+            Destroy(this.gameObject);
         }
         if (other.gameObject.GetComponentInParent<DungeonGenerator>())
         {

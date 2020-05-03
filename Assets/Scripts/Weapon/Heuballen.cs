@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Heuballen : MonoBehaviour
 {
 	public float radius = 6f;
 	public float force = 700f;
+
+	public int damage = 80;
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -28,7 +31,7 @@ public class Heuballen : MonoBehaviour
 			Enemy destruct = nearbyObj.GetComponent<Enemy>();
 			if (destruct != null)
 			{
-				Debug.Log("Damage!");
+				destruct.health -= damage;
 			}
 		}
 

@@ -22,13 +22,12 @@ public class PlayerController : MonoBehaviour
     public Transform weaponSlot;
 
     public GameObject granadePrefab;
+    public int ammoGrenade = 0;
 
     public CharacterStats characterStats;
 
     private float timeBtwShots;
     public float startTimeBtwShots = 1f;
-
-    public int ammoGrenade = 0;
 
     Animator animator;
 
@@ -49,7 +48,7 @@ public class PlayerController : MonoBehaviour
     bool shouldAnimateMoving = false;
 
     int playerGroundProtectionCount = 0;
-    float playerGroundProtectionY = 0.0f;
+    public float playerGroundProtectionY = 0.0f;
 
     private void Start()
     {
