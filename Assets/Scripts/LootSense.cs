@@ -54,7 +54,12 @@ public class LootSense : MonoBehaviour
                 }
                 else
                 {
-                    closestLoot.UpdateData(DungeonMaster.Instance.player.EquipWeapon(closestLoot.itemText));
+                    if(!closestLoot.UpdateData(DungeonMaster.Instance.player.EquipWeapon(closestLoot.itemText)))
+                    {
+                        bufferLoot = closestLoot;
+                        inSenseLoot.Remove(closestLoot);
+                        closestLoot = null;
+                    }
                 }
             }
         }

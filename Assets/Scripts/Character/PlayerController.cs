@@ -101,16 +101,21 @@ public class PlayerController : MonoBehaviour
 
     private void UseAbility()
     {
-        if (Input.GetKey(KeyCode.G) && timeBtwShots <= 0 && characterStats.ammoGrenade > 0)
+        if (Input.GetKey(KeyCode.G) && timeBtwShots <= 0 && characterStats.ammoAbility > 0)
         {
             timeBtwShots = startTimeBtwShots;
 
             GameObject grenade = Instantiate(granadePrefab, transform.position, transform.rotation);
             grenade.transform.position = transform.position + grenade.transform.forward;
+            grenade.GetComponent<Grenade>().StartCountdown();
             Rigidbody rb = grenade.GetComponent<Rigidbody>();
             rb.velocity = grenade.transform.forward * 10;
 
-            characterStats.SetGrenadeAmmo(-1);
+            characterStats.SetAbilityAmmo(-1);
+            if(characterStats.ammoAbility <= 0)
+            {
+                Destroy(equippedAbility);
+            }
         }
         else
         {
@@ -208,13 +213,26 @@ public class PlayerController : MonoBehaviour
                 if(equippedAbility == null)
                 {
                     equippedAbility = Instantiate(newEquip.gameObject, abilitySlot.transform);
+                    equippedAbility.GetComponent<Rigidbody>().detectCollisions = false;
+                    equippedAbility.GetComponent<Rigidbody>().isKinematic = true;
+                    characterStats.SetAbilityAmmo(1);
                 }
                 else
                 {
-                    oldItem = equippedAbility;
-                    // Write Code to Equip on Itemslot instead of Weaponslot
-                    Destroy(equippedAbility);
-                    equippedAbility = Instantiate(newEquip.gameObject, abilitySlot.transform);
+                    if(newEquip.item.Equals(equippedAbility.GetComponent<EquipAbleItem>().item))
+                    {
+                        characterStats.SetAbilityAmmo(1);
+                    }
+                    else
+                    {
+                        oldItem = equippedAbility;
+                        // Write Code to Equip on Itemslot instead of Weaponslot
+                        Destroy(equippedAbility);
+                        equippedAbility = Instantiate(newEquip.gameObject, abilitySlot.transform);
+                        equippedAbility.GetComponent<Rigidbody>().detectCollisions = false;
+                        equippedAbility.GetComponent<Rigidbody>().isKinematic = true;
+                        characterStats.SetAbilityAmmo(1);
+                    }
                 }
             }
 
