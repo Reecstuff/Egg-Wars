@@ -112,6 +112,11 @@ public class Enemy : MonoBehaviour
 
     }
 
+    virtual public void EnemyDying()
+    {
+
+    }
+
     protected void PlayParticles()
     {
         animator.gameObject.SetActive(false);

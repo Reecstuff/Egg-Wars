@@ -13,6 +13,12 @@ public class CameraController : MonoBehaviour
     private float currentZoom = 10f;
     private float currentYaw = 0;
 
+    private void Start()
+    {
+        DungeonMaster.Instance.mainCamera = this;
+    }
+
+
     void Update()
     {
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);

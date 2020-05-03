@@ -42,10 +42,14 @@ public class StartDungeon : MonoBehaviour
 
     private void SetupDungeon()
     {
-        GameObject newStartDungeon = Instantiate(firstDungeon.gameObject);
-        newStartDungeon.transform.position = Vector3.zero * 1.5f;
+        if(!firstDungeon.gameObject.activeInHierarchy)
+        {
+            GameObject newStartDungeon = Instantiate(firstDungeon.gameObject);
+            newStartDungeon.transform.position = Vector3.zero * 1.5f;
+            firstDungeon = newStartDungeon.GetComponent<DungeonGenerator>();
 
-        firstDungeon = newStartDungeon.GetComponent<DungeonGenerator>();
+        }
+
 
         firstDungeon.gameObject.SetActive(true);
         firstDungeon.StartDungeon();

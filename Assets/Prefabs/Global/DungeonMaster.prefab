@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navi: {fileID: 0}
+  mainCamera: {fileID: 0}
   AllEquipableItems:
   - {fileID: 4596184633010804463, guid: a32437d622383ea41a7719000a045532, type: 3}
   - {fileID: 1393550350971035854, guid: 54f1ab6bfd8d062419748c82e580bb0f, type: 3}

@@ -9,6 +9,12 @@ public class Cow : Enemy
     protected override void OnPlayerCollision(GameObject player)
     {
         base.OnPlayerCollision(player);
+        EnemyDying();
+    }
+
+    public override void EnemyDying()
+    {
+        base.EnemyDying();
         sonar.gameObject.SetActive(false);
         transform.DOScale(1.5f, 0.6f);
         Invoke(nameof(DamagePlayer), 0.6f);

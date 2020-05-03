@@ -9,7 +9,7 @@ public class DungeonMaster : MonoBehaviour
     public static DungeonMaster Instance;
     public NavMeshSurface navi;
 
-    public Camera mainCamera;
+    public CameraController mainCamera;
 
     public List<EquipAbleItem> AllEquipableItems;
 
@@ -211,6 +211,7 @@ public class DungeonMaster : MonoBehaviour
     /// </summary>
     public void AdvanceLevel()
     {
+        currentLevelDungeons.Remove(dungeonStarter.firstDungeon);
         // Destroy every Dungeon
         for (int i = 0; i < currentLevelDungeons.Count; i++)
         {
