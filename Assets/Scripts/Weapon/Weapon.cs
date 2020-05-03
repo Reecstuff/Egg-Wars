@@ -28,6 +28,9 @@ public class Weapon : EquipAbleItem
                 case "EggShotgun":
                     Shoot();
                     break;
+                case "EggPistole":
+                    Shoot();
+                    break;
                 case "EggGewehr":
                     Shoot();
                     break;
