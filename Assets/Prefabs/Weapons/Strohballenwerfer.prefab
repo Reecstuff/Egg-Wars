@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4733640929757071134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.52}
+  m_LocalPosition: {x: 0, y: 0, z: -3.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5414070861840924028}
@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 6715640658134456065}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 4382778427756384409}
   m_Father: {fileID: 0}
@@ -71,7 +71,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6715640658134456065}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4206863451049842226, guid: 84bce727331e07941a54b47b3b7fcb24, type: 3}
 --- !u!23 &4018666392547845072
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -90,7 +90,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a94cd593cc720304f8b11995416bdeed, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,10 +123,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e023b0798f131e64ba2e188f81c26f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: fa10eebb06315f246add8e353ef5bf3e, type: 2}
   firePoint: {fileID: 4382778427756384409}
   bullet: {fileID: 5015661641837129399, guid: ac708add053393348b11d234c33a2d54, type: 3}
   spreadAngle: 10
   shootSpeed: 10
   bulletcount: 8
-  item: {fileID: 11400000, guid: fa10eebb06315f246add8e353ef5bf3e, type: 2}
+  damage: 1
   startTimeBtwShots: 0.5
