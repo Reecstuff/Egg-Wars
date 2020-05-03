@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour
     protected AudioSource source;
     protected Animator animator;
     protected PlayerSonar sonar;
+    protected int wiggleSafe = 0;
+    
 
     public delegate void EnemyDeath(Enemy thisEnemy);
     public event EnemyDeath OnEnemyDeath;
@@ -46,10 +48,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void PlayAudio()
+    public void PlayAudio(AudioClip clip = null)
     {
         if(!source.isPlaying)
+        {
+            if (clip != null)
+                source.clip = clip;
             source.Play();
+        }
     }
 
     public void PitchAudio(float negativationValue)
@@ -66,6 +72,21 @@ public class Enemy : MonoBehaviour
         agent.speed = Speed;
 
         // Set Animation Speed;
+    }
+
+    virtual public void PlayerEnterTrigger(GameObject other)
+    {
+
+    }
+
+    virtual public void PlayerInTriggerStay(GameObject other)
+    {
+
+    }
+
+    virtual public void PlayerNOTInTriggerStay()
+    {
+
     }
 
     protected void OnCollisionEnter(Collision other)
