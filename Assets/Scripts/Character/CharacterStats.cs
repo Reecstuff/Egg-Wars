@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
@@ -41,6 +42,9 @@ public class CharacterStats : MonoBehaviour
 
 		statsUI.SetArmor(armor);
 		statsUI.SetHealth(currentHealth);
+		GetComponentInChildren<Renderer>().sharedMaterial.DOColor(Color.red, 0.1f);
+		Invoke(nameof(ResetColor), 0.2f);
+
 
 		if(armor <= 0)
 		{
@@ -52,6 +56,11 @@ public class CharacterStats : MonoBehaviour
 		{
 			Die();
 		}
+	}
+
+	void ResetColor()
+	{
+		GetComponentInChildren<Renderer>().sharedMaterial.DOColor(Color.white, 0.1f);
 	}
 
 	public void Heal(int healingAmount)

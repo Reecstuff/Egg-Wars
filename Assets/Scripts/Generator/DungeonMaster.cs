@@ -213,7 +213,8 @@ public class DungeonMaster : MonoBehaviour
         // Destroy every Dungeon
         for (int i = 0; i < currentLevelDungeons.Count; i++)
         {
-            Destroy(currentLevelDungeons[i].gameObject);
+            if(currentLevelDungeons[i])
+                Destroy(currentLevelDungeons[i].gameObject);
         }
 
         // Clean up
