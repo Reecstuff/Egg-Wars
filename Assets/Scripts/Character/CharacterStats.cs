@@ -10,7 +10,7 @@ public class CharacterStats : MonoBehaviour
 
 	public int ammoGrenade = 0;
 	public int damage;
-	public int armor;
+	public int armor = 0;
 
 
 	private void Start()
@@ -19,18 +19,34 @@ public class CharacterStats : MonoBehaviour
 		statsUI.SetMaxHealth(maxHealth);
 		statsUI.SetHealth(currentHealth);
 		statsUI.SetAmmo(ammoGrenade);
+		statsUI.SetArmor(armor);
 	}
 
 
 	public void TakeDamage(int damage)
 	{
-		damage -= armor;
-		damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
-		currentHealth -= damage;
-		Debug.Log(transform.name + " take " + damage + " damage.");
+		damage = Mathf.Abs(damage);
 
+		if(armor - damage >= 0)
+		{
+			armor -= damage;
+		}
+		else
+		{
+			damage -= armor;
+			armor = 0;
+			currentHealth -= damage;
+		}
+
+		statsUI.SetArmor(armor);
 		statsUI.SetHealth(currentHealth);
+
+		if(armor <= 0)
+		{
+			// Check for Helmet
+			// Destroy Helmet
+		}
 
 		if (currentHealth <= 0)
 		{

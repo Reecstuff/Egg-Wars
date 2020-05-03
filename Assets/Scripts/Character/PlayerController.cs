@@ -210,6 +210,7 @@ public class PlayerController : MonoBehaviour
                 {
                     equippedAbility = Instantiate(newEquip.gameObject, abilitySlot.transform);
                     equippedAbility.GetComponent<Rigidbody>().detectCollisions = false;
+                    equippedAbility.GetComponent<Rigidbody>().isKinematic = true;
                 }
                 else
                 {
