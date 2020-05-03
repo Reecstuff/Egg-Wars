@@ -6,7 +6,6 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Collider))]
 public class PlayerSonar : MonoBehaviour
 {
-    public bool DoSonar = true;
     Enemy thisEnemy;
 
 
@@ -20,7 +19,7 @@ public class PlayerSonar : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(DoSonar && other.GetComponent<PlayerController>())
+        if(other.GetComponent<PlayerController>())
         {
             Vector3 target = new Vector3(other.transform.position.x, thisEnemy.transform.position.y, other.transform.position.z);
             thisEnemy.GetComponent<NavMeshAgent>().SetDestination(target);
@@ -30,7 +29,7 @@ public class PlayerSonar : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (DoSonar && other.GetComponent<PlayerController>())
+        if (other.GetComponent<PlayerController>())
         {
             Vector3 target = new Vector3(other.transform.position.x, thisEnemy.transform.position.y, other.transform.position.z);
             if(wiggleSafe <= 0)
