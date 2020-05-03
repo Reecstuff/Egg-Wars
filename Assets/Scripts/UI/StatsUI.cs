@@ -9,13 +9,17 @@ public class StatsUI : MonoBehaviour
 {
 
 	public TextMeshProUGUI textHealth;
-
 	public TextMeshProUGUI textAmmo;
-
 	[SerializeField]
 	TextMeshProUGUI maxHealth;
+	[SerializeField]
+	TextMeshProUGUI textArmor;
+
+
+
 
 	char uniformChar = 'I';
+	char armorChar = '\\' ;
 
 
 	public void SetMaxHealth(int tobeMaxHealth)
@@ -37,6 +41,14 @@ public class StatsUI : MonoBehaviour
 			textAmmo.text = string.Empty;
 		else
 			textAmmo.text = string.Concat(Enumerable.Repeat(uniformChar, ammo));
+	}
+
+	public void SetArmor(int armor)
+	{
+		if (armor == 0)
+			textArmor.text = string.Empty;
+		else
+			textArmor.text = string.Concat(Enumerable.Repeat(armorChar, armor));
 	}
 
 }
