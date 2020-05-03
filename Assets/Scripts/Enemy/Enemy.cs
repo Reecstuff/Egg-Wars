@@ -101,7 +101,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDisable()
     {
-        OnEnemyDeath(this);
+        OnEnemyDeath?.Invoke(this);
     }
 
     protected void Die()

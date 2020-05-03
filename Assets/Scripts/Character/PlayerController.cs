@@ -29,8 +29,6 @@ public class PlayerController : MonoBehaviour
     private float timeBtwShots;
     public float startTimeBtwShots = 1f;
 
-    public int ammoGrenade = 0;
-
     public bool GravityOn = false;
 
     Animator animator;
