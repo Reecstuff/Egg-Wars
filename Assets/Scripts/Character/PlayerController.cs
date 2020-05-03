@@ -43,7 +43,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     string walkingValue = "WalkingMultiplier";
 
+
     AudioSource walkingSource;
+    AudioSource speakingSource;
     bool shouldAnimateMoving = false;
 
     int playerGroundProtectionCount = 0;
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         characterStats = GetComponent<CharacterStats>();
         walkingSource = GetComponent<AudioSource>();
+        speakingSource = GetComponents<AudioSource>()[1];
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         DungeonMaster.Instance.player = this;
@@ -123,15 +126,22 @@ public class PlayerController : MonoBehaviour
         {
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName(walkingState) && shouldAnimateMoving)
             {
+                CancelInvoke(nameof(PlaySpeakSound));
                 animator.Play(walkingState);
                 walkingSource.Play();
             }
-            else if (!animator.GetCurrentAnimatorStateInfo(0).IsName(standingState) && !shouldAnimateMoving)
+            else if (!shouldAnimateMoving && !animator.GetCurrentAnimatorStateInfo(0).IsName(standingState))
             {
                 animator.CrossFade(standingState, 0.0f);
                 walkingSource.Stop();
+                Invoke(nameof(PlaySpeakSound), 2);
             }
         }
+    }
+
+    void PlaySpeakSound()
+    {
+        speakingSource.Play();
     }
 
     void OnPlayerGroundProtection()

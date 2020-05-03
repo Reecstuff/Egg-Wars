@@ -283,11 +283,6 @@ PrefabInstance:
       propertyPath: statsUI
       value: 
       objectReference: {fileID: 1256449073}
-    - target: {fileID: 6175335940463636752, guid: a0dfcdd4536c5154aba39f9fd1d43182,
-        type: 3}
-      propertyPath: maxHealth
-      value: 12
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0dfcdd4536c5154aba39f9fd1d43182, type: 3}
 --- !u!1 &143890309 stripped
