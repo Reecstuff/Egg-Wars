@@ -52,6 +52,10 @@ public class LootSense : MonoBehaviour
                     bufferLoot.GetComponent<Heal>().HealPlayer();
                     bufferLoot.ActivateCollectable(false);
                 }
+                else if(closestLoot.GetComponent<Ability>())
+                {
+                    
+                }
                 else
                 {
                     closestLoot.UpdateData(DungeonMaster.Instance.player.EquipWeapon(closestLoot.itemText));

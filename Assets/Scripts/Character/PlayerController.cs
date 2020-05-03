@@ -107,6 +107,7 @@ public class PlayerController : MonoBehaviour
 
             GameObject grenade = Instantiate(granadePrefab, transform.position, transform.rotation);
             grenade.transform.position = transform.position + grenade.transform.forward;
+            grenade.GetComponent<Grenade>().StartCountdown();
             Rigidbody rb = grenade.GetComponent<Rigidbody>();
             rb.velocity = grenade.transform.forward * 10;
 
@@ -208,6 +209,7 @@ public class PlayerController : MonoBehaviour
                 if(equippedAbility == null)
                 {
                     equippedAbility = Instantiate(newEquip.gameObject, abilitySlot.transform);
+                    equippedAbility.GetComponent<Rigidbody>().detectCollisions = false;
                 }
                 else
                 {
