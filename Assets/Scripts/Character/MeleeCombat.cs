@@ -12,6 +12,9 @@ public class MeleeCombat : MonoBehaviour
         {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
             enemy.health -= damage;
+
+            if (enemy.health <= 0)
+                enemy.EnemyDying();
         }
     }
 }

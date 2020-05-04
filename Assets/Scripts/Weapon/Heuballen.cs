@@ -32,17 +32,8 @@ public class Heuballen : MonoBehaviour
 			if (destruct != null)
 			{
 				destruct.health -= damage;
-			}
-		}
-
-		Collider[] colliderToMove = Physics.OverlapSphere(transform.position, radius);
-
-		foreach (Collider nearbyObj in colliderToMove)
-		{
-			Rigidbody rb = nearbyObj.GetComponent<Rigidbody>();
-			if (rb != null)
-			{
-				rb.AddExplosionForce(force, transform.position, radius);
+				if (destruct.health <= 0)
+					destruct.EnemyDying();
 			}
 		}
 

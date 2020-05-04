@@ -156,4 +156,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 6
   force: 700
-  damage: 80
+  damage: 50
