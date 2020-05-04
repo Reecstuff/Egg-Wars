@@ -30,9 +30,13 @@ public class PlayerSonar : MonoBehaviour
         {
             thisEnemy.PlayerInTriggerStay(other.gameObject);
         }
-        else
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.GetComponent<PlayerController>())
         {
-            thisEnemy.PlayerNOTInTriggerStay();
+            thisEnemy.PlayerExitTrigger(other.gameObject);
         }
     }
 }

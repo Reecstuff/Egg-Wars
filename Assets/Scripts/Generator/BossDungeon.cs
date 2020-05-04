@@ -90,7 +90,9 @@ public class BossDungeon : DungeonGenerator
         enemy.OnEnemyDeath -= EnemyKilled;
         allEnemies.Remove(enemy);
         if (allEnemies.Count == 0)
+        {
             StageClear();
+        }
     }
 
 

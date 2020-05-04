@@ -128,35 +128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 153867051067534558, guid: eee75cc77310ea844ac4538927410b67,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 760873762608635753, guid: eee75cc77310ea844ac4538927410b67,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 883570394430557202, guid: eee75cc77310ea844ac4538927410b67,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1215140286285610325, guid: eee75cc77310ea844ac4538927410b67,
         type: 3}
       propertyPath: m_Name
       value: BossRaum
-      objectReference: {fileID: 0}
-    - target: {fileID: 1215140286285610325, guid: eee75cc77310ea844ac4538927410b67,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1240953185366974593, guid: eee75cc77310ea844ac4538927410b67,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2775996921771659078, guid: eee75cc77310ea844ac4538927410b67,
         type: 3}
@@ -211,36 +186,6 @@ PrefabInstance:
     - target: {fileID: 2775996921771659078, guid: eee75cc77310ea844ac4538927410b67,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204745801072818882, guid: eee75cc77310ea844ac4538927410b67,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4711433838389595385, guid: eee75cc77310ea844ac4538927410b67,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6423231363726757555, guid: eee75cc77310ea844ac4538927410b67,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7107222160166199192, guid: eee75cc77310ea844ac4538927410b67,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7592231563405882938, guid: eee75cc77310ea844ac4538927410b67,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8480246298722312668, guid: eee75cc77310ea844ac4538927410b67,
-        type: 3}
-      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

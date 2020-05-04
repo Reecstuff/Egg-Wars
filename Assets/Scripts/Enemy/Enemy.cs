@@ -40,12 +40,14 @@ public class Enemy : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
-    public void PlayAudio(AudioClip clip = null)
+    public void PlayAudio(AudioClip clip = null, bool loop = false)
     {
         if(!source.isPlaying)
         {
             if (clip != null)
                 source.clip = clip;
+
+            source.loop = loop;
             source.Play();
         }
     }
@@ -76,10 +78,11 @@ public class Enemy : MonoBehaviour
 
     }
 
-    virtual public void PlayerNOTInTriggerStay()
+    virtual public void PlayerExitTrigger(GameObject other)
     {
 
     }
+
 
     protected void OnCollisionEnter(Collision other)
     {
@@ -99,7 +102,7 @@ public class Enemy : MonoBehaviour
         
     }
 
-    virtual protected void DamagePlayer()
+    virtual public void DamagePlayer()
     {
 
     }

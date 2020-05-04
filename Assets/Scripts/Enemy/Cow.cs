@@ -27,7 +27,7 @@ public class Cow : Enemy
         Invoke(nameof(Die), 1f);
     }
 
-    protected override void DamagePlayer()
+    public override void DamagePlayer()
     {
         float radius = 6f;
         float force = 2000f;
@@ -55,7 +55,8 @@ public class Cow : Enemy
         base.PlayerEnterTrigger(other);
         Vector3 target = new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z);
        
-        agent.SetDestination(target);
+        if(agent.isActiveAndEnabled && agent.isOnNavMesh)
+            agent.SetDestination(target);
         PlayAudio();
     }
 
