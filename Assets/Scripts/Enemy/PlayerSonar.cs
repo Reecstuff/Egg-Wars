@@ -20,6 +20,7 @@ public class PlayerSonar : MonoBehaviour
     {
         if(other.GetComponent<PlayerController>())
         {
+            thisEnemy.noPlayerInSight = false;
             thisEnemy.PlayerEnterTrigger(other.gameObject);
         }
     }
@@ -28,11 +29,21 @@ public class PlayerSonar : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>())
         {
+            thisEnemy.noPlayerInSight = false;
             thisEnemy.PlayerInTriggerStay(other.gameObject);
         }
         else
         {
-            thisEnemy.PlayerNOTInTriggerStay();
+            thisEnemy.SomethingElseIsInTrigger();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.GetComponent<PlayerController>())
+        {
+            thisEnemy.noPlayerInSight = true;
+            thisEnemy.PlayerExitTrigger(other.gameObject);
         }
     }
 }

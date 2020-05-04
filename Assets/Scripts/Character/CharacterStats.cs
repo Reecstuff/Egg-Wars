@@ -28,8 +28,6 @@ public class CharacterStats : MonoBehaviour
 	public void TakeDamage(int damage)
 	{
 
-		damage = Mathf.Abs(damage);
-
 		if(armor - damage >= 0)
 		{
 			armor -= damage;
@@ -51,6 +49,7 @@ public class CharacterStats : MonoBehaviour
 		{
 			// Check for Helmet
 			// Destroy Helmet
+			Destroy(GetComponent<PlayerController>().equippedArmor);
 		}
 
 		if (currentHealth <= 0)
@@ -77,7 +76,7 @@ public class CharacterStats : MonoBehaviour
 	{
 		if (armorAmount + armor <= maxHealth)
 		{
-			armor += armorAmount;
+			armor = armorAmount;
 		}
 		statsUI.SetArmor(armor);
 	}
@@ -101,7 +100,10 @@ public class CharacterStats : MonoBehaviour
 	}
 
 	public virtual void Die()
-	{
+	{ 
 		DungeonMaster.Instance.deathMenu.ShowMenu();
+		currentHealth = 9;
+		maxHealth = 12;
+		ammoAbility = 0;
 	}
 }

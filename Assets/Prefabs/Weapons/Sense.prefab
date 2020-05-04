@@ -151,11 +151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e023b0798f131e64ba2e188f81c26f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: d91bdc716a8551f479926b84bf05687d, type: 2}
+  item: {fileID: 11400000, guid: ff9ee8a0df2e0474197c13d135aec16f, type: 2}
   firePoint: {fileID: 0}
   bullet: {fileID: 0}
   spreadAngle: 10
   shootSpeed: 10
   bulletcount: 8
-  damage: 1
+  damage: 40
   startTimeBtwShots: 0.5

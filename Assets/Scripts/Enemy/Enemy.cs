@@ -8,22 +8,32 @@ using DG.Tweening;
 [RequireComponent(typeof(NavMeshAgent), typeof(AudioSource))]
 public class Enemy : MonoBehaviour
 {
+    [SerializeField]
+    protected string EnemyName;
+
     public int health = 100;
     public float Speed = 10;
     public float standardSpeed;
 
     public int damage = 3;
 
-    protected ParticleSystem[] particleSystem; 
+    protected ParticleSystem[] particleSystem;
 
     [SerializeField]
+    protected float randomRadius = 5;
+    [SerializeField]
     protected float maxPitch = 2;
+    [SerializeField]
+    protected int perLevelHealth = 4;
+
     protected NavMeshAgent agent;
     protected AudioSource source;
     protected Animator animator;
     protected PlayerSonar sonar;
     protected int wiggleSafe = 0;
-    
+    protected EnemyUI enemyUI;
+
+    public bool noPlayerInSight = false;
 
     public delegate void EnemyDeath(Enemy thisEnemy);
     public event EnemyDeath OnEnemyDeath;
@@ -38,14 +48,20 @@ public class Enemy : MonoBehaviour
         standardSpeed = Speed;
         OnSpeedChange(Speed);
         source = GetComponent<AudioSource>();
+        health += DungeonMaster.Instance.levelCount * perLevelHealth;
+        enemyUI = GetComponentInChildren<EnemyUI>();
+        enemyUI.SetName(EnemyName);
+        enemyUI.SetHealth(health);
     }
 
-    public void PlayAudio(AudioClip clip = null)
+    public void PlayAudio(AudioClip clip = null, bool loop = false)
     {
         if(!source.isPlaying)
         {
             if (clip != null)
                 source.clip = clip;
+
+            source.loop = loop;
             source.Play();
         }
     }
@@ -66,6 +82,13 @@ public class Enemy : MonoBehaviour
         // Set Animation Speed;
     }
 
+    virtual public void GotHit(int damage)
+    {
+        health -= damage;
+
+        enemyUI.SetHealth(health);
+    }
+
     virtual public void PlayerEnterTrigger(GameObject other)
     {
 
@@ -76,18 +99,32 @@ public class Enemy : MonoBehaviour
 
     }
 
-    virtual public void PlayerNOTInTriggerStay()
+    virtual public void PlayerExitTrigger(GameObject other)
     {
 
     }
 
+    virtual public void SomethingElseIsInTrigger()
+    {
+        if (noPlayerInSight)
+        {
+            // Check if we've reached the destination
+            if (!agent.pathPending)
+            {
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                    {
+                        agent.SetDestination(RandomNavmeshLocation());
+                    }
+                }
+            }
+        }
+    }
+
+
     protected void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Melee"))
-        {
-            Destroy(gameObject); //Or takes damage
-        }
-
         if (other.gameObject.GetComponent<PlayerController>())
         {
             OnPlayerCollision(other.gameObject);
@@ -99,7 +136,7 @@ public class Enemy : MonoBehaviour
         
     }
 
-    virtual protected void DamagePlayer()
+    virtual public void DamagePlayer()
     {
 
     }
@@ -111,7 +148,6 @@ public class Enemy : MonoBehaviour
 
     protected void PlayParticles()
     {
-        animator.gameObject.SetActive(false);
         for (int i = 0; i < particleSystem.Length; i++)
         {
             particleSystem[i].Play();
@@ -126,5 +162,18 @@ public class Enemy : MonoBehaviour
     protected void Die()
     {
         Destroy(gameObject);
+    }
+
+    public Vector3 RandomNavmeshLocation()
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * randomRadius;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        Vector3 finalPosition = Vector3.zero;
+        if (NavMesh.SamplePosition(randomDirection, out hit, randomRadius, 1))
+        {
+            finalPosition = hit.position;
+        }
+        return finalPosition;
     }
 }

@@ -49,17 +49,6 @@ public class Grenade : Ability
 			}
 		}
 
-		Collider[] colliderToMove = Physics.OverlapSphere(transform.position, radius);
-
-		foreach (Collider nearbyObj in colliderToMove)
-		{
-			Rigidbody rb = nearbyObj.GetComponent<Rigidbody>();
-			if (rb != null)
-			{
-				rb.AddExplosionForce(force, transform.position, radius);
-			}
-		}
-
 		Destroy(gameObject);
 	}
 }

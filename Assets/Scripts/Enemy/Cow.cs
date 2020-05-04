@@ -23,13 +23,19 @@ public class Cow : Enemy
         source.Play();
         source.DOPitch(3, 0.1f);
         source.DOFade(2, 0.5f);
-        Invoke(nameof(PlayParticles), 0.5f);
+        Invoke(nameof(DoParticle), 0.5f);
         Invoke(nameof(Die), 1f);
     }
 
-    protected override void DamagePlayer()
+    void DoParticle()
     {
-        float radius = 6f;
+        animator.gameObject.SetActive(false);
+        PlayParticles();
+    }
+
+    public override void DamagePlayer()
+    {
+        float radius = 7f;
         float force = 2000f;
 
         Collider[] collider = Physics.OverlapSphere(transform.position, radius);
@@ -55,7 +61,8 @@ public class Cow : Enemy
         base.PlayerEnterTrigger(other);
         Vector3 target = new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z);
        
-        agent.SetDestination(target);
+        if(agent.isActiveAndEnabled && agent.isOnNavMesh)
+            agent.SetDestination(target);
         PlayAudio();
     }
 
@@ -66,10 +73,15 @@ public class Cow : Enemy
         if (wiggleSafe <= 0)
         {
             agent.SetDestination(target);
-            wiggleSafe = 20;
+            wiggleSafe = 5;
         }
         PitchAudio(Vector3.Distance(target, transform.position) * 0.05f);
         PlayAudio();
         wiggleSafe--;
+    }
+
+    public override void SomethingElseIsInTrigger()
+    {
+        base.SomethingElseIsInTrigger();
     }
 }
