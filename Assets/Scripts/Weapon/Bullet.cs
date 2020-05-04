@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
         {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
 
-            enemy.health -= damage;
+            enemy.GotHit(damage);
 
             if(enemy.health <= 0)
                 enemy.EnemyDying();
