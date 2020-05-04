@@ -23,11 +23,6 @@ public class ScaleOnMouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExi
         recT = GetComponent<RectTransform>();
     }
 
-    private void OnDisable()
-    {
-        recT.localScale = Vector3.one;
-    }
-
     /// <summary>
     /// For better Visualisation scaling UI Element on Mouse over
     /// </summary>
@@ -50,6 +45,7 @@ public class ScaleOnMouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     void ScaleButton()
     {
+
         if(scaled)
         {
             if(coroutine != null)
@@ -79,8 +75,7 @@ public class ScaleOnMouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExi
         {
             lerpvalue += Time.deltaTime / time;
             recT.localScale = Vector3.Lerp(lerpScale, targetScale, lerpvalue);
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSecondsRealtime(0.008f);
         }
-
     }
 }

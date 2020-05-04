@@ -58,4 +58,9 @@ public class GameAudio : MonoBehaviour
         source.clip = MenuMusic;
         source.Play();
     }
+
+    public void ManualPitch(float pitch)
+    {
+        source.DOPitch(pitch, 0.1f);
+    }
 }

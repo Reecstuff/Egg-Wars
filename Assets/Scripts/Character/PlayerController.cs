@@ -62,14 +62,19 @@ public class PlayerController : MonoBehaviour
         walkingSource = GetComponent<AudioSource>();
         speakingSource = GetComponents<AudioSource>()[1];
         rb = GetComponent<Rigidbody>();
-        animator = GetComponentInChildren<Animator>();
         DungeonMaster.Instance.player = this;
+    }
+
+    private void OnEnable()
+    {
+        animator = GetComponentInChildren<Animator>();
         animator.SetFloat(walkingValue, moveSpeed);
         standardSpeed = moveSpeed;
     }
 
     private void Update()
     {
+        
         moveInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         shouldAnimateMoving = moveInput != Vector3.zero;
 
@@ -95,6 +100,7 @@ public class PlayerController : MonoBehaviour
             }
             UseAbility();
         }
+        
 
        
     }

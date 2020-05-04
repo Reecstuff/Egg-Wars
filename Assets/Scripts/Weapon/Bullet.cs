@@ -31,7 +31,8 @@ public class Bullet : MonoBehaviour
 
             enemy.health -= damage;
 
-            enemy.EnemyDying();
+            if(enemy.health <= 0)
+                enemy.EnemyDying();
         }
         if (other.gameObject.GetComponentInParent<DungeonGenerator>())
         {

@@ -21,6 +21,9 @@ public class DungeonMaster : MonoBehaviour
 
     public float PlayerMovingTime = 0.3f;
 
+    public DeathMenu deathMenu;
+
+
     [SerializeField]
     int levelHealingAmount = 3;
 

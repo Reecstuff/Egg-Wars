@@ -40,14 +40,6 @@ public class Enemy : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
-    private void Update()
-    {
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
     public void PlayAudio(AudioClip clip = null)
     {
         if(!source.isPlaying)

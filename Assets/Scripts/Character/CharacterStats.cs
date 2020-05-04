@@ -21,6 +21,7 @@ public class CharacterStats : MonoBehaviour
 		statsUI.SetHealth(currentHealth);
 		statsUI.SetAmmo(ammoAbility);
 		statsUI.SetArmor(armor);
+		GetComponentInChildren<Renderer>().sharedMaterial.color = Color.white;
 	}
 
 
@@ -101,8 +102,6 @@ public class CharacterStats : MonoBehaviour
 
 	public virtual void Die()
 	{
-		//Die in some way
-		//this method is meant to be overwritten
-		Debug.Log(transform.name + " died");
+		DungeonMaster.Instance.deathMenu.ShowMenu();
 	}
 }

@@ -20,7 +20,7 @@ public class StartDungeon : MonoBehaviour
     {
         DungeonMaster.Instance.dungeonStarter = this;
         DungeonMaster.Instance.navi = navi;
-
+        DungeonMaster.Instance.currentLevelDungeons.Clear();
         DungeonOn();
     }
 
