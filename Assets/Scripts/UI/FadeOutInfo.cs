@@ -10,6 +10,7 @@ public class FadeOutInfo : MonoBehaviour
     [SerializeField]
     float timeTofade = 0.5f;
 
+    [SerializeField]
     TextMeshProUGUI textField;
 
 
@@ -19,7 +20,6 @@ public class FadeOutInfo : MonoBehaviour
     void Start()
     {
         DescriptionText.Instance.fadeOutInfo = this;
-        textField = GetComponent<TextMeshProUGUI>();
         normalColor = textField.color;
     }
 

@@ -28,8 +28,6 @@ public class CharacterStats : MonoBehaviour
 	public void TakeDamage(int damage)
 	{
 
-		damage = Mathf.Abs(damage);
-
 		if(armor - damage >= 0)
 		{
 			armor -= damage;
@@ -101,7 +99,10 @@ public class CharacterStats : MonoBehaviour
 	}
 
 	public virtual void Die()
-	{
+	{ 
 		DungeonMaster.Instance.deathMenu.ShowMenu();
+		currentHealth = 9;
+		maxHealth = 12;
+		ammoAbility = 0;
 	}
 }

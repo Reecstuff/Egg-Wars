@@ -65,6 +65,7 @@ public class DungeonMaster : MonoBehaviour
         levelCount = 1;
         currentLevelDungeons.Clear();
         Instance.BossRoomTime = false;
+        
     }
 
     private void Awake()
