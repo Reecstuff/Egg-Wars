@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Boss : Enemy
 {
@@ -16,7 +17,7 @@ public class Boss : Enemy
     [SerializeField]
     float attackDistance = 4;
 
-    string[] animationAttack = { "Boss_Jump", "Boss_Hack_Attack", "Boss_WirbelAttacke" };
+    string[] animationAttack = { "Boss_Jump", "Boss_Hack_Attack", "Boss_Wirbelattacke" };
     string[] animationStandard = { "Boss_Standing", "Boss_Walking", "Boss_Dying" };
     string walkingSpeed = "Walking_Speed";
 
@@ -66,7 +67,6 @@ public class Boss : Enemy
             float distance = Vector3.Distance(target, transform.position);
             if (wiggleSafe <= 0)
             {
-                Debug.Log(target);
                 agent.SetDestination(target);
                 wiggleSafe = 5;
             }
@@ -82,6 +82,12 @@ public class Boss : Enemy
             if(distance <= attackDistance)
             {
                 AnimateBoss();
+            }
+            if (!agent.hasPath && !agent.pathPending)
+            {
+                agent.enabled = false;
+                agent.enabled = true;
+                Debug.Log("navmesh re enabled");
             }
         }
     }
@@ -113,6 +119,7 @@ public class Boss : Enemy
             CharacterStats destruct = nearbyObj.GetComponent<CharacterStats>();
             if (destruct != null)
             {
+                PlayParticles();
                 destruct.TakeDamage(damage);
             }
         }
@@ -122,8 +129,11 @@ public class Boss : Enemy
     {
         base.EnemyDying();
         stopAll = true;
+        source.loop = false;
+        source.clip = deathClip;
+        source.Play();
         animator.Play(animationStandard[2]);
-        Invoke(nameof(Die), 4);
+        Invoke(nameof(Die), animator.GetCurrentAnimatorStateInfo(0).length);
     }
 
     void AnimateBoss()
@@ -143,16 +153,25 @@ public class Boss : Enemy
             CalculateDamage(rnd);
 
 
-
             animator.Play(animationAttack[rnd]);
             Invoke(nameof(ResetBools), animator.GetCurrentAnimatorStateInfo(0).length);
+            Invoke(nameof(ResetStuck), 10);
+
         }
+    }
+
+    void ResetStuck()
+    {
+        agent.enabled = false;
+        transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        agent.enabled = true;
+        agent.SetDestination(RandomNavmeshLocation());
     }
 
     void ResetBools()
     {
-        transform.position =  new Vector3(transform.localPosition.x, transform.localPosition.y + 0.4f, transform.localPosition.z);
-        agent.SetDestination(new Vector3(DungeonMaster.Instance.player.transform.position.x, transform.position.y, DungeonMaster.Instance.player.transform.position.z));
+       
+
         stopAnimation = false;
         stopAll = false;
     }
