@@ -125,11 +125,6 @@ public class Enemy : MonoBehaviour
 
     protected void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Melee"))
-        {
-            Destroy(gameObject); //Or takes damage
-        }
-
         if (other.gameObject.GetComponent<PlayerController>())
         {
             OnPlayerCollision(other.gameObject);
