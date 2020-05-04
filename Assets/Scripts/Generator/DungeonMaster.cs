@@ -56,6 +56,17 @@ public class DungeonMaster : MonoBehaviour
     int currentDungeonCount = 0;
     public int levelCount = 1;
 
+    int currentDungeonMaxStandard;
+
+
+    public void ResetDungeonMaster()
+    {
+        currentDungeonMax = currentDungeonMaxStandard;
+        levelCount = 1;
+        currentLevelDungeons.Clear();
+        Instance.BossRoomTime = false;
+    }
+
     private void Awake()
     {
         MakeSingelton(); 
@@ -66,6 +77,7 @@ public class DungeonMaster : MonoBehaviour
     {
         BossRoomTime = false;
         currentLevelDungeons = new List<DungeonGenerator>();
+        currentDungeonMaxStandard = currentDungeonMax;
     }
 
     void MakeSingelton()
@@ -248,6 +260,7 @@ public class DungeonMaster : MonoBehaviour
 
 
     }
+
 
     void CleanUpDoors()
     {

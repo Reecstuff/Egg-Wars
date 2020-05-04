@@ -10,7 +10,8 @@ public class ThisFaceCamera : MonoBehaviour
 
         if(gameObject.activeInHierarchy)
         {
-            transform.LookAt(Camera.main.transform);
+            if(Camera.main)
+                transform.LookAt(Camera.main.transform);
 
         }
         //transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);

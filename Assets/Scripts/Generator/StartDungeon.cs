@@ -20,7 +20,8 @@ public class StartDungeon : MonoBehaviour
     {
         DungeonMaster.Instance.dungeonStarter = this;
         DungeonMaster.Instance.navi = navi;
-        DungeonMaster.Instance.currentLevelDungeons.Clear();
+        DungeonMaster.Instance.ResetDungeonMaster();
+
         DungeonOn();
     }
 
@@ -30,7 +31,6 @@ public class StartDungeon : MonoBehaviour
         GameAudio.Instance.SetNormalMusic();
         SetupDungeon();
         SetupPlayer();
-
     }
 
     private void SetupPlayer()
