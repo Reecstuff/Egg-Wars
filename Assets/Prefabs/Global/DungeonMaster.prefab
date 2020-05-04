@@ -64,7 +64,7 @@ MonoBehaviour:
   normalMaterial: {fileID: 2100000, guid: a28859eef36fdde44b9b8d25e035b1f0, type: 2}
   dungeonStarter: {fileID: 0}
   dungeonOffset: 100
-  currentDungeonMax: 1
+  currentDungeonMax: 10
   dungeons:
   - {fileID: 7104993032198819115, guid: ac024c1c94205144ab2457a84fddf611, type: 3}
   - {fileID: 6618335001263330819, guid: 853d9e31bc3fa274a99370d63fee23ad, type: 3}

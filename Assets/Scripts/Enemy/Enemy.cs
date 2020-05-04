@@ -161,6 +161,7 @@ public class Enemy : MonoBehaviour
 
     protected void Die()
     {
+        agent.enabled = true;
         Destroy(gameObject);
     }
 

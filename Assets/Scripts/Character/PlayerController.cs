@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     string walkingValue = "WalkingMultiplier";
 
+    [SerializeField]
+    AudioClip speakingClip;
 
     AudioSource walkingSource;
     AudioSource speakingSource;
@@ -155,7 +157,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName(walkingState) && shouldAnimateMoving)
             {
-                CancelInvoke(nameof(PlaySpeakSound));
+                CancelInvoke(nameof(SpeakingChicken));
                 animator.Play(walkingState);
                 walkingSource.Play();
             }
@@ -163,13 +165,23 @@ public class PlayerController : MonoBehaviour
             {
                 animator.CrossFade(standingState, 0.0f);
                 walkingSource.Stop();
-                Invoke(nameof(PlaySpeakSound), 2);
+                Invoke(nameof(SpeakingChicken), 2);
             }
         }
     }
 
-    void PlaySpeakSound()
+    void SpeakingChicken()
     {
+        speakingSource.clip = speakingClip;
+        speakingSource.Play();
+    }
+
+    public void PlaySpeakSound(AudioClip clip = null)
+    {
+        if (clip = null)
+            speakingSource.clip = speakingClip;
+
+        speakingSource.clip = clip;
         speakingSource.Play();
     }
 
