@@ -22,7 +22,7 @@ public class EnemyUI : MonoBehaviour
 
 	public void SetHealth(int health)
 	{
-		if (health == 0)
+		if (health <= 0)
 			textHealth.text = string.Empty;
 		else
 			textHealth.text = string.Concat(Enumerable.Repeat(uniformChar,Mathf.RoundToInt(health / 10)));
