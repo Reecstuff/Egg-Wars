@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Transform abilitySlot;
 
-    public GameObject equippedAbility;
+    public GameObject equippedAbility = null;
 
     public GameObject equippedArmor;
     public Transform armorSlot;
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         DungeonMaster.Instance.player = this;
 
-        if (equippedAbility.GetComponent<Armor>())
+        if (equippedAbility && equippedAbility.GetComponent<Armor>())
             equippedAbility.GetComponent<Armor>().SetArmor();
     }
 
