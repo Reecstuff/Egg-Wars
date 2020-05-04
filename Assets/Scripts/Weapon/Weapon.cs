@@ -44,6 +44,15 @@ public class Weapon : EquipAbleItem
                     Swing();
                     GetComponent<LaserAnimation>().ShowLaser();
                     break;
+                case "Sense":
+                    Swing();
+                    break;
+                case "Heugabel":
+                    Swing();
+                    break;
+                case "RiotShield":
+                    Swing();
+                    break;
             }
         }
         else
@@ -55,6 +64,7 @@ public class Weapon : EquipAbleItem
     void Swing()
     {
         GetComponentInParent<PlayerController>().SwingWeapon();
+        GetComponentInChildren<MeleeCombat>().damage = damage;
     }
 
     public void Shoot()

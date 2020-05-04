@@ -49,6 +49,7 @@ public class CharacterStats : MonoBehaviour
 		{
 			// Check for Helmet
 			// Destroy Helmet
+			Destroy(GetComponent<PlayerController>().equippedArmor);
 		}
 
 		if (currentHealth <= 0)
@@ -75,7 +76,7 @@ public class CharacterStats : MonoBehaviour
 	{
 		if (armorAmount + armor <= maxHealth)
 		{
-			armor += armorAmount;
+			armor = armorAmount;
 		}
 		statsUI.SetArmor(armor);
 	}
