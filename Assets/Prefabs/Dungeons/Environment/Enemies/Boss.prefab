@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4943024217073367971}
   - component: {fileID: 4943024217073367970}
   - component: {fileID: 3084658352832550539}
-  - component: {fileID: 4738755112567905595}
+  - component: {fileID: 7367243023086722198}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -213,7 +213,7 @@ MonoBehaviour:
   walkingClip: {fileID: 8300000, guid: 1c153e732589b894da48cfdf6b7b68be, type: 3}
   deathClip: {fileID: 0}
   attackDistance: 10
---- !u!65 &4738755112567905595
+--- !u!65 &7367243023086722198
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,8 +224,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.681456, y: 4.587598, z: 1}
-  m_Center: {x: -0.2550714, y: 3.3300958, z: -2.42}
+  m_Size: {x: 6.7, y: 4.16, z: 1}
+  m_Center: {x: 0, y: 3.1, z: -2.4}
 --- !u!1 &5075091793672365316
 GameObject:
   m_ObjectHideFlags: 0
