@@ -13,6 +13,9 @@ public class CharacterStats : MonoBehaviour
 	public int damage;
 	public int armor = 0;
 
+	[SerializeField]
+	AudioClip[] audioClips;
+
 
 	private void Start()
 	{
@@ -34,6 +37,7 @@ public class CharacterStats : MonoBehaviour
 		}
 		else
 		{
+			DungeonMaster.Instance.player.PlaySpeakSound(audioClips[Random.Range(0, audioClips.Length)]);
 			damage -= armor;
 			armor = 0;
 			currentHealth -= damage;

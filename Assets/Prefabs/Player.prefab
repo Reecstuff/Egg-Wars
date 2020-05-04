@@ -69,6 +69,7 @@ MonoBehaviour:
   standingState: Standing
   meeleState: Meele
   walkingValue: WalkingMultiplier
+  speakingClip: {fileID: 0}
   playerGroundProtectionY: 0
 --- !u!54 &1577825707594235633
 Rigidbody:
@@ -118,6 +119,11 @@ MonoBehaviour:
   ammoAbility: 0
   damage: 0
   armor: 0
+  audioClips:
+  - {fileID: 8300000, guid: d7106502744282247ac82d4a8bbacf43, type: 3}
+  - {fileID: 8300000, guid: 597553bf99c28634d83e3b1658ee02f1, type: 3}
+  - {fileID: 8300000, guid: 6e129123cddba7c41b3b97ee525bc506, type: 3}
+  - {fileID: 8300000, guid: 8b16a6423b401a247ac379294c6df401, type: 3}
 --- !u!82 &5226081667706724411
 AudioSource:
   m_ObjectHideFlags: 0

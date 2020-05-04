@@ -133,7 +133,8 @@ public class Boss : Enemy
         source.clip = deathClip;
         source.Play();
         animator.Play(animationStandard[2]);
-        Invoke(nameof(Die), animator.GetCurrentAnimatorStateInfo(0).length);
+        agent.enabled = false;
+        Invoke(nameof(Die), 4);
     }
 
     void AnimateBoss()
@@ -170,8 +171,6 @@ public class Boss : Enemy
 
     void ResetBools()
     {
-       
-
         stopAnimation = false;
         stopAll = false;
     }

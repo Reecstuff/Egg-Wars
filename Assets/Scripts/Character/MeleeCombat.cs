@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MeleeCombat : MonoBehaviour
 {
-    public int damage = 50;
+    public int damage = 0;
 
     private void OnTriggerEnter(Collider other)
     {

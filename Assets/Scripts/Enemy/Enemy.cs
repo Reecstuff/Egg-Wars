@@ -85,8 +85,10 @@ public class Enemy : MonoBehaviour
     virtual public void GotHit(int damage)
     {
         health -= damage;
-
+        if (health <= 0)
+            EnemyDying();
         enemyUI.SetHealth(health);
+
     }
 
     virtual public void PlayerEnterTrigger(GameObject other)
@@ -161,6 +163,7 @@ public class Enemy : MonoBehaviour
 
     protected void Die()
     {
+        agent.enabled = true;
         Destroy(gameObject);
     }
 

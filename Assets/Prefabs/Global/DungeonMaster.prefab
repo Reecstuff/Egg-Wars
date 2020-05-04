@@ -53,6 +53,13 @@ MonoBehaviour:
   - {fileID: 9071154779984818260, guid: e7be72bde38cb7f4fb1e62d58706f773, type: 3}
   - {fileID: 1825909529282957962, guid: 7e75bff2006e2834c988c15a9443a539, type: 3}
   - {fileID: 2948872439566990193, guid: db6288b9e79047b44b9d28e654375ae8, type: 3}
+  - {fileID: 1070635371069152154, guid: 072d795b5cb21ab4ca783341eddb55db, type: 3}
+  - {fileID: 3160222438303380427, guid: 5a5e0f4d41cc573428495a89f0fa1088, type: 3}
+  - {fileID: 793001782610055473, guid: 21e64e2160a0590448c95c4f2e2bee38, type: 3}
+  - {fileID: 8942029768621748995, guid: 097ca1309ab7c8f47b9fa90ef8bccb73, type: 3}
+  - {fileID: 9029924383312628741, guid: 52d34d4ac4604664ab86caa060530a06, type: 3}
+  - {fileID: 1642900216963551142, guid: 5d4ae3aa3bfb91a45b653f0ae98e977a, type: 3}
+  - {fileID: 4311865108386206304, guid: 09185b4199e1df2439c61ac60bc38239, type: 3}
   PlayerMoving: 0
   BossRoomTime: 0
   PlayerMovingTime: 0.3
@@ -64,7 +71,7 @@ MonoBehaviour:
   normalMaterial: {fileID: 2100000, guid: a28859eef36fdde44b9b8d25e035b1f0, type: 2}
   dungeonStarter: {fileID: 0}
   dungeonOffset: 100
-  currentDungeonMax: 1
+  currentDungeonMax: 10
   dungeons:
   - {fileID: 7104993032198819115, guid: ac024c1c94205144ab2457a84fddf611, type: 3}
   - {fileID: 6618335001263330819, guid: 853d9e31bc3fa274a99370d63fee23ad, type: 3}

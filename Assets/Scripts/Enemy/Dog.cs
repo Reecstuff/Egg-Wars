@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Dog : Enemy
@@ -33,6 +34,12 @@ public class Dog : Enemy
         }
     }
 
+    public override void DamagePlayer()
+    {
+        base.DamagePlayer();
+        DungeonMaster.Instance.player.characterStats.TakeDamage(damage);
+    }
+
     public override void PlayerEnterTrigger(GameObject other)
     {
         base.PlayerEnterTrigger(other);
@@ -45,6 +52,7 @@ public class Dog : Enemy
             transform.DOLookAt(new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z), .2f);
             PlayAudio(attackSound);
             animator.Play("Dog_Attack");
+            particleSystem.First().Play(); //Maybe Play
         }
         base.PlayerInTriggerStay(other);
     }

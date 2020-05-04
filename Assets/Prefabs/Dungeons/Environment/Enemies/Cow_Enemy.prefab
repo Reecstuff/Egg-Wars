@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e8f082c361d2a4da137dbe16671534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyName: MUUUUUUUHH
+  EnemyName: MUKUH
   health: 100
   Speed: 10
   standardSpeed: 0
