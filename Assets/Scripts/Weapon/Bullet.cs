@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float timeBtwShots = 2;
+    private float timeBtwShots = 3;
     float startTimeBtwShots = 0;
 
     public int damage;
