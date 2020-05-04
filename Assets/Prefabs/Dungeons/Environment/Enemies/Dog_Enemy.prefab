@@ -74,7 +74,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 9.59
+  m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &805733092022238936
 MonoBehaviour:
@@ -158,10 +158,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.59
   m_Height: 1.76
   m_Direction: 2
-  m_Center: {x: 0, y: 1.28, z: 0.1}
+  m_Center: {x: 0, y: 1.64, z: 0.1}
 --- !u!82 &3308282657825734510
 AudioSource:
   m_ObjectHideFlags: 0
@@ -272,17 +272,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyName: WAUWAU
-  health: 60
+  health: 90
   Speed: 10
   standardSpeed: 0
   damage: 3
   randomRadius: 5
   maxPitch: 2
-  perLevelHealth: 4
+  perLevelHealth: 10
   noPlayerInSight: 0
   attackSound: {fileID: 8300000, guid: 6695ba52f1ae0eb40ab6966f11ec0b33, type: 3}
   deathSound: {fileID: 8300000, guid: 0a1448b73c9963c439c9d09c2f370d9a, type: 3}
-  hitSound: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: e04216df99bf8ff4bb5b07b15cae9acd, type: 3}
 --- !u!95 &4392728775413062827
 Animator:
   serializedVersion: 3
@@ -328,13 +328,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7046589391743131889}
-  m_LocalRotation: {x: -0.060003214, y: 0, z: 0, w: 0.9981982}
+  m_LocalRotation: {x: -0.05988318, y: -0.06310756, z: 0.0037934894, w: 0.99620134}
   m_LocalPosition: {x: 1.32, y: 9.939, z: 3.788}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 804763587246353853}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -6.88, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -6.8250003, y: -7.301, z: 0.87200004}
 --- !u!198 &2504197462698519506
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -408,7 +408,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
   randomSeed: 0
@@ -453,7 +453,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -873,7 +873,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: -2
       minScalar: 0
       maxCurve:
         serializedVersion: 2

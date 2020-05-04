@@ -25,7 +25,7 @@ public class StatsUI : MonoBehaviour
 
 	public void SetHealth(int health)
 	{
-		if (health == 0)
+		if (health <= 0)
 			textHealth.text = string.Empty;
 		else
 			textHealth.text = string.Concat(Enumerable.Repeat(uniformChar, health));
@@ -33,7 +33,7 @@ public class StatsUI : MonoBehaviour
 
 	public void SetAmmo(int ammo)
 	{
-		if (ammo == 0)
+		if (ammo <= 0)
 			textAmmo.text = string.Empty;
 		else
 			textAmmo.text = string.Concat(Enumerable.Repeat(uniformChar, ammo));
@@ -41,7 +41,7 @@ public class StatsUI : MonoBehaviour
 
 	public void SetArmor(int armor)
 	{
-		if (armor == 0)
+		if (armor <= 0)
 			textArmor.text = string.Empty;
 		else
 			textArmor.text = string.Concat(Enumerable.Repeat(armorChar, armor));

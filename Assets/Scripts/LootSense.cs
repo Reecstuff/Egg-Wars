@@ -84,12 +84,12 @@ public class LootSense : MonoBehaviour
             }
             catch (System.Exception e)
             {
+                inSenseLoot.Clear();
+                inSenseLoot.Add(other.gameObject.GetComponent<Collectable>());
             }
 
             if(closestLoot && !closestLoot.isActivated)
                 closestLoot.ActivateCollectable(true);
-
-
         }
     }
 

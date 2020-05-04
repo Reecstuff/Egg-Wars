@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
 
     virtual public void PlayerEnterTrigger(GameObject other)
     {
-
+       
     }
 
     virtual public void PlayerInTriggerStay(GameObject other)
@@ -110,17 +110,7 @@ public class Enemy : MonoBehaviour
     {
         if (noPlayerInSight)
         {
-            // Check if we've reached the destination
-            if (!agent.pathPending)
-            {
-                if (agent.remainingDistance <= agent.stoppingDistance)
-                {
-                    if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
-                    {
-                        agent.SetDestination(RandomNavmeshLocation());
-                    }
-                }
-            }
+            agent.SetDestination(RandomNavmeshLocation());
         }
     }
 

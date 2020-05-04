@@ -121,6 +121,11 @@ public class Boss : Enemy
             {
                 PlayParticles();
                 destruct.TakeDamage(damage);
+                if (DungeonMaster.Instance.player.characterStats.currentHealth <= 0)
+                {
+                    source.Stop();
+                    source.loop = false;
+                }
             }
         }
     }
@@ -198,7 +203,7 @@ public class Boss : Enemy
                 break;
             case 2:
                 damagePosition = transform.position;
-                damageRadius = 40;
+                damageRadius = 35;
                 damage = 5;
                 break;
         }

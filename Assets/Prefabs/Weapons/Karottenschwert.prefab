@@ -281,8 +281,6 @@ GameObject:
   - component: {fileID: 4953712119780247511}
   - component: {fileID: 3115987339554358789}
   - component: {fileID: 1058671467508873235}
-  - component: {fileID: 4275765259586170526}
-  - component: {fileID: 5220067810103704881}
   m_Layer: 0
   m_Name: Karotte
   m_TagString: Untagged
@@ -351,32 +349,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &4275765259586170526
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7880460590665284401}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.27925926, y: 5.015521, z: 0.2792593}
-  m_Center: {x: -0.000000052154064, y: 0.00000047683716, z: 0.00000020116569}
---- !u!114 &5220067810103704881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7880460590665284401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f7e1ed8ffbef94eb23ae0581768ee4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 50
 --- !u!1 &8776889955799549883
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,6 +360,8 @@ GameObject:
   - component: {fileID: 5734946209910928808}
   - component: {fileID: 787052412827279024}
   - component: {fileID: 3816005397279902339}
+  - component: {fileID: 7142594836062101301}
+  - component: {fileID: 7159393224455970769}
   m_Layer: 0
   m_Name: Karottenschwert
   m_TagString: Untagged
@@ -444,3 +418,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Laser: {fileID: 4953712119780247511}
+--- !u!65 &7142594836062101301
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776889955799549883}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.27925926, y: 5.015521, z: 0.2792593}
+  m_Center: {x: -0.000000052154064, y: 1.86, z: 0.00000020116569}
+--- !u!114 &7159393224455970769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776889955799549883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f7e1ed8ffbef94eb23ae0581768ee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 80

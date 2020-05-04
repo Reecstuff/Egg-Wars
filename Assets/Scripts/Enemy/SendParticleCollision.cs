@@ -8,10 +8,9 @@ public class SendParticleCollision : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log("Collision");
         if(other.GetComponent<PlayerController>())
         {
-            thisEnemy.DamagePlayer();
+            thisEnemy?.DamagePlayer();
         }
     }
 

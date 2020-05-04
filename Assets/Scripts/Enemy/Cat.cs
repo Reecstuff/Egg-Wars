@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Dog : Enemy
+public class Cat : Enemy
 {
     [SerializeField]
     AudioClip attackSound;
@@ -24,8 +24,8 @@ public class Dog : Enemy
         isdying = true;
         source.clip = deathSound;
         source.Play();
-        animator.Play("Dog_Dying");
-        Invoke(nameof(Die), 3.5f);
+        animator.Play("Cat_Dying");
+        Invoke(nameof(Die), 4f);
     }
 
     public override void GotHit(int damage)
@@ -51,12 +51,12 @@ public class Dog : Enemy
 
     public override void PlayerInTriggerStay(GameObject other)
     {
-        if(!isdying && !animator.GetCurrentAnimatorStateInfo(0).IsName("Dog_Attack"))
+        if(!isdying && !animator.GetCurrentAnimatorStateInfo(0).IsName("Cat_Shooting"))
         {
             transform.DOLookAt(new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z), .2f);
+            animator.Play("Cat_Shooting");
+            particleSystem.First().Play();
             PlayAudio(attackSound);
-            animator.Play("Dog_Attack");
-            particleSystem.First().Play(); //Maybe Play
         }
         base.PlayerInTriggerStay(other);
     }

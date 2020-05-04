@@ -178,7 +178,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlaySpeakSound(AudioClip clip = null)
     {
-        if (clip = null)
+        if (clip == null)
             speakingSource.clip = speakingClip;
 
         speakingSource.clip = clip;

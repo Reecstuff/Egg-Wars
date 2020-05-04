@@ -207,11 +207,11 @@ MonoBehaviour:
   damage: 5
   randomRadius: 5
   maxPitch: 2
-  perLevelHealth: 10
+  perLevelHealth: 100
   noPlayerInSight: 0
   beginningClip: {fileID: 8300000, guid: da2b8fef01a6ad349a513d1e02ce80e5, type: 3}
-  walkingClip: {fileID: 8300000, guid: 1c153e732589b894da48cfdf6b7b68be, type: 3}
-  deathClip: {fileID: 0}
+  walkingClip: {fileID: 8300000, guid: 2f258b46086f8d84cb0968fcecd8794d, type: 3}
+  deathClip: {fileID: 8300000, guid: 365b146793fa30543b4fa7334edeee8b, type: 3}
   attackDistance: 10
 --- !u!65 &7367243023086722198
 BoxCollider:
@@ -224,8 +224,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.7, y: 4.16, z: 1}
-  m_Center: {x: 0, y: 3.1, z: -2.4}
+  m_Size: {x: 6.7, y: 5.01, z: 1}
+  m_Center: {x: 0, y: 3.21, z: -2.4}
 --- !u!1 &5075091793672365316
 GameObject:
   m_ObjectHideFlags: 0

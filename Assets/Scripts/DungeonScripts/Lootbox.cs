@@ -27,7 +27,8 @@ public class Lootbox : MonoBehaviour
 
     void Disappear(ItemText text)
     {
-        GetComponentInChildren<FillItemText>().SetItemText(text);
+        if(text != null)
+            GetComponentInChildren<FillItemText>().SetItemText(text);
         transform.DOScale(0.1f, 0.5f);
         transform.DOLocalRotate(new Vector3(0, 280, 0), 0.5f);
         Invoke(nameof(Exterminate), 2.5f);

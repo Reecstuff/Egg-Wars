@@ -65,18 +65,16 @@ public class DungeonMaster : MonoBehaviour
         levelCount = 1;
         currentLevelDungeons.Clear();
         Instance.BossRoomTime = false;
-        
     }
 
     private void Awake()
     {
-        MakeSingelton(); 
+        MakeSingelton();
     }
 
 
     private void Start()
     {
-        BossRoomTime = false;
         currentLevelDungeons = new List<DungeonGenerator>();
         currentDungeonMaxStandard = currentDungeonMax;
     }
