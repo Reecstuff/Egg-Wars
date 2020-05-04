@@ -42,12 +42,6 @@ public class Cow : Enemy
 
         foreach (Collider nearbyObj in collider)
         {
-            Rigidbody rb = nearbyObj.GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.AddExplosionForce(force, transform.position, radius);
-            }
-
             CharacterStats destruct = nearbyObj.GetComponent<CharacterStats>();
             if (destruct != null)
             {

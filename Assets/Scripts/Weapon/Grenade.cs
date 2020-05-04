@@ -13,10 +13,6 @@ public class Grenade : Ability
 	bool hasExploded = false;
 	bool fuse = false;
 
-	private void Start()
-	{
-	}
-
 	public void StartCountdown()
 	{
 		countdown = delay;
@@ -51,4 +47,6 @@ public class Grenade : Ability
 
 		Destroy(gameObject);
 	}
+
+
 }
