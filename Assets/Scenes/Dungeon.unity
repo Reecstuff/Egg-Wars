@@ -269,6 +269,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3035403610708228767, guid: a0dfcdd4536c5154aba39f9fd1d43182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6175335940463636752, guid: a0dfcdd4536c5154aba39f9fd1d43182,
         type: 3}
       propertyPath: statsUI
@@ -1401,9 +1406,61 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4601523300737890181, guid: d2da2f890381b6a46a5760aa4c80d174,
         type: 3}
+      propertyPath: AllEquipableItems.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601523300737890181, guid: d2da2f890381b6a46a5760aa4c80d174,
+        type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1383807389}
+    - target: {fileID: 4601523300737890181, guid: d2da2f890381b6a46a5760aa4c80d174,
+        type: 3}
+      propertyPath: currentDungeonMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601523300737890181, guid: d2da2f890381b6a46a5760aa4c80d174,
+        type: 3}
+      propertyPath: AllEquipableItems.Array.data[7]
+      value: 
+      objectReference: {fileID: 1070635371069152154, guid: 072d795b5cb21ab4ca783341eddb55db,
+        type: 3}
+    - target: {fileID: 4601523300737890181, guid: d2da2f890381b6a46a5760aa4c80d174,
+        type: 3}
+      propertyPath: AllEquipableItems.Array.data[8]
+      value: 
+      objectReference: {fileID: 3160222438303380427, guid: 5a5e0f4d41cc573428495a89f0fa1088,
+        type: 3}
+    - target: {fileID: 4601523300737890181, guid: d2da2f890381b6a46a5760aa4c80d174,
+        type: 3}
+      propertyPath: AllEquipableItems.Array.data[9]
+      value: 
+      objectReference: {fileID: 793001782610055473, guid: 21e64e2160a0590448c95c4f2e2bee38,
+        type: 3}
+    - target: {fileID: 4601523300737890181, guid: d2da2f890381b6a46a5760aa4c80d174,
+        type: 3}
+      propertyPath: AllEquipableItems.Array.data[10]
+      value: 
+      objectReference: {fileID: 8942029768621748995, guid: 097ca1309ab7c8f47b9fa90ef8bccb73,
+        type: 3}
+    - target: {fileID: 4601523300737890181, guid: d2da2f890381b6a46a5760aa4c80d174,
+        type: 3}
+      propertyPath: AllEquipableItems.Array.data[11]
+      value: 
+      objectReference: {fileID: 9029924383312628741, guid: 52d34d4ac4604664ab86caa060530a06,
+        type: 3}
+    - target: {fileID: 4601523300737890181, guid: d2da2f890381b6a46a5760aa4c80d174,
+        type: 3}
+      propertyPath: AllEquipableItems.Array.data[12]
+      value: 
+      objectReference: {fileID: 1642900216963551142, guid: 5d4ae3aa3bfb91a45b653f0ae98e977a,
+        type: 3}
+    - target: {fileID: 4601523300737890181, guid: d2da2f890381b6a46a5760aa4c80d174,
+        type: 3}
+      propertyPath: AllEquipableItems.Array.data[13]
+      value: 
+      objectReference: {fileID: 4311865108386206304, guid: 09185b4199e1df2439c61ac60bc38239,
+        type: 3}
     - target: {fileID: 4601523300737890187, guid: d2da2f890381b6a46a5760aa4c80d174,
         type: 3}
       propertyPath: m_Name

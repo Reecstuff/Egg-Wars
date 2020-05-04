@@ -64,7 +64,14 @@ public class Weapon : EquipAbleItem
     void Swing()
     {
         GetComponentInParent<PlayerController>().SwingWeapon();
-        GetComponentInChildren<MeleeCombat>().damage = damage;
+        if (item.name == "LaserKarottenSchwert")
+        {
+
+        }
+        else
+        {
+            GetComponentInChildren<MeleeCombat>().damage = damage;
+        }
     }
 
     public void Shoot()
