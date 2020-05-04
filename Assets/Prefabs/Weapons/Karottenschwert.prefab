@@ -429,7 +429,7 @@ MonoBehaviour:
   spreadAngle: 10
   shootSpeed: 10
   bulletcount: 8
-  damage: 1
+  damage: 50
   startTimeBtwShots: 0.5
 --- !u!114 &3816005397279902339
 MonoBehaviour:
