@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
 
     public GameObject equippedAbility;
 
+    public GameObject equippedArmor;
+    public Transform armorSlot;
+
     public GameObject granadePrefab;
 
     public CharacterStats characterStats;
@@ -63,6 +66,9 @@ public class PlayerController : MonoBehaviour
         speakingSource = GetComponents<AudioSource>()[1];
         rb = GetComponent<Rigidbody>();
         DungeonMaster.Instance.player = this;
+
+        if (equippedAbility.GetComponent<Armor>())
+            equippedAbility.GetComponent<Armor>().SetArmor();
     }
 
     private void OnEnable()
@@ -241,8 +247,26 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+            else if (newEquip.GetComponent<Armor>())
+            {
+                if (equippedArmor == null)
+                {
+                    equippedArmor = Instantiate(newEquip.gameObject, armorSlot.transform);
 
-            if(oldItem)
+                    equippedArmor.GetComponent<Armor>().SetArmor();
+                }
+                else
+                {
+                    oldItem = equippedArmor;
+                    Destroy(equippedArmor);
+
+                    equippedArmor = Instantiate(newEquip.gameObject, armorSlot.transform);
+
+                    equippedArmor.GetComponent<Armor>().SetArmor();
+                }
+            }
+
+            if (oldItem)
             {
                 // Return old Weapon back to Collectable
                 return oldItem.GetComponent<EquipAbleItem>();
