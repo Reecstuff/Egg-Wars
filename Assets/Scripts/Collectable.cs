@@ -62,7 +62,7 @@ public class Collectable : MonoBehaviour
 
         // Set Text by Item
         // Item can change
-        DescriptionText.Instance.ActivateText(setActiv, itemText.Description);
+        DungeonMaster.Instance.descriptionText.ActivateText(setActiv, itemText.Description);
         FillitemText.SetItemText(itemText);
 
         if (setActiv)
@@ -82,14 +82,14 @@ public class Collectable : MonoBehaviour
         PlayAudio();
         if (!newWeapon)
         {
-            DescriptionText.Instance.ActivateText(false, "");
+            DungeonMaster.Instance.descriptionText.ActivateText(false, "");
             Destroy(gameObject);
             return false;
         }
 
 
         itemText = newWeapon.item;
-        DescriptionText.Instance.ActivateText(true, itemText.Description);
+        DungeonMaster.Instance.descriptionText.ActivateText(true, itemText.Description);
         FillitemText.SetItemText(itemText);
         FillitemText.ShowText(true);
 

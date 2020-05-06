@@ -19,7 +19,7 @@ public class FadeOutInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DescriptionText.Instance.fadeOutInfo = this;
+        DungeonMaster.Instance.descriptionText.fadeOutInfo = this;
         normalColor = textField.color;
     }
 

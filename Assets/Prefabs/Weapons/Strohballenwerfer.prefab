@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: fa10eebb06315f246add8e353ef5bf3e, type: 2}
+  moveSpeedMultiplier: 0.8
   firePoint: {fileID: 4382778427756384409}
   bullet: {fileID: 5015661641837129399, guid: ac708add053393348b11d234c33a2d54, type: 3}
   spreadAngle: 1

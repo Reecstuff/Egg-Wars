@@ -34,7 +34,7 @@ public class Dog : Enemy
             source.Play();
         }
         animator.Play(DeathAnimationString);
-        Invoke(nameof(Die), 3.5f);
+        Invoke(nameof(Die), 3f);
     }
 
     public override void GotHit(int damage)

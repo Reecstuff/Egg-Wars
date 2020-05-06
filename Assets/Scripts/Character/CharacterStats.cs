@@ -31,7 +31,7 @@ public class CharacterStats : MonoBehaviour
 	public void TakeDamage(int damage)
 	{
 
-		if(armor - damage >= 0)
+		if (armor - damage >= 0)
 		{
 			armor -= damage;
 		}

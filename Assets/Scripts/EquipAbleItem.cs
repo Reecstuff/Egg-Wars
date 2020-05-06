@@ -5,4 +5,7 @@ using UnityEngine;
 public class EquipAbleItem : MonoBehaviour
 {
     public ItemText item;
+
+    [Range(0, 2)]
+    public float moveSpeedMultiplier = 1;
 }

@@ -138,6 +138,7 @@ public class Enemy : MonoBehaviour
 
     virtual public void EnemyDying()
     {
+        GetComponentInChildren<Collider>().enabled = false;
         agent.enabled = false;
     }
 

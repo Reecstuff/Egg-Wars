@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2097653475}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 2969882896278132117}
   - component: {fileID: 9142931026086163328}
   - component: {fileID: 8292864934238898834}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Heal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3710390851667682995}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -95,7 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: c1116b8afcbec85478555889f12c5d77, type: 2}
-  healAmount: 1
+  moveSpeedMultiplier: 1
+  healAmount: 3
   particleSystem:
   - {fileID: 3300059454546258188}
   - {fileID: 3300059454546258186}
@@ -213,20 +214,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1185048852969706066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5018115981893855080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da88102f5a452264da807290909158d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  Rotate: 0
 --- !u!208 &4487472978265216307
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -243,6 +230,20 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.001, y: -0.001, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &1185048852969706066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5018115981893855080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da88102f5a452264da807290909158d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  Rotate: 0
 --- !u!1001 &3300059454527518408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -250,13 +251,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2097653475}
     m_Modifications:
+    - target: {fileID: 100000, guid: a92a42a2125977345a54e9b8306b5880, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: a92a42a2125977345a54e9b8306b5880, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: a92a42a2125977345a54e9b8306b5880, type: 3}
       propertyPath: m_Name
       value: Buff
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: a92a42a2125977345a54e9b8306b5880, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: a92a42a2125977345a54e9b8306b5880, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a92a42a2125977345a54e9b8306b5880, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: a92a42a2125977345a54e9b8306b5880, type: 3}
       propertyPath: m_LocalPosition.x
@@ -641,6 +658,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heilkreuz
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e0ee0ebcff6bf214ea2f398e8eaad712,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0ee0ebcff6bf214ea2f398e8eaad712, type: 3}
 --- !u!1 &5018115981893855080 stripped
@@ -662,13 +684,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2097653475}
     m_Modifications:
+    - target: {fileID: 100000, guid: 2fdab942587233e42ad5de42efdc56af, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 2fdab942587233e42ad5de42efdc56af, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 2fdab942587233e42ad5de42efdc56af, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 2fdab942587233e42ad5de42efdc56af, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 2fdab942587233e42ad5de42efdc56af, type: 3}
       propertyPath: m_Name
       value: GreemPlame
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 2fdab942587233e42ad5de42efdc56af, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 2fdab942587233e42ad5de42efdc56af, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 2fdab942587233e42ad5de42efdc56af, type: 3}
       propertyPath: m_LocalPosition.x
@@ -938,6 +980,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectAbleCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8828803791676486405, guid: 9467ada50b1cf3d428e1c982421c521d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8828803791676486457, guid: 9467ada50b1cf3d428e1c982421c521d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1154,6 +1201,11 @@ PrefabInstance:
       propertyPath: m_textInfo.spaceCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8828803792196650654, guid: 9467ada50b1cf3d428e1c982421c521d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8828803792917306227, guid: 9467ada50b1cf3d428e1c982421c521d,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1173,6 +1225,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828803792917306237, guid: 9467ada50b1cf3d428e1c982421c521d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828803793245394919, guid: 9467ada50b1cf3d428e1c982421c521d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9467ada50b1cf3d428e1c982421c521d, type: 3}

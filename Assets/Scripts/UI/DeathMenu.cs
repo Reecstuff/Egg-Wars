@@ -30,7 +30,7 @@ public class DeathMenu : MonoBehaviour
     {
 
         deathsource.Play();
-        DescriptionText.Instance.gameObject.SetActive(false);
+        DungeonMaster.Instance.descriptionText.gameObject.SetActive(false);
         DungeonMaster.Instance.mainCamera.gameObject.SetActive(false);
         DungeonMaster.Instance.player.gameObject.SetActive(false);
         pauseCam.transform.position = DungeonMaster.Instance.mainCamera.transform.position;
@@ -43,7 +43,7 @@ public class DeathMenu : MonoBehaviour
     public void GotoMenu()
     {
         Time.timeScale = 1;
-        DescriptionText.Instance.gameObject.SetActive(false);
+        DungeonMaster.Instance.descriptionText.gameObject.SetActive(false);
         GameAudio.Instance.SetMenuMusic();
         SceneManager.LoadScene("MainMenu");
     }

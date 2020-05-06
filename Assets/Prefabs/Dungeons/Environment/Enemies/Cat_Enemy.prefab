@@ -276,7 +276,7 @@ MonoBehaviour:
   health: 80
   Speed: 20
   standardSpeed: 0
-  damage: 2
+  damage: 1
   randomRadius: 5
   maxPitch: 2
   perLevelHealth: 10

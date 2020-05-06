@@ -15,7 +15,6 @@ public class BossDungeon : DungeonGenerator
 
     GameObject currentBoss;
 
-    List<Enemy> allEnemies = new List<Enemy>();
     List<GameObject> allObstacles = new List<GameObject>();
 
     DungeonObstacle changedObstacle;
@@ -24,7 +23,15 @@ public class BossDungeon : DungeonGenerator
     {
         SetUpBossRoom();
         base.StartDungeon();
-        CalculateEnemies();
+    }
+
+    public void Reset()
+    {
+        for (int i = 0; i < allObstacles.Count; i++)
+        {
+            Destroy(allObstacles[i]);
+        }
+        allObstacles.Clear();
     }
 
     /// <summary>
@@ -34,10 +41,8 @@ public class BossDungeon : DungeonGenerator
     {
         base.SetObstacle(ref obstacle,ref i,ref l);
 
-        if (obstacle.GetComponent<Enemy>())
-            allEnemies.Add(obstacle.GetComponent<Enemy>());
-        else
-            allObstacles.Add(obstacle);
+        allObstacles.Add(obstacle);
+        
     }
 
     void SetUpBossRoom()
@@ -71,35 +76,16 @@ public class BossDungeon : DungeonGenerator
         currentBoss.transform.position = bossSpawnField.position;
     }
 
-    void CalculateEnemies()
+    protected override void CalculateEnemies()
     {
-        allEnemies = GetComponentsInChildren<Enemy>().ToList();
-
-        for (int i = 0; i < allEnemies.Count; i++)
-        {
-            allEnemies[i].OnEnemyDeath += EnemyKilled;
-        }
+        base.CalculateEnemies();
         allObstacles.Except(allEnemies.ConvertAll(e => e.gameObject));
     }
 
     /// <summary>
-    /// Enemy gets killed in Bossroom
-    /// </summary>
-    void EnemyKilled(Enemy enemy)
-    {
-        enemy.OnEnemyDeath -= EnemyKilled;
-        allEnemies.Remove(enemy);
-        if (allEnemies.Count == 0)
-        {
-            StageClear();
-        }
-    }
-
-
-    /// <summary>
     /// Stage is Clear reset Level
     /// </summary>
-    void StageClear()
+    protected override void StageClear()
     {
         DungeonMaster.Instance.AdvanceLevel();
         CleanUpDungeon();
@@ -117,5 +103,4 @@ public class BossDungeon : DungeonGenerator
         }
         allObstacles.Clear();
     }
-
 }

@@ -23,6 +23,10 @@ public class StartDungeon : MonoBehaviour
     {
         DungeonMaster.Instance.dungeonStarter = this;
         DungeonMaster.Instance.navi = navi;
+        
+        if (DungeonMaster.Instance.currentDungeonCount != 0)
+            DungeonMaster.Instance.ResetDungeonMaster();
+
         DungeonOn();
     }
 
@@ -57,7 +61,7 @@ public class StartDungeon : MonoBehaviour
 
         DungeonMaster.Instance.currentLevelDungeons.Add(firstDungeon);
         DungeonMaster.Instance.SetNewDungeons(firstDungeon, Direction.nothing);
-        DescriptionText.Instance.fadeOutInfo.FadeOutText(string.Concat("Level ", DungeonMaster.Instance.levelCount));
+        DungeonMaster.Instance.descriptionText.fadeOutInfo.FadeOutText(string.Concat("Level ", DungeonMaster.Instance.levelCount));
     }
 
     void ResetMoving()

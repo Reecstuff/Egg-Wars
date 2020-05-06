@@ -21,7 +21,7 @@ public class Trap : MonoBehaviour
     {
         if(other.GetComponent<PlayerController>() && !DungeonMaster.Instance.player.GravityOn)
         {
-            Invoke(nameof(DamagePlayer), timeToKill);
+            IsAboutToDamagePlayer();
         }
     }
 
@@ -32,6 +32,11 @@ public class Trap : MonoBehaviour
         {
             CancelInvoke(nameof(DamagePlayer));
         }
+    }
+
+    protected virtual void IsAboutToDamagePlayer()
+    {
+        Invoke(nameof(DamagePlayer), timeToKill);
     }
 
     protected virtual void DamagePlayer()

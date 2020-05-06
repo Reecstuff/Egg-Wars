@@ -22,6 +22,11 @@ public class DungeonGenerator : MonoBehaviour
 
     protected int sumPercentage;
 
+    protected List<Enemy> allEnemies = new List<Enemy>();
+
+    public bool canLeaveDungeon = false;
+    
+
 
     protected void Awake()
     {
@@ -56,6 +61,7 @@ public class DungeonGenerator : MonoBehaviour
     {
         BuildEnvironment();
         BuildNavMesh();
+        CalculateEnemies();
     }
 
     protected void BuildEnvironment()
@@ -88,6 +94,11 @@ public class DungeonGenerator : MonoBehaviour
         // And Initialize it on Position
         obstacle.transform.position = spawnPositions[i].position;
         obstacle.transform.Rotate(new Vector3(0, Random.Range(0, 9) * 45, 0), Space.Self);
+        if (obstacle.GetComponent<Enemy>())
+        {
+            allEnemies.Add(obstacle.GetComponent<Enemy>());
+            return;
+        }
     }
 
     protected GameObject GetDungeonObject(DungeonObstacle obstacleCategorie)
@@ -99,6 +110,42 @@ public class DungeonGenerator : MonoBehaviour
     protected void BuildNavMesh()
     {
         DungeonMaster.Instance.navi.BuildNavMesh();
+    }
+
+    virtual protected void CalculateEnemies()
+    {
+        allEnemies = GetComponentsInChildren<Enemy>().ToList();
+        DungeonMaster.Instance.descriptionText.enemieCountUI.SetEnemieCount(allEnemies.Count);
+        if(allEnemies.Count <= 0)
+        {
+            StageClear();
+            return;
+        }
+
+        for (int i = 0; i < allEnemies.Count; i++)
+        {
+            allEnemies[i].OnEnemyDeath += EnemyKilled;
+        }
+
+    }
+
+    /// <summary>
+    /// Enemy gets killed in Bossroom
+    /// </summary>
+    protected void EnemyKilled(Enemy enemy)
+    {
+        enemy.OnEnemyDeath -= EnemyKilled;
+        allEnemies.Remove(enemy);
+        DungeonMaster.Instance.descriptionText.enemieCountUI.SetEnemieCount(allEnemies.Count);
+        if (allEnemies.Count == 0)
+        {
+            StageClear();
+        }
+    }
+
+    protected virtual void StageClear()
+    {
+        canLeaveDungeon = true;
     }
 
     protected void SearchDoors()

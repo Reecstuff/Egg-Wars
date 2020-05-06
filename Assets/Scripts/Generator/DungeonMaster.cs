@@ -41,6 +41,9 @@ public class DungeonMaster : MonoBehaviour
     [HideInInspector]
     public StartDungeon dungeonStarter;
 
+    [HideInInspector]
+    public DescriptionText descriptionText;
+
     [SerializeField]
     int dungeonOffset = 100;
 
@@ -53,7 +56,7 @@ public class DungeonMaster : MonoBehaviour
 
     public List<DungeonGenerator> currentLevelDungeons;
 
-    int currentDungeonCount = 0;
+    public int currentDungeonCount = 0;
     public int levelCount = 1;
 
     int currentDungeonMaxStandard;
@@ -69,15 +72,25 @@ public class DungeonMaster : MonoBehaviour
     {
         currentLevelDungeons = new List<DungeonGenerator>();
         currentDungeonMaxStandard = currentDungeonMax;
-        currentDungeonCount = 0;
     }
 
     public void ResetDungeonMaster()
     {
+        // Reset current Dungeons
+        currentLevelDungeons.Remove(dungeonStarter.firstDungeon);
+        for (int i = 0; i < currentLevelDungeons.Count; i++)
+        {
+            Destroy(currentLevelDungeons[i]);
+        }
+        currentLevelDungeons.Clear();
+
+        // Reset Bossroom
+        dungeonStarter.bossRoom.Reset();
         currentDungeonMax = currentDungeonMaxStandard;
         levelCount = 1;
-        currentLevelDungeons.Clear();
-        Instance.BossRoomTime = false;
+        currentDungeonCount = 0;
+        BossRoomTime = false;
+        PlayerMoving = false;
     }
 
     void MakeSingelton()
@@ -235,21 +248,18 @@ public class DungeonMaster : MonoBehaviour
         }
 
         // Clean up
-        currentLevelDungeons.Clear();
         levelCount++;
         currentDungeonCount = 0;
         currentDungeonMax += 10;
-        ResetDungeonMaster();
-
+        BossRoomTime = false;
+        currentLevelDungeons.Clear();
 
         CameraController camera = mainCamera.GetComponent<CameraController>();
         camera.offset = new Vector3(0, -1.5f, 0.5f);
 
 
-        // Reset Dungeon
-        //player.transform.DOJump(Vector3.up * 3, 1, 1, 2f);
-        BossRoomTime = false;
 
+        dungeonStarter.bossRoom.Reset();
         dungeonStarter.DungeonOn();
 
         CleanUpDoors();

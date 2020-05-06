@@ -7,29 +7,15 @@ using UnityEngine;
 [RequireComponent(typeof(Canvas))]
 public class DescriptionText : MonoBehaviour
 {
-    public static DescriptionText Instance;
-
     public FadeOutInfo fadeOutInfo;
+
+    public EnemieCountUI enemieCountUI;
 
     TextMeshProUGUI field;
 
     private void Awake()
     {
-        MakeSingelton();
-    }
-    void MakeSingelton()
-    {
-        if (Instance != null)
-            Destroy(this.gameObject);
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
-
-    private void Start()
-    {
+        DungeonMaster.Instance.descriptionText = this;
         field = GetComponentInChildren<TextMeshProUGUI>();
     }
 

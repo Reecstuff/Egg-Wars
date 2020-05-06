@@ -16,7 +16,7 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DescriptionText.Instance.gameObject.SetActive(true);
+        DungeonMaster.Instance.descriptionText.gameObject.SetActive(true);
         pauseCam.gameObject.SetActive(false);
         pauseMenu.gameObject.SetActive(false);
     }
@@ -39,7 +39,7 @@ public class PauseMenu : MonoBehaviour
 
     public void CloseMenu()
     {
-        DescriptionText.Instance.gameObject.SetActive(true);
+        DungeonMaster.Instance.descriptionText.gameObject.SetActive(true);
         pauseMenu.gameObject.SetActive(false);
         pauseCam.gameObject.SetActive(false);
         DungeonMaster.Instance.player.gameObject.SetActive(true);
@@ -52,7 +52,7 @@ public class PauseMenu : MonoBehaviour
 
     void ShowMenu()
     {
-        DescriptionText.Instance.gameObject.SetActive(false);
+        DungeonMaster.Instance.descriptionText.gameObject.SetActive(false);
         DungeonMaster.Instance.player.gameObject.SetActive(false);
         pauseCam.transform.position = DungeonMaster.Instance.mainCamera.transform.position;
         pauseCam.transform.rotation = DungeonMaster.Instance.mainCamera.transform.rotation;
@@ -69,7 +69,7 @@ public class PauseMenu : MonoBehaviour
     {
         GameAudio.Instance.ManualPitch(1);
         Time.timeScale = 1;
-        DescriptionText.Instance.gameObject.SetActive(false);
+        DungeonMaster.Instance.descriptionText.gameObject.SetActive(false);
         GameAudio.Instance.SetMenuMusic();
         SceneManager.LoadScene("MainMenu");
     }

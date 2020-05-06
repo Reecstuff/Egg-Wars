@@ -144,7 +144,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("Velocity: " + moveVelocity.magnitude);
         rb.velocity = moveVelocity;
         AnimationInFixedUpdate();
         OnPlayerGroundProtection();
@@ -237,6 +236,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(equippedWeapon);
                 // Instantiate the new Weapon
                 equippedWeapon = Instantiate(newEquip.gameObject, weaponSlot.transform);
+                OnSpeedChange(standardSpeed * newEquip.moveSpeedMultiplier);
             }
             else if(newEquip.GetComponent<Ability>())
             {
@@ -283,6 +283,7 @@ public class PlayerController : MonoBehaviour
                     equippedArmor.GetComponent<Armor>().SetArmor();
                 }
             }
+
 
             if (oldItem)
             {

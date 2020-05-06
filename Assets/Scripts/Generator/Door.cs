@@ -36,37 +36,49 @@ public class Door : MonoBehaviour
                 return;
 
             GameObject player = other.gameObject;
-
-
-            // Check if generate Dungeon
-            if (!doorVisited)
+            if(dungeon.canLeaveDungeon)
             {
-                if(DungeonMaster.Instance.BossRoomTime)
+
+
+                // Check if generate Dungeon
+                if (!doorVisited)
                 {
-                    DungeonMaster.Instance.PlayerMoving = true;
-                    Invoke(nameof(ResetMoving), 2.0f);
-                    player.transform.DOJump(DungeonMaster.Instance.GetBossRoom(), 1, 1, 2f);
+                    if(DungeonMaster.Instance.BossRoomTime)
+                    {
+                        DungeonMaster.Instance.PlayerMoving = true;
+                        Invoke(nameof(ResetMoving), 3f);
+                        player.transform.DOJump(DungeonMaster.Instance.GetBossRoom(), 1, 1, 3f);
+                    }
+                    else
+                    {
+                        // Generate Dungeons in next Dungeon
+                        MovePosition(player.transform);
+                        CallDungeonGeneration();
+                        ActivateDungeon();
+                        StartDungeonDoor();
+                        doorVisited = true;
+                        DungeonMaster.Instance.RaiseDungeonCount();
+                    }
                 }
                 else
                 {
-                    // Generate Dungeons in next Dungeon
                     MovePosition(player.transform);
-                    CallDungeonGeneration();
                     ActivateDungeon();
-                    StartDungeonDoor();
-                    doorVisited = true;
-                    DungeonMaster.Instance.RaiseDungeonCount();
                 }
             }
             else
             {
-                MovePosition(player.transform);
-                ActivateDungeon();
+                MoveToRandomDungeonDoor(player.transform);
             }
         }
     }
 
-
+    void MoveToRandomDungeonDoor(Transform player)
+    {
+        DungeonMaster.Instance.PlayerMoving = true;
+        player.transform.DOJump(dungeon.doors[Random.Range(0, dungeon.doors.Count)].PlayerSpawnPosition , 3, 1, DungeonMaster.Instance.PlayerMovingTime);
+        Invoke(nameof(ResetMoving), DungeonMaster.Instance.PlayerMovingTime);
+    }
 
 
     void MovePosition(Transform player)
@@ -74,7 +86,7 @@ public class Door : MonoBehaviour
         DungeonMaster.Instance.PlayerMoving = true;
         NextDoor.doorVisited = true;
         player.transform.DOJump(NextDoor.PlayerSpawnPosition, 1, 1, DungeonMaster.Instance.PlayerMovingTime);
-        Invoke(nameof(ResetMoving), DungeonMaster.Instance.PlayerMovingTime + 0.1f);
+        Invoke(nameof(ResetMoving), DungeonMaster.Instance.PlayerMovingTime);
     }
 
 
