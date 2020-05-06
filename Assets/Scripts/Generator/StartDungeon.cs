@@ -16,12 +16,13 @@ public class StartDungeon : MonoBehaviour
     NavMeshSurface navi;
 
 
+    /// <summary>
+    /// Note this is called before DungeonMaster Start()
+    /// </summary>
     void Start()
     {
         DungeonMaster.Instance.dungeonStarter = this;
         DungeonMaster.Instance.navi = navi;
-        DungeonMaster.Instance.ResetDungeonMaster();
-
         DungeonOn();
     }
 

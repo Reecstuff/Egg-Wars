@@ -59,14 +59,6 @@ public class DungeonMaster : MonoBehaviour
     int currentDungeonMaxStandard;
 
 
-    public void ResetDungeonMaster()
-    {
-        currentDungeonMax = currentDungeonMaxStandard;
-        levelCount = 1;
-        currentLevelDungeons.Clear();
-        Instance.BossRoomTime = false;
-    }
-
     private void Awake()
     {
         MakeSingelton();
@@ -77,6 +69,15 @@ public class DungeonMaster : MonoBehaviour
     {
         currentLevelDungeons = new List<DungeonGenerator>();
         currentDungeonMaxStandard = currentDungeonMax;
+        currentDungeonCount = 0;
+    }
+
+    public void ResetDungeonMaster()
+    {
+        currentDungeonMax = currentDungeonMaxStandard;
+        levelCount = 1;
+        currentLevelDungeons.Clear();
+        Instance.BossRoomTime = false;
     }
 
     void MakeSingelton()
@@ -238,6 +239,8 @@ public class DungeonMaster : MonoBehaviour
         levelCount++;
         currentDungeonCount = 0;
         currentDungeonMax += 10;
+        ResetDungeonMaster();
+
 
         CameraController camera = mainCamera.GetComponent<CameraController>();
         camera.offset = new Vector3(0, -1.5f, 0.5f);
@@ -283,7 +286,8 @@ public class DungeonMaster : MonoBehaviour
     public void RaiseDungeonCount()
     {
         currentDungeonCount++;
-        if(currentDungeonCount >= currentDungeonMax)
+
+        if (currentDungeonCount >= currentDungeonMax)
         {
             // Set Value for Bossroom
             BossRoomTime = true;

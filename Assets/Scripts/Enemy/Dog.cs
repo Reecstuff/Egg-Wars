@@ -7,31 +7,40 @@ using UnityEngine;
 public class Dog : Enemy
 {
     [SerializeField]
-    AudioClip attackSound;
+    protected AudioClip attackSound;
 
     [SerializeField]
-    AudioClip deathSound;
+    protected AudioClip deathSound;
 
     [SerializeField]
-    AudioClip hitSound;
+    protected AudioClip hitSound;
 
-    bool isdying = false;
+    [SerializeField]
+    protected string DeathAnimationString;
+
+    [SerializeField]
+    protected string AttackString;
+
 
 
     public override void EnemyDying()
     {
+        base.EnemyDying();
         particleSystem.First().Stop();
         isdying = true;
-        source.clip = deathSound;
-        source.Play();
-        animator.Play("Dog_Dying");
+        if(!source.clip.Equals(deathSound))
+        {
+            source.clip = deathSound;
+            source.Play();
+        }
+        animator.Play(DeathAnimationString);
         Invoke(nameof(Die), 3.5f);
     }
 
     public override void GotHit(int damage)
     {
         base.GotHit(damage);
-        if (hitSound)
+        if (!isdying && hitSound && (!source.isPlaying || source.isPlaying && source.clip.Equals(attackSound)))
         {
             source.clip = hitSound;
             source.Play();
@@ -51,12 +60,16 @@ public class Dog : Enemy
 
     public override void PlayerInTriggerStay(GameObject other)
     {
-        if(!isdying && !animator.GetCurrentAnimatorStateInfo(0).IsName("Dog_Attack"))
+        if(!isdying && !animator.GetCurrentAnimatorStateInfo(0).IsName(AttackString))
         {
             transform.DOLookAt(new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z), .2f);
             PlayAudio(attackSound);
-            animator.Play("Dog_Attack");
+            animator.Play(AttackString);
             particleSystem.First().Play(); //Maybe Play
+        }
+        else if(!isdying && animator.GetCurrentAnimatorStateInfo(0).IsName(AttackString))
+        {
+             //Maybe Play
         }
         base.PlayerInTriggerStay(other);
     }

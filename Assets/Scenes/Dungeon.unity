@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossRaum
       objectReference: {fileID: 0}
+    - target: {fileID: 1215140286285610325, guid: eee75cc77310ea844ac4538927410b67,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2775996921771659078, guid: eee75cc77310ea844ac4538927410b67,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -268,6 +273,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 308601671476663735, guid: a0dfcdd4536c5154aba39f9fd1d43182,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3035403610708228767, guid: a0dfcdd4536c5154aba39f9fd1d43182,
         type: 3}

@@ -109,10 +109,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 030696e7f36621245ab2ecd79131aec2, type: 2}
   delay: 1
-  radius: 6
+  radius: 10
   force: 70
-  damage: 100
-  explosionEffect: {fileID: 0}
+  damage: 200
 --- !u!54 &7454894359029348955
 Rigidbody:
   m_ObjectHideFlags: 0

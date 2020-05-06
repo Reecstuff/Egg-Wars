@@ -32,8 +32,10 @@ public class Enemy : MonoBehaviour
     protected PlayerSonar sonar;
     protected int wiggleSafe = 0;
     protected EnemyUI enemyUI;
+    protected bool isdying = false;
+    
 
-    public bool noPlayerInSight = false;
+    public bool noPlayerInSight = true;
 
     public delegate void EnemyDeath(Enemy thisEnemy);
     public event EnemyDeath OnEnemyDeath;
@@ -135,7 +137,9 @@ public class Enemy : MonoBehaviour
 
     virtual public void EnemyDying()
     {
-
+        if (isdying)
+            return;
+        agent.enabled = false;
     }
 
     protected void PlayParticles()
@@ -153,7 +157,6 @@ public class Enemy : MonoBehaviour
 
     protected void Die()
     {
-        agent.enabled = true;
         Destroy(gameObject);
     }
 

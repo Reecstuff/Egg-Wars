@@ -82,11 +82,16 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
-        moveInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+
+        float moveSpeedX = Input.GetAxis("Horizontal") * moveSpeed;
+        float moveSpeedZ = Input.GetAxis("Vertical") * moveSpeed;
+
+
+        moveInput = new Vector3(moveSpeedX, 0f, moveSpeedZ);
         shouldAnimateMoving = moveInput != Vector3.zero;
 
-        moveVelocity = moveInput * moveSpeed;
+
+        moveVelocity = Vector3.ClampMagnitude(moveInput, moveSpeed);
 
         Ray cameraRay = cam.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, transform.position);
@@ -139,6 +144,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log("Velocity: " + moveVelocity.magnitude);
         rb.velocity = moveVelocity;
         AnimationInFixedUpdate();
         OnPlayerGroundProtection();

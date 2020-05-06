@@ -87,7 +87,7 @@ public class Boss : Enemy
             {
                 agent.enabled = false;
                 agent.enabled = true;
-                Debug.Log("navmesh re enabled");
+                agent.SetDestination(RandomNavmeshLocation());
             }
         }
     }
@@ -133,6 +133,7 @@ public class Boss : Enemy
     public override void EnemyDying()
     {
         base.EnemyDying();
+        isdying = true;
         stopAll = true;
         source.loop = false;
         source.clip = deathClip;

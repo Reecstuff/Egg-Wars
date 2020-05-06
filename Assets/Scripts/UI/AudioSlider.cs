@@ -20,7 +20,7 @@ public class AudioSlider : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        if (volume <= -20)
+        if (volume <= -40)
             volume = -80;
 
         mixer.SetFloat("MasterVolume", volume);
