@@ -60,16 +60,19 @@ public class Dog : Enemy
 
     public override void PlayerInTriggerStay(GameObject other)
     {
-        if(!isdying && !animator.GetCurrentAnimatorStateInfo(0).IsName(AttackString))
+        if(!isdying)
         {
-            transform.DOLookAt(new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z), .2f);
-            PlayAudio(attackSound);
-            animator.Play(AttackString);
-            particleSystem.First().Play(); //Maybe Play
-        }
-        else if(!isdying && animator.GetCurrentAnimatorStateInfo(0).IsName(AttackString))
-        {
-             //Maybe Play
+            transform.LookAt(new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z));
+            if(!animator.GetCurrentAnimatorStateInfo(0).IsName(AttackString))
+            {
+                PlayAudio(attackSound);
+                animator.Play(AttackString);
+                particleSystem.First().Play(); //Maybe Play
+            }
+            else if(animator.GetCurrentAnimatorStateInfo(0).IsName(AttackString))
+            {
+                 //Maybe Play
+            }
         }
         base.PlayerInTriggerStay(other);
     }
