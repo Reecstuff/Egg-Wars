@@ -51,7 +51,7 @@ MonoBehaviour:
   spreadAngle: 0
   shootSpeed: 30
   bulletcount: 1
-  damage: 20
+  damage: 30
   startTimeBtwShots: 0.6
 --- !u!1 &6550084932658677796
 GameObject:

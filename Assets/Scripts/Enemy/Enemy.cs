@@ -87,8 +87,9 @@ public class Enemy : MonoBehaviour
     virtual public void GotHit(int damage)
     {
         health -= damage;
-        if (health <= 0)
+        if (health <= 0 && !isdying)
             EnemyDying();
+
         enemyUI.SetHealth(health);
 
     }
@@ -137,8 +138,6 @@ public class Enemy : MonoBehaviour
 
     virtual public void EnemyDying()
     {
-        if (isdying)
-            return;
         agent.enabled = false;
     }
 

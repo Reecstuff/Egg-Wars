@@ -135,9 +135,12 @@ public class Boss : Enemy
         base.EnemyDying();
         isdying = true;
         stopAll = true;
-        source.loop = false;
-        source.clip = deathClip;
-        source.Play();
+        if (!source.clip.Equals(deathClip))
+        {
+            source.loop = false;
+            source.clip = deathClip;
+            source.Play();
+        }
         animator.Play(animationStandard[2]);
         agent.enabled = false;
         Invoke(nameof(Die), 4);
