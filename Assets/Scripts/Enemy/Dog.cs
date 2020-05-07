@@ -65,7 +65,6 @@ public class Dog : Enemy
             transform.LookAt(new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z));
             if(!agent.hasPath && !agent.pathPending)
             {
-                Debug.Log("New Path");
                 agent.SetDestination(RandomNavmeshLocation());
             }
 

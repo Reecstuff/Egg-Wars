@@ -2012,6 +2012,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 392617422, guid: f19d23c711ec6f34b99ea02d85df1975, type: 3}
+      propertyPath: timeTofade
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 560333434, guid: f19d23c711ec6f34b99ea02d85df1975, type: 3}
       propertyPath: m_AnchorMin.x
       value: 1
