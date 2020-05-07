@@ -73,6 +73,11 @@ public class CharacterStats : MonoBehaviour
 		{
 			currentHealth += healingAmount;
 		}
+		else
+		{
+			currentHealth = maxHealth;
+		}
+
 		statsUI.SetHealth(currentHealth);
 	}
 

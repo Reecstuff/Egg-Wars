@@ -52,9 +52,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 9079839455816992976}
-  moveSpeed: 14
+  moveSpeed: 17
   standardSpeed: 0
-  equippedWeapon: {fileID: 3035403610708228767}
+  equippedWeapon: {fileID: 9163590802509628908}
   weaponSlot: {fileID: 9210877384641666040}
   abilitySlot: {fileID: 6551324071130120749}
   equippedAbility: {fileID: 0}
@@ -375,7 +375,7 @@ Transform:
   m_LocalPosition: {x: 0.442, y: -0.54, z: -0.072}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4270803676527997798}
+  - {fileID: 9163590802509628211}
   m_Father: {fileID: 3859071985471318998}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1985,13 +1985,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7be72bde38cb7f4fb1e62d58706f773, type: 3}
---- !u!4 &4270803676527997798 stripped
+--- !u!4 &9163590802509628211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4931278968780076059, guid: e7be72bde38cb7f4fb1e62d58706f773,
     type: 3}
   m_PrefabInstance: {fileID: 9163590802509629309}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3035403610708228767 stripped
+--- !u!1 &9163590802509628908 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6139662796946423266, guid: e7be72bde38cb7f4fb1e62d58706f773,
     type: 3}

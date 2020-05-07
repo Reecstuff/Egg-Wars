@@ -250,7 +250,7 @@ public class DungeonMaster : MonoBehaviour
         // Clean up
         levelCount++;
         currentDungeonCount = 0;
-        currentDungeonMax += 10;
+        currentDungeonMax += 5;
         BossRoomTime = false;
         currentLevelDungeons.Clear();
 

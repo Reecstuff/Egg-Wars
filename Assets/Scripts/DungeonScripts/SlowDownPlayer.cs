@@ -23,7 +23,7 @@ public class SlowDownPlayer : MonoBehaviour
         {
             if(!DungeonMaster.Instance.player.GravityOn)
             {
-                DungeonMaster.Instance.player.OnSpeedChange(DungeonMaster.Instance.player.moveSpeed / 2);
+                DungeonMaster.Instance.player.OnSpeedChange(DungeonMaster.Instance.player.moveSpeed * 0.5f);
                 DungeonMaster.Instance.player.PitchWalking(0.5f);
                 shouldReset = true;
             }
@@ -32,7 +32,7 @@ public class SlowDownPlayer : MonoBehaviour
         if (other.GetComponent<Enemy>())
         {
             Enemy thisEnemy = other.GetComponent<Enemy>();
-            thisEnemy.OnSpeedChange(thisEnemy.Speed / slowDownSpeed);
+            thisEnemy.OnSpeedChange(thisEnemy.Speed * 0.5f);
         }
     }
 
@@ -42,7 +42,7 @@ public class SlowDownPlayer : MonoBehaviour
         {
             if(shouldReset)
             {
-                DungeonMaster.Instance.player.OnSpeedChange(DungeonMaster.Instance.player.standardSpeed);
+                DungeonMaster.Instance.player.OnSpeedChange(DungeonMaster.Instance.player.equippedWeapon.GetComponent<Weapon>().moveSpeed);
                 DungeonMaster.Instance.player.PitchWalking(1);
             }
         }

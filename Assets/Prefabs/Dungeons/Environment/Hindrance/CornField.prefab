@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 235093482969258736}
   - component: {fileID: 4691719698104058820}
   - component: {fileID: 8352440135364833728}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CornField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,6 +98,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 5993611540188009584, guid: e2e503cc9f546be4a86c5c8903fc33e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7311255518746535523, guid: e2e503cc9f546be4a86c5c8903fc33e0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -178,6 +183,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993611540188009584, guid: e2e503cc9f546be4a86c5c8903fc33e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7311255518746535523, guid: e2e503cc9f546be4a86c5c8903fc33e0,
         type: 3}
@@ -260,6 +270,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 5993611540188009584, guid: e2e503cc9f546be4a86c5c8903fc33e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7311255518746535523, guid: e2e503cc9f546be4a86c5c8903fc33e0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -340,6 +355,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993611540188009584, guid: e2e503cc9f546be4a86c5c8903fc33e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7311255518746535523, guid: e2e503cc9f546be4a86c5c8903fc33e0,
         type: 3}
@@ -422,6 +442,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 5993611540188009584, guid: e2e503cc9f546be4a86c5c8903fc33e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7311255518746535523, guid: e2e503cc9f546be4a86c5c8903fc33e0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -502,6 +527,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993611540188009584, guid: e2e503cc9f546be4a86c5c8903fc33e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7311255518746535523, guid: e2e503cc9f546be4a86c5c8903fc33e0,
         type: 3}

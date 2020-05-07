@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: c1116b8afcbec85478555889f12c5d77, type: 2}
-  moveSpeedMultiplier: 1
+  moveSpeed: 17
   healAmount: 3
   particleSystem:
   - {fileID: 3300059454546258188}
@@ -136,7 +136,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 131
   DopplerLevel: 1
   MinDistance: 5
   MaxDistance: 20

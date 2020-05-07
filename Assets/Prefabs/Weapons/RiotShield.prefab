@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 419610470804175225}
   - component: {fileID: 1267145665672587079}
   - component: {fileID: 1209240993959192631}
+  - component: {fileID: 434496659689497805}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -58,6 +59,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
+--- !u!65 &434496659689497805
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921576464445352075}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.77, y: 3.23, z: 0.55}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4501283778872923625
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 9de84a89e65380541b09de5f2e5e88fb, type: 2}
-  moveSpeedMultiplier: 1.1
+  moveSpeed: 20
   firePoint: {fileID: 0}
   bullet: {fileID: 0}
   spreadAngle: 10

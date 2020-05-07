@@ -738,13 +738,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dungeonObstaclesCat:
-  - SpawnPercentage: 50
+  - SpawnPercentage: 40
     categorieList: {fileID: 11400000, guid: 7ac57a7ea9d05804aaecc1c5e81476bb, type: 2}
   - SpawnPercentage: 50
     categorieList: {fileID: 11400000, guid: f367faa1bfc38eb4c9a99bf017a0fd4e, type: 2}
   - SpawnPercentage: 0
     categorieList: {fileID: 11400000, guid: 453ba191ea2cc5d45aa83e4e7190eb41, type: 2}
-  - SpawnPercentage: 0
+  - SpawnPercentage: 10
     categorieList: {fileID: 11400000, guid: 3bfb429245db22e49a3018b00cc86802, type: 2}
   spawnPositions:
   - {fileID: 8290006599013701548}
@@ -764,6 +764,7 @@ MonoBehaviour:
   - {fileID: 6412339666115295110}
   - {fileID: 6412339666115295108}
   directions: 01000000020000000400000003000000
+  canLeaveDungeon: 0
 --- !u!1 &3174189111839287223
 GameObject:
   m_ObjectHideFlags: 0

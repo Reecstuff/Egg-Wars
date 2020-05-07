@@ -41,7 +41,7 @@ public class Grenade : Ability
 			Enemy destruct = nearbyObj.GetComponent<Enemy>();
 			if (destruct != null)
 			{
-				destruct.health -= damage;
+				destruct.GotHit(damage);
 			}
 		}
 

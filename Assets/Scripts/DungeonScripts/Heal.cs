@@ -13,15 +13,17 @@ public class Heal : EquipAbleItem
 
     public void HealPlayer()
     {
-        DungeonMaster.Instance.player.characterStats.Heal(healAmount);
-        transform.DOScale(0, 1.8f);
-        for (int i = 0; i < particleSystem.Length; i++)
+        if(DungeonMaster.Instance.player.characterStats.maxHealth > DungeonMaster.Instance.player.characterStats.currentHealth)
         {
-            particleSystem[i].Play();
+            DungeonMaster.Instance.player.characterStats.Heal(healAmount);
+            transform.DOScale(0, 1.8f);
+            for (int i = 0; i < particleSystem.Length; i++)
+            {
+                particleSystem[i].Play();
+            }
+
+            Invoke(nameof(DestroyThis), 3f);
         }
-
-
-        Invoke(nameof(DestroyThis), 3f);
     }
 
     void DestroyThis()

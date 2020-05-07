@@ -6,6 +6,6 @@ public class EquipAbleItem : MonoBehaviour
 {
     public ItemText item;
 
-    [Range(0, 2)]
-    public float moveSpeedMultiplier = 1;
+    [Range(0, 25)]
+    public float moveSpeed = 17;
 }

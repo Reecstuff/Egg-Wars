@@ -155,11 +155,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: f5513c7e70c561b4b9871ef0f0893ef5, type: 2}
-  moveSpeedMultiplier: 0.8
+  moveSpeed: 12
   firePoint: {fileID: 8352716654900665111}
   bullet: {fileID: 5529024245268689379, guid: 098f736de9a185649a3b2d8769b482b3, type: 3}
   spreadAngle: 0
   shootSpeed: 10
   bulletcount: 1
   damage: 1
-  startTimeBtwShots: 0
+  startTimeBtwShots: 0.05

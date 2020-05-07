@@ -68,15 +68,15 @@ public class Door : MonoBehaviour
             }
             else
             {
-                MoveToRandomDungeonDoor(player.transform);
+                MoveTotheSameDoor(player.transform);
             }
         }
     }
 
-    void MoveToRandomDungeonDoor(Transform player)
+    void MoveTotheSameDoor(Transform player)
     {
         DungeonMaster.Instance.PlayerMoving = true;
-        player.transform.DOJump(dungeon.doors[Random.Range(0, dungeon.doors.Count)].PlayerSpawnPosition , 3, 1, DungeonMaster.Instance.PlayerMovingTime);
+        player.transform.DOJump(PlayerSpawnPosition , 1, 1, DungeonMaster.Instance.PlayerMovingTime);
         Invoke(nameof(ResetMoving), DungeonMaster.Instance.PlayerMovingTime);
     }
 

@@ -1381,11 +1381,11 @@ MonoBehaviour:
   dungeonObstaclesCat:
   - SpawnPercentage: 0
     categorieList: {fileID: 11400000, guid: 7ac57a7ea9d05804aaecc1c5e81476bb, type: 2}
-  - SpawnPercentage: 35
+  - SpawnPercentage: 38
     categorieList: {fileID: 11400000, guid: f367faa1bfc38eb4c9a99bf017a0fd4e, type: 2}
-  - SpawnPercentage: 10
+  - SpawnPercentage: 11
     categorieList: {fileID: 11400000, guid: 453ba191ea2cc5d45aa83e4e7190eb41, type: 2}
-  - SpawnPercentage: 5
+  - SpawnPercentage: 1
     categorieList: {fileID: 11400000, guid: 3bfb429245db22e49a3018b00cc86802, type: 2}
   spawnPositions:
   - {fileID: 533623721777193033}
@@ -1622,6 +1622,7 @@ MonoBehaviour:
   - {fileID: 2959255817800053734}
   doors: []
   directions: 
+  canLeaveDungeon: 0
   PlayerPosition: {fileID: 21896859496790831}
   bossSpawnField: {fileID: 2677687917586522568}
   bossPrefab: {fileID: 4943024217073367997, guid: f89dea4f4b8be57449a6398394cfb10c,

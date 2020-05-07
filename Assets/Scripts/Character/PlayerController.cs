@@ -49,6 +49,9 @@ public class PlayerController : MonoBehaviour
     string meeleState = "Meele";
 
     [SerializeField]
+    string stabState = "Heugabel";
+
+    [SerializeField]
     string walkingValue = "WalkingMultiplier";
 
     [SerializeField]
@@ -156,9 +159,14 @@ public class PlayerController : MonoBehaviour
         // Do Sound here
     }
 
+    public void StabWeapon()
+    {
+        animator.Play(stabState);
+    }
+
     void AnimationInFixedUpdate()
     {
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName(meeleState))
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsTag(meeleState))
         {
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName(walkingState) && shouldAnimateMoving)
             {
@@ -236,7 +244,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(equippedWeapon);
                 // Instantiate the new Weapon
                 equippedWeapon = Instantiate(newEquip.gameObject, weaponSlot.transform);
-                OnSpeedChange(standardSpeed * newEquip.moveSpeedMultiplier);
+                OnSpeedChange(newEquip.moveSpeed);
             }
             else if(newEquip.GetComponent<Ability>())
             {
@@ -304,6 +312,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="speed"></param>
     public void OnSpeedChange(float speed)
     {
+        Debug.Log(moveSpeed);
         moveSpeed = speed;
         animator.SetFloat(walkingValue, moveSpeed);
     }

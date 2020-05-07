@@ -48,10 +48,10 @@ public class Weapon : EquipAbleItem
                     Swing();
                     break;
                 case "Heugabel":
-                    Swing();
+                    Stab();
                     break;
                 case "RiotShield":
-                    Swing();
+                    Stab();
                     break;
             }
         }
@@ -59,6 +59,13 @@ public class Weapon : EquipAbleItem
         {
             timeBtwShots -= Time.deltaTime;
         }
+    }
+
+    void Stab()
+    {
+        GetComponentInParent<PlayerController>().StabWeapon();
+
+        GetComponentInChildren<MeleeCombat>().damage = damage;
     }
 
     void Swing()

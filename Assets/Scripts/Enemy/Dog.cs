@@ -34,7 +34,7 @@ public class Dog : Enemy
             source.Play();
         }
         animator.Play(DeathAnimationString);
-        Invoke(nameof(Die), 3f);
+        Invoke(nameof(Die), 1.5f);
     }
 
     public override void GotHit(int damage)
@@ -63,6 +63,12 @@ public class Dog : Enemy
         if(!isdying)
         {
             transform.LookAt(new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z));
+            if(!agent.hasPath && !agent.pathPending)
+            {
+                Debug.Log("New Path");
+                agent.SetDestination(RandomNavmeshLocation());
+            }
+
             if(!animator.GetCurrentAnimatorStateInfo(0).IsName(AttackString))
             {
                 PlayAudio(attackSound);
