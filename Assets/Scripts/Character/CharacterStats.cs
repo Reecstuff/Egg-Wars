@@ -109,8 +109,10 @@ public class CharacterStats : MonoBehaviour
 	}
 
 	public virtual void Die()
-	{ 
-		DungeonMaster.Instance.deathMenu.ShowMenu();
+	{
+        Time.timeScale = 0f;
+        GameAudio.Instance.ManualPitch(0.5f);
+        DungeonMaster.Instance.deathMenu.ShowMenu();
 		currentHealth = 9;
 		maxHealth = 12;
 		ammoAbility = 0;

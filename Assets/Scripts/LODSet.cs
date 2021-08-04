@@ -7,7 +7,7 @@ public class LODSet : MonoBehaviour
 {
     [Range(0,1)]
     [SerializeField]
-    float culledPercentage;
+    float culledPercentage = 0.15f;
 
     LODGroup lod;
     private void Start()
@@ -18,7 +18,7 @@ public class LODSet : MonoBehaviour
     void SetUpLod()
     {
         lod = GetComponent<LODGroup>();
-        lod.SetLODs(new LOD[] { new LOD(0.1f, GetComponents<Renderer>()) });
+        lod.SetLODs(new LOD[] { new LOD(culledPercentage, GetComponents<Renderer>()) });
     }
 
     private void OnValidate()
